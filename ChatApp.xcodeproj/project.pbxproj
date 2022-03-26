@@ -14,6 +14,11 @@
 		FBF8C2EA27EDCFFF0000F7F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF8C2E927EDCFFF0000F7F7 /* Assets.xcassets */; };
 		FBF8C2ED27EDCFFF0000F7F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF8C2EB27EDCFFF0000F7F7 /* LaunchScreen.storyboard */; };
 		FBF8C2FB27EDD0730000F7F7 /* ConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2FA27EDD0730000F7F7 /* ConversationsController.swift */; };
+		FBF8C2FE27EF0CB30000F7F7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FBF8C2FD27EF0CB30000F7F7 /* SnapKit */; };
+		FBF8C30127EF0CC80000F7F7 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = FBF8C30027EF0CC80000F7F7 /* Then */; };
+		FBF8C30627EF18290000F7F7 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C30527EF18290000F7F7 /* LoginController.swift */; };
+		FBF8C30827EF18830000F7F7 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C30727EF18830000F7F7 /* RegistrationController.swift */; };
+		FBF8C30A27EF21D90000F7F7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C30927EF21D90000F7F7 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,9 @@
 		FBF8C2EC27EDCFFF0000F7F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FBF8C2EE27EDCFFF0000F7F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBF8C2FA27EDD0730000F7F7 /* ConversationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsController.swift; sourceTree = "<group>"; };
+		FBF8C30527EF18290000F7F7 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		FBF8C30727EF18830000F7F7 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		FBF8C30927EF21D90000F7F7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBF8C2FE27EF0CB30000F7F7 /* SnapKit in Frameworks */,
+				FBF8C30127EF0CC80000F7F7 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +88,7 @@
 		FBF8C2F427EDD03D0000F7F7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FBF8C30927EF21D90000F7F7 /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -92,6 +103,7 @@
 		FBF8C2F627EDD0440000F7F7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FBF8C30427EF18190000F7F7 /* Authentification */,
 				FBF8C2FA27EDD0730000F7F7 /* ConversationsController.swift */,
 			);
 			path = Controller;
@@ -118,6 +130,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FBF8C30427EF18190000F7F7 /* Authentification */ = {
+			isa = PBXGroup;
+			children = (
+				FBF8C30527EF18290000F7F7 /* LoginController.swift */,
+				FBF8C30727EF18830000F7F7 /* RegistrationController.swift */,
+			);
+			path = Authentification;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +155,10 @@
 			dependencies = (
 			);
 			name = ChatApp;
+			packageProductDependencies = (
+				FBF8C2FD27EF0CB30000F7F7 /* SnapKit */,
+				FBF8C30027EF0CC80000F7F7 /* Then */,
+			);
 			productName = ChatApp;
 			productReference = FBF8C2DD27EDCFFE0000F7F7 /* ChatApp.app */;
 			productType = "com.apple.product-type.application";
@@ -162,6 +187,10 @@
 				Base,
 			);
 			mainGroup = FBF8C2D427EDCFFE0000F7F7;
+			packageReferences = (
+				FBF8C2FC27EF0CB30000F7F7 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				FBF8C2FF27EF0CC80000F7F7 /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = FBF8C2DE27EDCFFE0000F7F7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -193,6 +222,9 @@
 				FBF8C2E127EDCFFE0000F7F7 /* AppDelegate.swift in Sources */,
 				FBF8C2FB27EDD0730000F7F7 /* ConversationsController.swift in Sources */,
 				FBF8C2E327EDCFFE0000F7F7 /* SceneDelegate.swift in Sources */,
+				FBF8C30827EF18830000F7F7 /* RegistrationController.swift in Sources */,
+				FBF8C30627EF18290000F7F7 /* LoginController.swift in Sources */,
+				FBF8C30A27EF21D90000F7F7 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +444,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FBF8C2FC27EF0CB30000F7F7 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		FBF8C2FF27EF0CC80000F7F7 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FBF8C2FD27EF0CB30000F7F7 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FBF8C2FC27EF0CB30000F7F7 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		FBF8C30027EF0CC80000F7F7 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FBF8C2FF27EF0CC80000F7F7 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FBF8C2D527EDCFFE0000F7F7 /* Project object */;
 }

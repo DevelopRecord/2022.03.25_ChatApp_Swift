@@ -6,51 +6,85 @@
 //
 
 import UIKit
+import Then
+
+private let identifier = "ConversationsCell"
 
 class ConversationsController: UIViewController {
-    
+
     // MARK: - Properties
-    
+
+    private lazy var tableView = UITableView().then {
+        $0.backgroundColor = .white
+        $0.rowHeight = 80
+        $0.delegate = self
+        $0.dataSource = self
+        $0.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
+    }
+
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureTableView()
     }
-    
+
     // MARK: - Selectors
-    
+
     @objc func showProfile() {
-        
+
     }
-    
+
     // MARK: - Helpers
-    
+
     func configureUI() {
         view.backgroundColor = .white
         configureNavigationBar()
-        
+
         let image = UIImage(systemName: "person.circle.fill")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain,
-                                                           target: self, action: #selector(showProfile))
+            target: self, action: #selector(showProfile))
     }
-    
+
+    func configureTableView() {
+        view.addSubview(tableView)
+        tableView.frame = view.frame
+    }
+
     /// iOS13 부터 네비게이션 바의 스타일 변경 대응 함수
     func configureNavigationBar() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         appearance.backgroundColor = .systemPurple
-        
+
         navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance // 스크롤 할 때 navigationBar의 사이즈가 컴팩트하게 합니다.
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        
+
         navigationController?.navigationBar.prefersLargeTitles = true // 타이틀 글자가 왼쪽에 크게 나오게 합니다.
         navigationItem.title = "Messages"
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.isTranslucent = true
-        
+
         navigationController?.navigationBar.overrideUserInterfaceStyle = .dark // 상태표시줄의 색을 흰색으로 변경
+    }
+}
+
+extension ConversationsController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        cell.textLabel?.text = "Test cell"
+        return cell
+    }
+}
+extension ConversationsController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
     }
 }
