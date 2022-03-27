@@ -18,44 +18,33 @@ class LoginController: UIViewController {
         $0.tintColor = .white
     }
 
-    private lazy var emailContainerView = UIView().then {
-        $0.backgroundColor = .clear
-        let iv = UIImageView()
-        $0.setHeight(height: 50)
-    }
+    private lazy var emailContainerView = InputContainerView(image: UIImage(systemName: "envelope"), textField: emailTextField)
 
-    private let emailImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "envelope")
-        $0.tintColor = .white
-    }
-
-    private lazy var passwordContainerView = UIView().then {
-        $0.backgroundColor = .clear
-        $0.setHeight(height: 50)
-    }
-
-    private let passwordImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "lock")
-        $0.tintColor = .white
-    }
+    private lazy var passwordContainerView = InputContainerView(image: UIImage(systemName: "lock"), textField: passwordTextField)
 
     private let loginButton = UIButton(type: .system).then {
-        $0.setTitle("Log In", for: .normal)
+        $0.setTitle("로그인", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 5
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         $0.backgroundColor = .lightGray
         $0.setHeight(height: 50)
     }
-    
-    private let emailTextField = UITextField().then {
-        $0.placeholder = "Email"
-        $0.textColor = .white
-    }
-    
-    private let passwordTextField = UITextField().then {
-        $0.placeholder = "Password"
-        $0.textColor = .white
+
+    private let emailTextField = CustomTextField(placeholder: "이메일")
+
+    private let passwordTextField = CustomTextField(placeholder: "비밀번호").then {
         $0.isSecureTextEntry = true
+    }
+
+    private let joinButton = UIButton(type: .system).then {
+        let attributedTitle = NSMutableAttributedString(string: "계정이 없나요?  ", attributes: [.font: UIFont.systemFont(ofSize: 16),
+                .foregroundColor: UIColor.white])
+        attributedTitle.append(NSAttributedString(string: "회원가입", attributes: [.font: UIFont.boldSystemFont(ofSize: 16),
+                .foregroundColor: UIColor.white]))
+
+        $0.setAttributedTitle(attributedTitle, for: .normal)
+        $0.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
     }
 
     // MARK: - Lifecycle
@@ -63,6 +52,13 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+    }
+
+    // MARK: - Selectors
+
+    @objc func handleShowSignUp() {
+        let controller = RegistrationController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 
     // MARK: - Helpers
@@ -74,15 +70,9 @@ class LoginController: UIViewController {
 
         setupLayout()
     }
+}
 
-    func configureGradientLayer() {
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemPink.cgColor]
-        gradient.locations = [0, 1]
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.frame
-    }
-
+private extension LoginController {
     func setupLayout() {
         view.addSubview(iconImage)
         iconImage.snp.makeConstraints { make in
@@ -102,30 +92,11 @@ class LoginController: UIViewController {
             make.trailing.equalTo(view.snp.trailing).inset(32)
         }
 
-        emailContainerView.addSubview(emailImageView)
-        emailContainerView.addSubview(emailTextField)
-        emailImageView.snp.makeConstraints { make in
-            make.width.equalTo(28)
-            make.height.equalTo(24)
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(8)
-        }
-        emailTextField.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(emailImageView.snp.trailing).offset(8)
-            make.trailing.equalToSuperview()
-        }
-        
-        passwordContainerView.addSubview(passwordImageView)
-        passwordContainerView.addSubview(passwordTextField)
-        passwordImageView.snp.makeConstraints { make in
-            make.width.height.equalTo(28)
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(8)
-        }
-        passwordTextField.snp.makeConstraints { make in
-            make.centerY.trailing.equalToSuperview()
-            make.leading.equalTo(passwordImageView.snp.trailing).offset(8)
+        view.addSubview(joinButton)
+        joinButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().inset(32)
+            make.bottom.equalToSuperview().inset(32)
         }
     }
 }

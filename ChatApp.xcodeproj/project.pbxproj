@@ -18,7 +18,10 @@
 		FBF8C30127EF0CC80000F7F7 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = FBF8C30027EF0CC80000F7F7 /* Then */; };
 		FBF8C30627EF18290000F7F7 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C30527EF18290000F7F7 /* LoginController.swift */; };
 		FBF8C30827EF18830000F7F7 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C30727EF18830000F7F7 /* RegistrationController.swift */; };
-		FBF8C30A27EF21D90000F7F7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C30927EF21D90000F7F7 /* Extensions.swift */; };
+		FBF8C30A27EF21D90000F7F7 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C30927EF21D90000F7F7 /* UIView+.swift */; };
+		FBF8C30C27F04A1F0000F7F7 /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C30B27F04A1F0000F7F7 /* InputContainerView.swift */; };
+		FBF8C30E27F0537D0000F7F7 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C30D27F0537D0000F7F7 /* CustomTextField.swift */; };
+		FBF8C31027F05DF70000F7F7 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C30F27F05DF70000F7F7 /* UIViewController+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +36,10 @@
 		FBF8C2FA27EDD0730000F7F7 /* ConversationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsController.swift; sourceTree = "<group>"; };
 		FBF8C30527EF18290000F7F7 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		FBF8C30727EF18830000F7F7 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
-		FBF8C30927EF21D90000F7F7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FBF8C30927EF21D90000F7F7 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		FBF8C30B27F04A1F0000F7F7 /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
+		FBF8C30D27F0537D0000F7F7 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		FBF8C30F27F05DF70000F7F7 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +94,8 @@
 		FBF8C2F427EDD03D0000F7F7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				FBF8C30927EF21D90000F7F7 /* Extensions.swift */,
+				FBF8C30927EF21D90000F7F7 /* UIView+.swift */,
+				FBF8C30F27F05DF70000F7F7 /* UIViewController+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -119,6 +126,8 @@
 		FBF8C2F827EDD04B0000F7F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FBF8C30B27F04A1F0000F7F7 /* InputContainerView.swift */,
+				FBF8C30D27F0537D0000F7F7 /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -219,12 +228,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBF8C2E527EDCFFE0000F7F7 /* ViewController.swift in Sources */,
+				FBF8C30C27F04A1F0000F7F7 /* InputContainerView.swift in Sources */,
+				FBF8C31027F05DF70000F7F7 /* UIViewController+.swift in Sources */,
 				FBF8C2E127EDCFFE0000F7F7 /* AppDelegate.swift in Sources */,
 				FBF8C2FB27EDD0730000F7F7 /* ConversationsController.swift in Sources */,
 				FBF8C2E327EDCFFE0000F7F7 /* SceneDelegate.swift in Sources */,
 				FBF8C30827EF18830000F7F7 /* RegistrationController.swift in Sources */,
 				FBF8C30627EF18290000F7F7 /* LoginController.swift in Sources */,
-				FBF8C30A27EF21D90000F7F7 /* Extensions.swift in Sources */,
+				FBF8C30A27EF21D90000F7F7 /* UIView+.swift in Sources */,
+				FBF8C30E27F0537D0000F7F7 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
