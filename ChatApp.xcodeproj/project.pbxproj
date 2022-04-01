@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FBE141B927F6DE5100B461A0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141B827F6DE5100B461A0 /* LoginViewModel.swift */; };
+		FBE141BC27F6F4CD00B461A0 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141BB27F6F4CD00B461A0 /* RegistrationViewModel.swift */; };
 		FBF8C2E127EDCFFE0000F7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E027EDCFFE0000F7F7 /* AppDelegate.swift */; };
 		FBF8C2E327EDCFFE0000F7F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E227EDCFFE0000F7F7 /* SceneDelegate.swift */; };
 		FBF8C2E527EDCFFE0000F7F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E427EDCFFE0000F7F7 /* ViewController.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FBE141B827F6DE5100B461A0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		FBE141BB27F6F4CD00B461A0 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		FBF8C2DD27EDCFFE0000F7F7 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF8C2E027EDCFFE0000F7F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF8C2E227EDCFFE0000F7F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FBE141BA27F6F4BE00B461A0 /* Authentification */ = {
+			isa = PBXGroup;
+			children = (
+				FBE141B827F6DE5100B461A0 /* LoginViewModel.swift */,
+				FBE141BB27F6F4CD00B461A0 /* RegistrationViewModel.swift */,
+			);
+			path = Authentification;
+			sourceTree = "<group>";
+		};
 		FBF8C2D427EDCFFE0000F7F7 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +132,7 @@
 		FBF8C2F727EDD0460000F7F7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FBE141BA27F6F4BE00B461A0 /* Authentification */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -228,7 +242,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBF8C2E527EDCFFE0000F7F7 /* ViewController.swift in Sources */,
+				FBE141BC27F6F4CD00B461A0 /* RegistrationViewModel.swift in Sources */,
 				FBF8C30C27F04A1F0000F7F7 /* InputContainerView.swift in Sources */,
+				FBE141B927F6DE5100B461A0 /* LoginViewModel.swift in Sources */,
 				FBF8C31027F05DF70000F7F7 /* UIViewController+.swift in Sources */,
 				FBF8C2E127EDCFFE0000F7F7 /* AppDelegate.swift in Sources */,
 				FBF8C2FB27EDD0730000F7F7 /* ConversationsController.swift in Sources */,

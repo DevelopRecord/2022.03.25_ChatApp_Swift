@@ -9,9 +9,15 @@ import UIKit
 import Then
 import SnapKit
 
+protocol AuthentificationControllerProtocol {
+    func checkFormStatus()
+}
+
 class LoginController: UIViewController {
 
     // MARK: - Properties
+
+    private var loginViewModel = LoginViewModel()
 
     private let iconImage = UIImageView().then {
         $0.image = UIImage(systemName: "bubble.right")
@@ -19,8 +25,15 @@ class LoginController: UIViewController {
     }
 
     private lazy var emailContainerView = InputContainerView(image: UIImage(systemName: "envelope"), textField: emailTextField)
+    private let emailTextField = CustomTextField(placeholder: "이메일").then {
+        $0.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
 
     private lazy var passwordContainerView = InputContainerView(image: UIImage(systemName: "lock"), textField: passwordTextField)
+    private let passwordTextField = CustomTextField(placeholder: "비밀번호").then {
+        $0.isSecureTextEntry = true
+        $0.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
 
     private let loginButton = UIButton(type: .system).then {
         $0.setTitle("로그인", for: .normal)
@@ -28,13 +41,9 @@ class LoginController: UIViewController {
         $0.layer.cornerRadius = 5
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         $0.backgroundColor = .lightGray
+        $0.isEnabled = false
         $0.setHeight(height: 50)
-    }
-
-    private let emailTextField = CustomTextField(placeholder: "이메일")
-
-    private let passwordTextField = CustomTextField(placeholder: "비밀번호").then {
-        $0.isSecureTextEntry = true
+        $0.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
     }
 
     private let joinButton = UIButton(type: .system).then {
@@ -55,6 +64,20 @@ class LoginController: UIViewController {
     }
 
     // MARK: - Selectors
+    
+    @objc func handleLogin() {
+        print("DDDD")
+    }
+    
+    @objc func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            loginViewModel.email = sender.text
+        } else {
+            loginViewModel.password = sender.text
+        }
+        
+        checkFormStatus()
+    }
 
     @objc func handleShowSignUp() {
         let controller = RegistrationController()
@@ -94,9 +117,20 @@ private extension LoginController {
 
         view.addSubview(joinButton)
         joinButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(32)
-            make.trailing.equalToSuperview().inset(32)
+            make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(32)
+        }
+    }
+}
+
+extension LoginController: AuthentificationControllerProtocol {
+    func checkFormStatus() {
+        if loginViewModel.formIsValid {
+            loginButton.isEnabled = true
+            loginButton.backgroundColor = .lightGray
+        } else {
+            loginButton.isEnabled = false
+            loginButton.backgroundColor = .lightGray.withAlphaComponent(0.67)
         }
     }
 }
