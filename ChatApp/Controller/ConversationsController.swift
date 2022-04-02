@@ -7,6 +7,7 @@
 
 import UIKit
 import Then
+import Firebase
 
 private let identifier = "ConversationsCell"
 
@@ -33,7 +34,34 @@ class ConversationsController: UIViewController {
     // MARK: - Selectors
 
     @objc func showProfile() {
-
+        logout()
+    }
+    
+    // MARK: - API
+    
+    func authenticateUser() {
+        if Auth.auth().currentUser?.uid == nil {
+            print("현재 로그인되어 있지 않습니다.")
+            presentLoginScreen()
+        } else {
+            print("현재 로그인 되어 있습니다.")
+        }
+    }
+    
+    func logout() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            log.error("로그아웃 도중 오류 발생")
+        }
+    }
+    
+    func presentLoginScreen() {
+        DispatchQueue.main.async {
+            let nav = UINavigationController(rootViewController: LoginController())
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        }
     }
 
     // MARK: - Helpers
@@ -41,6 +69,7 @@ class ConversationsController: UIViewController {
     func configureUI() {
         view.backgroundColor = .white
         configureNavigationBar()
+        authenticateUser()
 
         let image = UIImage(systemName: "person.circle.fill")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain,

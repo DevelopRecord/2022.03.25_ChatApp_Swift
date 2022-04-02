@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		FBE141B927F6DE5100B461A0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141B827F6DE5100B461A0 /* LoginViewModel.swift */; };
 		FBE141BC27F6F4CD00B461A0 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141BB27F6F4CD00B461A0 /* RegistrationViewModel.swift */; };
+		FBE141BE27F8346E00B461A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBE141BD27F8346E00B461A0 /* GoogleService-Info.plist */; };
+		FBE141C127F8365200B461A0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FBE141C027F8365200B461A0 /* FirebaseAuth */; };
+		FBE141C327F8365200B461A0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FBE141C227F8365200B461A0 /* FirebaseFirestore */; };
+		FBE141C527F8365200B461A0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FBE141C427F8365200B461A0 /* FirebaseStorage */; };
+		FBE141C827F8367F00B461A0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FBE141C727F8367F00B461A0 /* Kingfisher */; };
+		FBE141CB27F836A000B461A0 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = FBE141CA27F836A000B461A0 /* JGProgressHUD */; };
+		FBE141D027F853A300B461A0 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = FBE141CF27F853A300B461A0 /* SwiftyBeaver */; };
 		FBF8C2E127EDCFFE0000F7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E027EDCFFE0000F7F7 /* AppDelegate.swift */; };
 		FBF8C2E327EDCFFE0000F7F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E227EDCFFE0000F7F7 /* SceneDelegate.swift */; };
 		FBF8C2E527EDCFFE0000F7F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E427EDCFFE0000F7F7 /* ViewController.swift */; };
@@ -29,6 +36,7 @@
 /* Begin PBXFileReference section */
 		FBE141B827F6DE5100B461A0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FBE141BB27F6F4CD00B461A0 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		FBE141BD27F8346E00B461A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBF8C2DD27EDCFFE0000F7F7 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF8C2E027EDCFFE0000F7F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF8C2E227EDCFFE0000F7F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,8 +59,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBE141C827F8367F00B461A0 /* Kingfisher in Frameworks */,
+				FBE141CB27F836A000B461A0 /* JGProgressHUD in Frameworks */,
 				FBF8C2FE27EF0CB30000F7F7 /* SnapKit in Frameworks */,
+				FBE141C327F8365200B461A0 /* FirebaseFirestore in Frameworks */,
+				FBE141C127F8365200B461A0 /* FirebaseAuth in Frameworks */,
+				FBE141C527F8365200B461A0 /* FirebaseStorage in Frameworks */,
 				FBF8C30127EF0CC80000F7F7 /* Then in Frameworks */,
+				FBE141D027F853A300B461A0 /* SwiftyBeaver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +114,7 @@
 				FBF8C2E927EDCFFF0000F7F7 /* Assets.xcassets */,
 				FBF8C2EB27EDCFFF0000F7F7 /* LaunchScreen.storyboard */,
 				FBF8C2EE27EDCFFF0000F7F7 /* Info.plist */,
+				FBE141BD27F8346E00B461A0 /* GoogleService-Info.plist */,
 			);
 			path = ChatApp;
 			sourceTree = "<group>";
@@ -181,6 +196,12 @@
 			packageProductDependencies = (
 				FBF8C2FD27EF0CB30000F7F7 /* SnapKit */,
 				FBF8C30027EF0CC80000F7F7 /* Then */,
+				FBE141C027F8365200B461A0 /* FirebaseAuth */,
+				FBE141C227F8365200B461A0 /* FirebaseFirestore */,
+				FBE141C427F8365200B461A0 /* FirebaseStorage */,
+				FBE141C727F8367F00B461A0 /* Kingfisher */,
+				FBE141CA27F836A000B461A0 /* JGProgressHUD */,
+				FBE141CF27F853A300B461A0 /* SwiftyBeaver */,
 			);
 			productName = ChatApp;
 			productReference = FBF8C2DD27EDCFFE0000F7F7 /* ChatApp.app */;
@@ -213,6 +234,10 @@
 			packageReferences = (
 				FBF8C2FC27EF0CB30000F7F7 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				FBF8C2FF27EF0CC80000F7F7 /* XCRemoteSwiftPackageReference "Then" */,
+				FBE141BF27F8365200B461A0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				FBE141C627F8367F00B461A0 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				FBE141C927F836A000B461A0 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				FBE141CE27F853A300B461A0 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
 			);
 			productRefGroup = FBF8C2DE27EDCFFE0000F7F7 /* Products */;
 			projectDirPath = "";
@@ -229,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBF8C2ED27EDCFFF0000F7F7 /* LaunchScreen.storyboard in Resources */,
+				FBE141BE27F8346E00B461A0 /* GoogleService-Info.plist in Resources */,
 				FBF8C2EA27EDCFFF0000F7F7 /* Assets.xcassets in Resources */,
 				FBF8C2E827EDCFFE0000F7F7 /* Main.storyboard in Resources */,
 			);
@@ -474,6 +500,38 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FBE141BF27F8365200B461A0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+		FBE141C627F8367F00B461A0 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		FBE141C927F836A000B461A0 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		FBE141CE27F853A300B461A0 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		FBF8C2FC27EF0CB30000F7F7 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -493,6 +551,36 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FBE141C027F8365200B461A0 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FBE141BF27F8365200B461A0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		FBE141C227F8365200B461A0 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FBE141BF27F8365200B461A0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		FBE141C427F8365200B461A0 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FBE141BF27F8365200B461A0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		FBE141C727F8367F00B461A0 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FBE141C627F8367F00B461A0 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		FBE141CA27F836A000B461A0 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FBE141C927F836A000B461A0 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
+		FBE141CF27F853A300B461A0 /* SwiftyBeaver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FBE141CE27F853A300B461A0 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
+			productName = SwiftyBeaver;
+		};
 		FBF8C2FD27EF0CB30000F7F7 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FBF8C2FC27EF0CB30000F7F7 /* XCRemoteSwiftPackageReference "SnapKit" */;
