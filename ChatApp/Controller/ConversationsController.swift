@@ -36,26 +36,27 @@ class ConversationsController: UIViewController {
     @objc func showProfile() {
         logout()
     }
-    
+
     // MARK: - API
-    
+
     func authenticateUser() {
         if Auth.auth().currentUser?.uid == nil {
-            print("현재 로그인되어 있지 않습니다.")
+            log.info("현재 로그인되어 있지 않습니다.")
             presentLoginScreen()
         } else {
-            print("현재 로그인 되어 있습니다.")
+            log.info("현재 로그인 되어 있습니다.")
         }
     }
-    
+
     func logout() {
         do {
             try Auth.auth().signOut()
+            presentLoginScreen()
         } catch {
             log.error("로그아웃 도중 오류 발생")
         }
     }
-    
+
     func presentLoginScreen() {
         DispatchQueue.main.async {
             let nav = UINavigationController(rootViewController: LoginController())

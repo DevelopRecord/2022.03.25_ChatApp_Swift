@@ -65,53 +65,29 @@ class RegistrationController: UIViewController {
     }
 
     // MARK: - Selectors
-    
+
     @objc func handleRegistration() {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         guard let fullname = fullnameTextField.text else { return }
         guard let nickname = nicknameTextField.text else { return }
         guard let profileImage = profileImage else { return }
-        
-        // 1. 이미지 업로드
-        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
-        let filename = NSUUID().uuidString
-        let ref = Storage.storage().reference(withPath: "/profile_images/\(filename)") // Storage에 profile_images라는 폴더 이름으로 이미지 파일 저장
-        
-        ref.putData(imageData, metadata: nil) { meta, error in
+
+        let credentials = RegistrationCredentials(email: email, password: password,
+            fullname: fullname, nickname: nickname,
+            profileImage: profileImage)
+
+        showLoader(true, withText: "회원가입")
+
+        AuthService.shared.createUser(credentials: credentials) { error in
             if let error = error {
-                log.error("프로필 이미지 생성 중 오류 발생 \(error.localizedDescription)")
+                log.error("유저 정보 저장 중 오류 발생 | \(error.localizedDescription)")
+                self.showLoader(false)
                 return
             }
-            
-            // 2. 유저 정보 생성
-            ref.downloadURL { url, error in
-                guard let profileImageUrl = url?.absoluteString else { return }
 
-                Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                    if let error = error {
-                        log.error("유저 생성 중 오류 발생 \(error.localizedDescription)")
-                        return
-                    }
-                    
-                    guard let uid = result?.user.uid else { return } // 유저 uid 가져옴
-                    
-                    let data = ["email": email,
-                                "uid": uid,
-                                "fullname": fullname,
-                                "nickname": nickname,
-                                "profileImageUrl": profileImageUrl] as [String: Any]
-                    
-                    Firestore.firestore().collection("users").document(uid).setData(data) { error in
-                        if let error = error {
-                            log.error("Firestore Database에 유저 정보 저장 중 오류 발생 \(error.localizedDescription)")
-                            return
-                        }
-                        
-                        log.info("유저 정보 저장 완료")
-                    }
-                }
-            }
+            self.showLoader(false)
+            self.dismiss(animated: true, completion: nil)
         }
     }
 
@@ -136,6 +112,18 @@ class RegistrationController: UIViewController {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         self.present(imagePickerController, animated: true, completion: nil)
+    }
+
+    @objc func keyboardWillShow() {
+        if view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= 88
+        }
+    }
+
+    @objc func keyboardWillHide() {
+        if view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
 
     // MARK: - Helpers
@@ -180,6 +168,9 @@ private extension RegistrationController {
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         fullnameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         nicknameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
