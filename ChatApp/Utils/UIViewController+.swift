@@ -21,6 +21,7 @@ extension UIViewController {
         gradient.frame = view.frame
     }
 
+    /// 진행(로딩)창 생성 함수
     func showLoader(_ show: Bool, withText text: String? = "로딩중") {
         view.endEditing(true)
         UIViewController.hud.textLabel.text = text
@@ -35,5 +36,24 @@ extension UIViewController {
             }
 
         }
+    }
+    
+    /// iOS13 부터 네비게이션 바의 스타일 변경 대응 함수
+    func configureNavigationBar(withTitle title: String, prefersLargeTitle: Bool) {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.backgroundColor = .systemPurple
+
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance // 스크롤 할 때 navigationBar의 사이즈가 컴팩트하게 합니다.
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+
+        navigationController?.navigationBar.prefersLargeTitles = prefersLargeTitle // 타이틀 글자가 왼쪽에 크게 나오게 합니다.
+        navigationItem.title = title
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.isTranslucent = true
+
+        navigationController?.navigationBar.overrideUserInterfaceStyle = .dark // 상태표시줄의 색을 흰색으로 변경
     }
 }

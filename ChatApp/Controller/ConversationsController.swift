@@ -7,6 +7,7 @@
 
 import UIKit
 import Then
+import SnapKit
 import Firebase
 
 private let identifier = "ConversationsCell"
@@ -23,18 +24,32 @@ class ConversationsController: UIViewController {
         $0.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
     }
 
+    private let newMessageButton = UIButton(type: .system).then {
+        $0.setImage(UIImage(systemName: "plus"), for: .normal)
+        $0.backgroundColor = .systemPurple
+        $0.tintColor = .white
+        $0.addTarget(self, action: #selector(showNewMessage), for: .touchUpInside)
+    }
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        configureTableView()
+        Service.fetchUser()
     }
 
     // MARK: - Selectors
 
     @objc func showProfile() {
         logout()
+    }
+
+    @objc func showNewMessage() {
+        let controller = NewMessageController()
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
     }
 
     // MARK: - API
@@ -69,36 +84,28 @@ class ConversationsController: UIViewController {
 
     func configureUI() {
         view.backgroundColor = .white
-        configureNavigationBar()
+        configureNavigationBar(withTitle: "메시지", prefersLargeTitle: true)
+        setupLayout()
         authenticateUser()
 
         let image = UIImage(systemName: "person.circle.fill")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain,
             target: self, action: #selector(showProfile))
     }
+}
 
-    func configureTableView() {
+extension ConversationsController {
+    private func setupLayout() {
         view.addSubview(tableView)
         tableView.frame = view.frame
-    }
-
-    /// iOS13 부터 네비게이션 바의 스타일 변경 대응 함수
-    func configureNavigationBar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.backgroundColor = .systemPurple
-
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance // 스크롤 할 때 navigationBar의 사이즈가 컴팩트하게 합니다.
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-
-        navigationController?.navigationBar.prefersLargeTitles = true // 타이틀 글자가 왼쪽에 크게 나오게 합니다.
-        navigationItem.title = "Messages"
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.isTranslucent = true
-
-        navigationController?.navigationBar.overrideUserInterfaceStyle = .dark // 상태표시줄의 색을 흰색으로 변경
+        
+        view.addSubview(newMessageButton)
+        newMessageButton.snp.makeConstraints { make in
+            make.width.height.equalTo(56)
+            newMessageButton.layer.cornerRadius = 56 / 2
+            make.trailing.equalTo(view.snp.trailing).inset(22)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(16)
+        }
     }
 }
 
