@@ -36,7 +36,6 @@ class ConversationsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        Service.fetchUser()
     }
 
     // MARK: - Selectors
@@ -47,6 +46,7 @@ class ConversationsController: UIViewController {
 
     @objc func showNewMessage() {
         let controller = NewMessageController()
+        controller.delegate = self
         let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
@@ -98,7 +98,7 @@ extension ConversationsController {
     private func setupLayout() {
         view.addSubview(tableView)
         tableView.frame = view.frame
-        
+
         view.addSubview(newMessageButton)
         newMessageButton.snp.makeConstraints { make in
             make.width.height.equalTo(56)
@@ -123,5 +123,13 @@ extension ConversationsController: UITableViewDataSource {
 extension ConversationsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
+    }
+}
+
+extension ConversationsController: NewMessageControllerDelegate {
+    func controller(_ controller: NewMessageController, wantsToStartChatWith user: User) {
+        controller.dismiss(animated: true, completion: nil)
+        let chatController = ChatController(user: user)
+        navigationController?.pushViewController(chatController, animated: true)
     }
 }

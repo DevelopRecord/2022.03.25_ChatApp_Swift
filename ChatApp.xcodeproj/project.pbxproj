@@ -21,6 +21,7 @@
 		FBE141D627FAFA3F00B461A0 /* NewMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141D527FAFA3F00B461A0 /* NewMessageCell.swift */; };
 		FBE141D827FAFFD400B461A0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141D727FAFFD400B461A0 /* User.swift */; };
 		FBE141DA27FB001B00B461A0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141D927FB001B00B461A0 /* Service.swift */; };
+		FBE141DC27FC513900B461A0 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141DB27FC513900B461A0 /* ChatController.swift */; };
 		FBF8C2E127EDCFFE0000F7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E027EDCFFE0000F7F7 /* AppDelegate.swift */; };
 		FBF8C2E327EDCFFE0000F7F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E227EDCFFE0000F7F7 /* SceneDelegate.swift */; };
 		FBF8C2E527EDCFFE0000F7F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E427EDCFFE0000F7F7 /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 		FBE141D527FAFA3F00B461A0 /* NewMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageCell.swift; sourceTree = "<group>"; };
 		FBE141D727FAFFD400B461A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FBE141D927FB001B00B461A0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		FBE141DB27FC513900B461A0 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 		FBF8C2DD27EDCFFE0000F7F7 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF8C2E027EDCFFE0000F7F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF8C2E227EDCFFE0000F7F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				FBF8C30427EF18190000F7F7 /* Authentification */,
 				FBF8C2FA27EDD0730000F7F7 /* ConversationsController.swift */,
 				FBE141D327FAECCA00B461A0 /* NewMessageController.swift */,
+				FBE141DB27FC513900B461A0 /* ChatController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				FBF8C30627EF18290000F7F7 /* LoginController.swift in Sources */,
 				FBF8C30A27EF21D90000F7F7 /* UIView+.swift in Sources */,
 				FBF8C30E27F0537D0000F7F7 /* CustomTextField.swift in Sources */,
+				FBE141DC27FC513900B461A0 /* ChatController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
