@@ -73,7 +73,6 @@ extension NewMessageController {
 
 extension NewMessageController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        log.debug("유저 수: \(users.count)")
         return users.count
     }
 

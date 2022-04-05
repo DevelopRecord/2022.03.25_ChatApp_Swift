@@ -22,6 +22,8 @@ class ChatController: UIViewController {
         $0.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     }
 
+    private lazy var customInputView = CustomInputAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
+
     init(user: User) {
         self.user = user
         super.init(nibName: nil, bundle: nil)
@@ -38,11 +40,20 @@ class ChatController: UIViewController {
         configureUI()
     }
 
+    override var inputAccessoryView: UIView? {
+        get { return customInputView }
+    }
+
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+
     // MARK: - Helpers
 
     func configureUI() {
         view.backgroundColor = .white
         setupLayout()
+        configureNavigationBar(withTitle: user.nickname, prefersLargeTitle: false)
     }
 }
 

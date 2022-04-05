@@ -111,7 +111,7 @@ class LoginController: UIViewController {
 }
 
 private extension LoginController {
-    func setupLayout() {
+    private func setupLayout() {
         view.addSubview(iconImage)
         iconImage.snp.makeConstraints { make in
             make.width.height.equalTo(120)

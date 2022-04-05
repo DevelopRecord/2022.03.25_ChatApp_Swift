@@ -22,6 +22,7 @@
 		FBE141D827FAFFD400B461A0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141D727FAFFD400B461A0 /* User.swift */; };
 		FBE141DA27FB001B00B461A0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141D927FB001B00B461A0 /* Service.swift */; };
 		FBE141DC27FC513900B461A0 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141DB27FC513900B461A0 /* ChatController.swift */; };
+		FBE141DE27FC85F000B461A0 /* CustomInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141DD27FC85F000B461A0 /* CustomInputAccessoryView.swift */; };
 		FBF8C2E127EDCFFE0000F7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E027EDCFFE0000F7F7 /* AppDelegate.swift */; };
 		FBF8C2E327EDCFFE0000F7F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E227EDCFFE0000F7F7 /* SceneDelegate.swift */; };
 		FBF8C2E527EDCFFE0000F7F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E427EDCFFE0000F7F7 /* ViewController.swift */; };
@@ -49,6 +50,7 @@
 		FBE141D727FAFFD400B461A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FBE141D927FB001B00B461A0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		FBE141DB27FC513900B461A0 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		FBE141DD27FC85F000B461A0 /* CustomInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputAccessoryView.swift; sourceTree = "<group>"; };
 		FBF8C2DD27EDCFFE0000F7F7 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF8C2E027EDCFFE0000F7F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF8C2E227EDCFFE0000F7F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				FBF8C30B27F04A1F0000F7F7 /* InputContainerView.swift */,
 				FBF8C30D27F0537D0000F7F7 /* CustomTextField.swift */,
 				FBE141D527FAFA3F00B461A0 /* NewMessageCell.swift */,
+				FBE141DD27FC85F000B461A0 /* CustomInputAccessoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				FBF8C2E127EDCFFE0000F7F7 /* AppDelegate.swift in Sources */,
 				FBE141D227F9865400B461A0 /* AuthService.swift in Sources */,
 				FBF8C2FB27EDD0730000F7F7 /* ConversationsController.swift in Sources */,
+				FBE141DE27FC85F000B461A0 /* CustomInputAccessoryView.swift in Sources */,
 				FBE141DA27FB001B00B461A0 /* Service.swift in Sources */,
 				FBF8C2E327EDCFFE0000F7F7 /* SceneDelegate.swift in Sources */,
 				FBF8C30827EF18830000F7F7 /* RegistrationController.swift in Sources */,
