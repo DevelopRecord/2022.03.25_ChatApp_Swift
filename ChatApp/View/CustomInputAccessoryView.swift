@@ -9,11 +9,17 @@ import UIKit
 import Then
 import SnapKit
 
+protocol CustomInputAccessoryViewDelegate: AnyObject {
+    func inputView(_ inputView: CustomInputAccessoryView, wantsToSend message: String)
+}
+
 class CustomInputAccessoryView: UIView {
+
+    weak var delegate: CustomInputAccessoryViewDelegate?
 
     // MARK: - Properties
 
-    private let messageInputTextView = UITextView().then {
+    let messageInputTextView = UITextView().then {
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.lightGray.cgColor
@@ -75,7 +81,9 @@ class CustomInputAccessoryView: UIView {
     }
 
     @objc func handleSendMessage() {
-        log.debug("전송")
+        guard let message = messageInputTextView.text else { return }
+        delegate?.inputView(self, wantsToSend: message)
+        log.debug("전송 - \(message)")
     }
 }
 
