@@ -19,7 +19,7 @@ class CustomInputAccessoryView: UIView {
 
     // MARK: - Properties
 
-    let messageInputTextView = UITextView().then {
+    private lazy var messageInputTextView = UITextView().then {
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.lightGray.cgColor
@@ -48,7 +48,7 @@ class CustomInputAccessoryView: UIView {
         backgroundColor = .white
         autoresizingMask = .flexibleHeight
 
-        layer.shadowOpacity = 0.3
+        layer.shadowOpacity = 0.24
         layer.shadowRadius = 10
         layer.shadowOffset = .init(width: 0, height: -8)
         layer.shadowColor = UIColor.lightGray.cgColor
@@ -64,6 +64,13 @@ class CustomInputAccessoryView: UIView {
 
     override var intrinsicContentSize: CGSize {
         return .zero
+    }
+
+    // MARK: - Helpers
+
+    func clearMessageText() {
+        messageInputTextView.text = nil
+        placeholderLabel.isHidden = false
     }
 
     // MARK: - Selectors

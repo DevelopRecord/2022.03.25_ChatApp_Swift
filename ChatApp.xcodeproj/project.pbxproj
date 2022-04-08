@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FB8B921927FEE354009ED9B2 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */; };
+		FB8B921E28001B44009ED9B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921D28001B44009ED9B2 /* Constants.swift */; };
 		FB9DDF2127FECF4C0017DF57 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9DDF2027FECF4C0017DF57 /* MessageCell.swift */; };
 		FB9DDF2327FEDE7A0017DF57 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9DDF2227FEDE7A0017DF57 /* Message.swift */; };
 		FBE141B927F6DE5100B461A0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141B827F6DE5100B461A0 /* LoginViewModel.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		FB8B921D28001B44009ED9B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FB9DDF2027FECF4C0017DF57 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		FB9DDF2227FEDE7A0017DF57 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		FBE141B827F6DE5100B461A0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -93,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB8B921C28001B36009ED9B2 /* Extension+ */ = {
+			isa = PBXGroup;
+			children = (
+				FBF8C30927EF21D90000F7F7 /* UIView+.swift */,
+				FBF8C30F27F05DF70000F7F7 /* UIViewController+.swift */,
+			);
+			path = "Extension+";
+			sourceTree = "<group>";
+		};
 		FBE141BA27F6F4BE00B461A0 /* Authentification */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,8 +153,8 @@
 		FBF8C2F427EDD03D0000F7F7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				FBF8C30927EF21D90000F7F7 /* UIView+.swift */,
-				FBF8C30F27F05DF70000F7F7 /* UIViewController+.swift */,
+				FB8B921C28001B36009ED9B2 /* Extension+ */,
+				FB8B921D28001B44009ED9B2 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -303,6 +314,7 @@
 				FBE141BC27F6F4CD00B461A0 /* RegistrationViewModel.swift in Sources */,
 				FBE141D627FAFA3F00B461A0 /* NewMessageCell.swift in Sources */,
 				FBF8C30C27F04A1F0000F7F7 /* InputContainerView.swift in Sources */,
+				FB8B921E28001B44009ED9B2 /* Constants.swift in Sources */,
 				FBE141D827FAFFD400B461A0 /* User.swift in Sources */,
 				FBE141B927F6DE5100B461A0 /* LoginViewModel.swift in Sources */,
 				FB9DDF2327FEDE7A0017DF57 /* Message.swift in Sources */,

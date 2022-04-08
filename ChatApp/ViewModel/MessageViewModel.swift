@@ -35,6 +35,16 @@ struct MessageViewModel {
         return message.isFromCurrentUser
     }
     
+    var profileImageUrl: URL? {
+        guard let user = message.user else { return nil }
+        return URL(string: user.profileImageUrl)
+    }
+    
+    var nickname: String {
+        guard let user = message.user else { return "(알수없음)" }
+        return user.nickname
+    }
+    
     init(message: Message) {
         self.message = message
         

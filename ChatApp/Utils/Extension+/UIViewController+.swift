@@ -37,7 +37,7 @@ extension UIViewController {
 
         }
     }
-    
+
     /// iOS13 부터 네비게이션 바의 스타일 변경 대응 함수
     func configureNavigationBar(withTitle title: String, prefersLargeTitle: Bool) {
         let appearance = UINavigationBarAppearance()
@@ -55,5 +55,15 @@ extension UIViewController {
         navigationController?.navigationBar.isTranslucent = true
 
         navigationController?.navigationBar.overrideUserInterfaceStyle = .dark // 상태표시줄의 색을 흰색으로 변경
+    }
+
+    /// 화면 터치 시 키보드 내리는 함수
+    func hideKeyboard() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UICollectionViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

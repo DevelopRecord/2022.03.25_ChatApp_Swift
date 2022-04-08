@@ -42,6 +42,7 @@ class ChatController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fetchMessages()
     }
 
     override var inputAccessoryView: UIView? {
@@ -52,6 +53,16 @@ class ChatController: UIViewController {
         return true
     }
 
+    // MARK: - API
+
+    func fetchMessages() {
+        Service.fetchMessages(forUser: user) { messages in
+            self.messages = messages
+            self.collectionView.reloadData()
+            self.collectionView.scrollToItem(at: [0, self.messages.count - 1], at: .bottom, animated: true)
+        }
+    }
+
     // MARK: - Helpers
 
     func configureUI() {
@@ -60,6 +71,7 @@ class ChatController: UIViewController {
         configureNavigationBar(withTitle: user.nickname, prefersLargeTitle: false)
 
         collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .interactive
     }
 }
 
@@ -80,11 +92,21 @@ extension ChatController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MessageCell.identifier, for: indexPath) as! MessageCell
         cell.message = messages[indexPath.row]
+        cell.message?.user = user
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 75)
+        
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 75)
+        let estimatedSizeCell = MessageCell(frame: frame)
+        estimatedSizeCell.message = messages[indexPath.row]
+        estimatedSizeCell.layoutIfNeeded() // 셀의 기본 크기는 frame이라는 상수의 사이즈로 하지만 만약 레이아웃의 크기 변경이 필요할 경우에만 실행된다.
+        
+        let targetSize = CGSize(width: view.frame.width, height: 1000)
+        let estimatedSize = estimatedSizeCell.systemLayoutSizeFitting(targetSize)
+        
+        return .init(width: view.frame.width, height: estimatedSize.height)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -94,10 +116,12 @@ extension ChatController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
 
 extension ChatController: CustomInputAccessoryViewDelegate {
     func inputView(_ inputView: CustomInputAccessoryView, wantsToSend message: String) {
-        inputView.messageInputTextView.text = nil
-        fromCurrentUser.toggle()
-        let message = Message(text: message, isFromCurrentUser: fromCurrentUser)
-        messages.append(message)
-        collectionView.reloadData()
+        Service.uploadMessage(message, to: user) { error in
+            if let error = error {
+                log.error("메시지 업로드 중 에러 발생 | \(error.localizedDescription)")
+            }
+
+            inputView.clearMessageText()
+        }
     }
 }

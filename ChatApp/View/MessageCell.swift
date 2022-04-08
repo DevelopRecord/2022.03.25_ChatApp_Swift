@@ -8,15 +8,16 @@
 import UIKit
 import Then
 import SnapKit
+import Kingfisher
 
 class MessageCell: UICollectionViewCell {
 
     public static let identifier = "MessageCell"
-    
+
     var message: Message? {
         didSet { configure() }
     }
-    
+
     var bubbleLeftAnchor: NSLayoutConstraint!
     var bubbleRightAnchor: NSLayoutConstraint!
 
@@ -59,22 +60,25 @@ class MessageCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Helpers
-    
+
     func configure() {
         guard let message = message else { return }
         let viewModel = MessageViewModel(message: message)
-        
+
         bubbleContainer.backgroundColor = viewModel.messageBackgroundColor
         textView.textColor = viewModel.messageTextColor
         textView.text = message.text
-        
+
         bubbleLeftAnchor.isActive = viewModel.leftAnchorActive
         bubbleRightAnchor.isActive = viewModel.rightAnchorActive
-        
+
         profileImageView.isHidden = viewModel.shouldHideProfileImage
         nicknameLabel.isHidden = viewModel.shouldHideNickname
+
+        profileImageView.kf.setImage(with: viewModel.profileImageUrl)
+        nicknameLabel.text = viewModel.nickname
     }
 }
 
@@ -96,8 +100,8 @@ extension MessageCell {
         contentView.addSubview(bubbleContainer)
         bubbleContainer.snp.makeConstraints { make in
             make.width.lessThanOrEqualTo(250)
-            make.top.equalTo(nicknameLabel.snp.bottom)
-//            make.leading.equalTo(profileImageView.snp.trailing).offset(12)
+            make.top.equalTo(nicknameLabel.snp.bottom).offset(4)
+            make.bottom.equalToSuperview()
         }
 
         bubbleContainer.addSubview(textView)
@@ -107,7 +111,7 @@ extension MessageCell {
             make.trailing.equalToSuperview().inset(12)
             make.bottom.equalToSuperview().inset(4)
         }
-        
+
         bubbleLeftAnchor = bubbleContainer.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 12)
         bubbleLeftAnchor.isActive = false
         bubbleRightAnchor = bubbleContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12)
