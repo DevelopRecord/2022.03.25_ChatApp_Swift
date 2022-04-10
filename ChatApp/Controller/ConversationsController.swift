@@ -10,18 +10,19 @@ import Then
 import SnapKit
 import Firebase
 
-private let identifier = "ConversationsCell"
-
 class ConversationsController: UIViewController {
 
     // MARK: - Properties
+
+    private var user: User?
+    private var conversations = [Conversation]()
 
     private lazy var tableView = UITableView().then {
         $0.backgroundColor = .white
         $0.rowHeight = 80
         $0.delegate = self
         $0.dataSource = self
-        $0.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
+        $0.register(ConversationCell.self, forCellReuseIdentifier: ConversationCell.identifier)
     }
 
     private let newMessageButton = UIButton(type: .system).then {
@@ -38,10 +39,18 @@ class ConversationsController: UIViewController {
         configureUI()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavigationBar(withTitle: "메시지", prefersLargeTitle: true)
+    }
+
     // MARK: - Selectors
 
     @objc func showProfile() {
-        logout()
+        let controller = ProfileController()
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
     }
 
     @objc func showNewMessage() {
@@ -53,6 +62,21 @@ class ConversationsController: UIViewController {
     }
 
     // MARK: - API
+
+    func fetchUser() {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        Service.fetchConversationsOfUser(withUid: currentUid) { user in
+            self.user = user
+            log.info("현재 유저 이름: \(user.fullname)")
+        }
+    }
+
+    func fetchConversations() {
+        Service.fetchConversations { conversations in
+            self.conversations = conversations
+            self.tableView.reloadData()
+        }
+    }
 
     func authenticateUser() {
         if Auth.auth().currentUser?.uid == nil {
@@ -84,13 +108,19 @@ class ConversationsController: UIViewController {
 
     func configureUI() {
         view.backgroundColor = .white
-        configureNavigationBar(withTitle: "메시지", prefersLargeTitle: true)
         setupLayout()
         authenticateUser()
+        fetchConversations()
+        fetchUser()
 
         let image = UIImage(systemName: "person.circle.fill")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain,
             target: self, action: #selector(showProfile))
+    }
+
+    func showChatController(forUser user: User) {
+        let controller = ChatController(user: user)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
@@ -111,25 +141,25 @@ extension ConversationsController {
 
 extension ConversationsController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return conversations.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        cell.textLabel?.text = "Test cell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: ConversationCell.identifier, for: indexPath) as! ConversationCell
+        cell.conversation = conversations[indexPath.row]
         return cell
     }
 }
 extension ConversationsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        let user = conversations[indexPath.row].user
+        showChatController(forUser: user)
     }
 }
 
 extension ConversationsController: NewMessageControllerDelegate {
     func controller(_ controller: NewMessageController, wantsToStartChatWith user: User) {
         controller.dismiss(animated: true, completion: nil)
-        let chatController = ChatController(user: user)
-        navigationController?.pushViewController(chatController, animated: true)
+        showChatController(forUser: user)
     }
 }

@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		FB8B921927FEE354009ED9B2 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */; };
 		FB8B921E28001B44009ED9B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921D28001B44009ED9B2 /* Constants.swift */; };
+		FB8B92202802C9B2009ED9B2 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921F2802C9B2009ED9B2 /* ConversationCell.swift */; };
+		FB8B92222802CF14009ED9B2 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B92212802CF13009ED9B2 /* ConversationViewModel.swift */; };
+		FB8B92242802D44F009ED9B2 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B92232802D44F009ED9B2 /* ProfileController.swift */; };
+		FB8B92262802D61C009ED9B2 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B92252802D61C009ED9B2 /* ProfileHeader.swift */; };
+		FB8B92282802E65F009ED9B2 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B92272802E65F009ED9B2 /* ProfileViewModel.swift */; };
+		FB8B922A2802E7CC009ED9B2 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B92292802E7CC009ED9B2 /* ProfileCell.swift */; };
 		FB9DDF2127FECF4C0017DF57 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9DDF2027FECF4C0017DF57 /* MessageCell.swift */; };
 		FB9DDF2327FEDE7A0017DF57 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9DDF2227FEDE7A0017DF57 /* Message.swift */; };
 		FBE141B927F6DE5100B461A0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141B827F6DE5100B461A0 /* LoginViewModel.swift */; };
@@ -47,6 +53,12 @@
 /* Begin PBXFileReference section */
 		FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		FB8B921D28001B44009ED9B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FB8B921F2802C9B2009ED9B2 /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
+		FB8B92212802CF13009ED9B2 /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
+		FB8B92232802D44F009ED9B2 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		FB8B92252802D61C009ED9B2 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
+		FB8B92272802E65F009ED9B2 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		FB8B92292802E7CC009ED9B2 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		FB9DDF2027FECF4C0017DF57 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		FB9DDF2227FEDE7A0017DF57 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		FBE141B827F6DE5100B461A0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -175,6 +187,7 @@
 				FBF8C2FA27EDD0730000F7F7 /* ConversationsController.swift */,
 				FBE141D327FAECCA00B461A0 /* NewMessageController.swift */,
 				FBE141DB27FC513900B461A0 /* ChatController.swift */,
+				FB8B92232802D44F009ED9B2 /* ProfileController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -184,6 +197,8 @@
 			children = (
 				FBE141BA27F6F4BE00B461A0 /* Authentification */,
 				FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */,
+				FB8B92212802CF13009ED9B2 /* ConversationViewModel.swift */,
+				FB8B92272802E65F009ED9B2 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -196,6 +211,9 @@
 				FBE141D527FAFA3F00B461A0 /* NewMessageCell.swift */,
 				FBE141DD27FC85F000B461A0 /* CustomInputAccessoryView.swift */,
 				FB9DDF2027FECF4C0017DF57 /* MessageCell.swift */,
+				FB8B921F2802C9B2009ED9B2 /* ConversationCell.swift */,
+				FB8B92252802D61C009ED9B2 /* ProfileHeader.swift */,
+				FB8B92292802E7CC009ED9B2 /* ProfileCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,6 +331,9 @@
 				FB9DDF2127FECF4C0017DF57 /* MessageCell.swift in Sources */,
 				FBE141BC27F6F4CD00B461A0 /* RegistrationViewModel.swift in Sources */,
 				FBE141D627FAFA3F00B461A0 /* NewMessageCell.swift in Sources */,
+				FB8B92242802D44F009ED9B2 /* ProfileController.swift in Sources */,
+				FB8B92282802E65F009ED9B2 /* ProfileViewModel.swift in Sources */,
+				FB8B92222802CF14009ED9B2 /* ConversationViewModel.swift in Sources */,
 				FBF8C30C27F04A1F0000F7F7 /* InputContainerView.swift in Sources */,
 				FB8B921E28001B44009ED9B2 /* Constants.swift in Sources */,
 				FBE141D827FAFFD400B461A0 /* User.swift in Sources */,
@@ -328,9 +349,12 @@
 				FBF8C2E327EDCFFE0000F7F7 /* SceneDelegate.swift in Sources */,
 				FBF8C30827EF18830000F7F7 /* RegistrationController.swift in Sources */,
 				FBF8C30627EF18290000F7F7 /* LoginController.swift in Sources */,
+				FB8B92202802C9B2009ED9B2 /* ConversationCell.swift in Sources */,
 				FBF8C30A27EF21D90000F7F7 /* UIView+.swift in Sources */,
 				FBF8C30E27F0537D0000F7F7 /* CustomTextField.swift in Sources */,
 				FBE141DC27FC513900B461A0 /* ChatController.swift in Sources */,
+				FB8B922A2802E7CC009ED9B2 /* ProfileCell.swift in Sources */,
+				FB8B92262802D61C009ED9B2 /* ProfileHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

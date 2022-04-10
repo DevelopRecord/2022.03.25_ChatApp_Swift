@@ -97,15 +97,14 @@ extension ChatController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 75)
         let estimatedSizeCell = MessageCell(frame: frame)
         estimatedSizeCell.message = messages[indexPath.row]
         estimatedSizeCell.layoutIfNeeded() // 셀의 기본 크기는 frame이라는 상수의 사이즈로 하지만 만약 레이아웃의 크기 변경이 필요할 경우에만 실행된다.
-        
+
         let targetSize = CGSize(width: view.frame.width, height: 1000)
         let estimatedSize = estimatedSizeCell.systemLayoutSizeFitting(targetSize)
-        
+
         return .init(width: view.frame.width, height: estimatedSize.height)
     }
 
