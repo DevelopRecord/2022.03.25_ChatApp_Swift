@@ -10,16 +10,23 @@ import Firebase
 import Then
 import SnapKit
 
+protocol ProfileControllerDelegate: AnyObject {
+    func handleLogout()
+}
+
 class ProfileController: UIViewController {
-    
+
+    weak var delegate: ProfileControllerDelegate?
+
     private var user: User? {
         didSet { headerView.user = user }
     }
-    
+
     // MARK: - Properties
-    
+
     private lazy var headerView = ProfileHeader(frame: .init(x: 0, y: 0, width: view.frame.width, height: 380))
-    
+    private let footerView = ProfileFooter()
+
     lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
         $0.backgroundColor = .clear
         $0.isScrollEnabled = false
@@ -27,23 +34,23 @@ class ProfileController: UIViewController {
         $0.dataSource = self
         $0.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.identifier)
     }
-    
+
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         fetchUser()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
     }
-    
+
     // MARK: - API
-    
+
     func fetchUser() {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         Service.fetchConversationsOfUser(withUid: currentUid) { user in
@@ -51,17 +58,20 @@ class ProfileController: UIViewController {
             log.debug("유저 이름: \(user.fullname)")
         }
     }
-    
+
     // MARK: - Helpers
-    
+
     func configureUI() {
         view.backgroundColor = .systemGroupedBackground
         setupLayout()
         tableView.tableHeaderView = headerView
         headerView.delegate = self
-        tableView.tableFooterView = UIView()
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.rowHeight = 64
+
+        footerView.frame = .init(x: 0, y: 0, width: view.frame.width, height: 100)
+        tableView.tableFooterView = footerView
+        footerView.delegate = self
     }
 }
 
@@ -78,17 +88,30 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ProfileViewModel.allCases.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.identifier, for: indexPath) as! ProfileCell
         cell.accessoryType = .disclosureIndicator
-        
+
         let viewModel = ProfileViewModel(rawValue: indexPath.row)
         cell.viewModel = viewModel
-        
+
         return cell
     }
-    
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewModel = ProfileViewModel(rawValue: indexPath.row) else { return }
+
+        switch viewModel {
+        case .accountInfo:
+            log.debug("유저 정보")
+        case .settings:
+            log.debug("사용자 정보")
+        case .saveMessages:
+            log.debug("메시지 백업")
+        }
+    }
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return UIView() // 헤더와 셀 사이에 약간의 간격을 줍니다
     }
@@ -97,5 +120,19 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
 extension ProfileController: ProfileHeaderDelegate {
     func dismissController() {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ProfileController: ProfileFooterDelegate {
+    func footerHandleLogout() {
+        let alert = UIAlertController(title: nil, message: "로그아웃 하시겠어요?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "로그아웃", style: .destructive, handler: { _ in
+            self.dismiss(animated: true) { // 로그아웃 전 ProfileController를 dismiss 한 뒤 로그아웃 합니다
+                self.delegate?.handleLogout()
+            }
+        }))
+
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
