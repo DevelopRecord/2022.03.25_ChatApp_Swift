@@ -14,9 +14,15 @@ protocol AuthentificationControllerProtocol {
     func checkFormStatus()
 }
 
+protocol AuthentificationDelegate: AnyObject {
+    func authentificationComplete()
+}
+
 class LoginController: UIViewController {
 
     // MARK: - Properties
+
+    weak var delegate: AuthentificationDelegate?
 
     private var loginViewModel = LoginViewModel()
 
@@ -74,13 +80,13 @@ class LoginController: UIViewController {
 
         AuthService.shared.logUserIn(withEmail: email, password: password) { result, error in
             if let error = error {
-                log.error("로그인 중 오류 발생 | \(error.localizedDescription)")
                 self.showLoader(false)
+                self.showError("로그인 오류", error.localizedDescription)
                 return
             }
-            self.showLoader(false)
 
-            self.dismiss(animated: true, completion: nil)
+            self.showLoader(false)
+            self.delegate?.authentificationComplete()
         }
     }
 
@@ -96,6 +102,7 @@ class LoginController: UIViewController {
 
     @objc func handleShowSignUp() {
         let controller = RegistrationController()
+        controller.delegate = delegate
         navigationController?.pushViewController(controller, animated: true)
     }
 

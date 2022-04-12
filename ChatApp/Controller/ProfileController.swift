@@ -53,7 +53,10 @@ class ProfileController: UIViewController {
 
     func fetchUser() {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        showLoader(true)
         Service.fetchConversationsOfUser(withUid: currentUid) { user in
+            self.showLoader(false)
+            
             self.user = user
             log.debug("유저 이름: \(user.fullname)")
         }

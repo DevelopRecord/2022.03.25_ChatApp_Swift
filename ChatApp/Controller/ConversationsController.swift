@@ -16,6 +16,7 @@ class ConversationsController: UIViewController {
 
     private var user: User?
     private var conversations = [Conversation]()
+    private var conversationsDictionary = [String: Conversation]()
 
     private lazy var tableView = UITableView().then {
         $0.backgroundColor = .white
@@ -73,8 +74,17 @@ class ConversationsController: UIViewController {
     }
 
     func fetchConversations() {
+        showLoader(true)
+
         Service.fetchConversations { conversations in
-            self.conversations = conversations
+            conversations.forEach { conversations in
+                let message = conversations.message
+                self.conversationsDictionary[message.chatPartnerId] = conversations
+            }
+            
+            self.showLoader(false)
+
+            self.conversations = Array(self.conversationsDictionary.values)
             self.tableView.reloadData()
         }
     }
@@ -83,8 +93,6 @@ class ConversationsController: UIViewController {
         if Auth.auth().currentUser?.uid == nil {
             log.info("현재 로그인되어 있지 않습니다.")
             presentLoginScreen()
-        } else {
-            log.info("현재 로그인 되어 있습니다.")
         }
     }
 
@@ -99,7 +107,9 @@ class ConversationsController: UIViewController {
 
     func presentLoginScreen() {
         DispatchQueue.main.async {
-            let nav = UINavigationController(rootViewController: LoginController())
+            let controller = LoginController()
+            controller.delegate = self
+            let nav = UINavigationController(rootViewController: controller)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true, completion: nil)
         }
@@ -168,5 +178,13 @@ extension ConversationsController: NewMessageControllerDelegate {
 extension ConversationsController: ProfileControllerDelegate {
     func handleLogout() {
         logout()
+    }
+}
+
+extension ConversationsController: AuthentificationDelegate {
+    func authentificationComplete() {
+        dismiss(animated: true, completion: nil)
+        configureUI()
+        fetchConversations()
     }
 }

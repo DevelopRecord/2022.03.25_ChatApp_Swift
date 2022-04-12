@@ -14,6 +14,8 @@ class RegistrationController: UIViewController {
 
     // MARK: - Properties
 
+    weak var delegate: AuthentificationDelegate?
+
     private var registrationViewModel = RegistrationViewModel()
     private var profileImage: UIImage?
 
@@ -81,13 +83,13 @@ class RegistrationController: UIViewController {
 
         AuthService.shared.createUser(credentials: credentials) { error in
             if let error = error {
-                log.error("유저 정보 저장 중 오류 발생 | \(error.localizedDescription)")
+                self.showError("회원가입 오류", error.localizedDescription)
                 self.showLoader(false)
                 return
             }
 
             self.showLoader(false)
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authentificationComplete()
         }
     }
 

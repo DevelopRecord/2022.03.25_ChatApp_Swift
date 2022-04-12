@@ -48,10 +48,11 @@ class CustomInputAccessoryView: UIView {
         backgroundColor = .white
         autoresizingMask = .flexibleHeight
 
-        layer.shadowOpacity = 0.24
+        layer.shadowOpacity = 0.27
         layer.shadowRadius = 10
         layer.shadowOffset = .init(width: 0, height: -8)
         layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
 
         setupLayout()
 

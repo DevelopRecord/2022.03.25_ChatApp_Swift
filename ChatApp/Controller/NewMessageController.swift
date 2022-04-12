@@ -77,7 +77,10 @@ class NewMessageController: UIViewController {
     // MARK: - API
 
     func fetchUsers() {
+        showLoader(true)
         Service.fetchUser { users in
+            self.showLoader(false)
+            
             self.users = users
             self.tableView.reloadData()
         }

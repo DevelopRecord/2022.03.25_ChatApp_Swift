@@ -57,13 +57,10 @@ extension UIViewController {
         navigationController?.navigationBar.overrideUserInterfaceStyle = .dark // 상태표시줄의 색을 흰색으로 변경
     }
 
-    /// 화면 터치 시 키보드 내리는 함수
-    func hideKeyboard() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UICollectionViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
+    /// 에러메시지 표시 함수
+    func showError(_ errorTitle: String, _ errorMessage: String) {
+        let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
