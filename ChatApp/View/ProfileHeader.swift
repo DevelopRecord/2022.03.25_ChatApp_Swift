@@ -41,14 +41,12 @@ class ProfileHeader: UIView {
         $0.font = UIFont.boldSystemFont(ofSize: 20)
         $0.textColor = .white
         $0.textAlignment = .center
-        $0.text = "이재혁"
     }
 
     private let nicknameLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.textColor = .white
         $0.textAlignment = .center
-        $0.text = "@재혁"
     }
 
     // MARK: - Lifecycle
