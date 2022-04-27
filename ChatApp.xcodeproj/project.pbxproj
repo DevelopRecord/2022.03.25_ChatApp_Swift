@@ -125,6 +125,182 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB0809232819263B00857A98 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FB0809302819285B00857A98 /* VIewModel */,
+				FBF8C30527EF18290000F7F7 /* LoginController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		FB0809252819265100857A98 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				FB0809312819286600857A98 /* ViewModel */,
+				FBF8C30727EF18830000F7F7 /* RegistrationController.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		FB0809262819267700857A98 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FB080927281926E800857A98 /* NewMessage */,
+				FB0809352819291900857A98 /* ViewModel */,
+				FB0809342819290000857A98 /* Cell */,
+				FBF8C2FA27EDD0730000F7F7 /* ConversationsController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		FB080927281926E800857A98 /* NewMessage */ = {
+			isa = PBXGroup;
+			children = (
+				FBE141D527FAFA3F00B461A0 /* NewMessageCell.swift */,
+				FBE141D327FAECCA00B461A0 /* NewMessageController.swift */,
+			);
+			path = NewMessage;
+			sourceTree = "<group>";
+		};
+		FB0809282819276A00857A98 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				FB0809372819294200857A98 /* ViewModel */,
+				FB0809362819293E00857A98 /* Cell */,
+				FBE141DB27FC513900B461A0 /* ChatController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		FB0809292819279D00857A98 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FB08092D2819283400857A98 /* ViewModel */,
+				FB080933281928A600857A98 /* Cell */,
+				FB8B930A280AC466009ED9B2 /* SettingController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		FB08092A281927A400857A98 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				FB08092E2819283D00857A98 /* ViewModel */,
+				FB0809322819289900857A98 /* Cell */,
+				FB8B9310280ADB49009ED9B2 /* UserInfoController.swift */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
+		FB08092B2819280100857A98 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FB08092F2819284800857A98 /* ViewModel */,
+				FB08092C2819281600857A98 /* Cell */,
+				FB8B92232802D44F009ED9B2 /* ProfileController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		FB08092C2819281600857A98 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FB8B92252802D61C009ED9B2 /* ProfileHeader.swift */,
+				FB8B92292802E7CC009ED9B2 /* ProfileCell.swift */,
+				FB8B922B28041A18009ED9B2 /* ProfileFooter.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FB08092D2819283400857A98 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FB8B930C280AC52A009ED9B2 /* SettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FB08092E2819283D00857A98 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FBA6B64D280ADC4100A32B6E /* UserInfoViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FB08092F2819284800857A98 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FB8B92272802E65F009ED9B2 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FB0809302819285B00857A98 /* VIewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FBE141B827F6DE5100B461A0 /* LoginViewModel.swift */,
+			);
+			path = VIewModel;
+			sourceTree = "<group>";
+		};
+		FB0809312819286600857A98 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FBE141BB27F6F4CD00B461A0 /* RegistrationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FB0809322819289900857A98 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FBA6B64F280ADD9A00A32B6E /* UserInfoCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FB080933281928A600857A98 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FB8B930E280AC6AF009ED9B2 /* SettingCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FB0809342819290000857A98 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FB8B921F2802C9B2009ED9B2 /* ConversationCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FB0809352819291900857A98 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FB8B92212802CF13009ED9B2 /* ConversationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FB0809362819293E00857A98 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FB9DDF2027FECF4C0017DF57 /* MessageCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FB0809372819294200857A98 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		FB8B921C28001B36009ED9B2 /* Extension+ */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,15 +317,6 @@
 				FB8B9308280AC0FE009ED9B2 /* MainCoordinator.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		FBE141BA27F6F4BE00B461A0 /* Authentification */ = {
-			isa = PBXGroup;
-			children = (
-				FBE141B827F6DE5100B461A0 /* LoginViewModel.swift */,
-				FBE141BB27F6F4CD00B461A0 /* RegistrationViewModel.swift */,
-			);
-			path = Authentification;
 			sourceTree = "<group>";
 		};
 		FBF8C2D427EDCFFE0000F7F7 = {
@@ -171,13 +338,12 @@
 		FBF8C2DF27EDCFFE0000F7F7 /* ChatApp */ = {
 			isa = PBXGroup;
 			children = (
-				FB8B9305280AC036009ED9B2 /* Coordinator */,
 				FBF8C2F927EDD04C0000F7F7 /* Model */,
 				FBF8C2F827EDD04B0000F7F7 /* View */,
-				FBF8C2F727EDD0460000F7F7 /* ViewModel */,
 				FBF8C2F627EDD0440000F7F7 /* Controller */,
 				FBF8C2F527EDD03E0000F7F7 /* API */,
 				FBF8C2F427EDD03D0000F7F7 /* Utils */,
+				FB8B9305280AC036009ED9B2 /* Coordinator */,
 				FBF8C2E027EDCFFE0000F7F7 /* AppDelegate.swift */,
 				FBF8C2E227EDCFFE0000F7F7 /* SceneDelegate.swift */,
 				FBF8C2E427EDCFFE0000F7F7 /* ViewController.swift */,
@@ -211,28 +377,14 @@
 		FBF8C2F627EDD0440000F7F7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FB08092B2819280100857A98 /* Profile */,
 				FBF8C30427EF18190000F7F7 /* Authentification */,
-				FBF8C2FA27EDD0730000F7F7 /* ConversationsController.swift */,
-				FBE141D327FAECCA00B461A0 /* NewMessageController.swift */,
-				FBE141DB27FC513900B461A0 /* ChatController.swift */,
-				FB8B92232802D44F009ED9B2 /* ProfileController.swift */,
-				FB8B930A280AC466009ED9B2 /* SettingController.swift */,
-				FB8B9310280ADB49009ED9B2 /* UserInfoController.swift */,
+				FB0809262819267700857A98 /* Main */,
+				FB0809282819276A00857A98 /* Chat */,
+				FB0809292819279D00857A98 /* Settings */,
+				FB08092A281927A400857A98 /* UserInfo */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		FBF8C2F727EDD0460000F7F7 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				FBE141BA27F6F4BE00B461A0 /* Authentification */,
-				FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */,
-				FB8B92212802CF13009ED9B2 /* ConversationViewModel.swift */,
-				FB8B92272802E65F009ED9B2 /* ProfileViewModel.swift */,
-				FB8B930C280AC52A009ED9B2 /* SettingViewModel.swift */,
-				FBA6B64D280ADC4100A32B6E /* UserInfoViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		FBF8C2F827EDD04B0000F7F7 /* View */ = {
@@ -240,15 +392,7 @@
 			children = (
 				FBF8C30B27F04A1F0000F7F7 /* InputContainerView.swift */,
 				FBF8C30D27F0537D0000F7F7 /* CustomTextField.swift */,
-				FBE141D527FAFA3F00B461A0 /* NewMessageCell.swift */,
 				FBE141DD27FC85F000B461A0 /* CustomInputAccessoryView.swift */,
-				FB9DDF2027FECF4C0017DF57 /* MessageCell.swift */,
-				FB8B921F2802C9B2009ED9B2 /* ConversationCell.swift */,
-				FB8B92252802D61C009ED9B2 /* ProfileHeader.swift */,
-				FB8B92292802E7CC009ED9B2 /* ProfileCell.swift */,
-				FB8B922B28041A18009ED9B2 /* ProfileFooter.swift */,
-				FB8B930E280AC6AF009ED9B2 /* SettingCell.swift */,
-				FBA6B64F280ADD9A00A32B6E /* UserInfoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -265,8 +409,8 @@
 		FBF8C30427EF18190000F7F7 /* Authentification */ = {
 			isa = PBXGroup;
 			children = (
-				FBF8C30527EF18290000F7F7 /* LoginController.swift */,
-				FBF8C30727EF18830000F7F7 /* RegistrationController.swift */,
+				FB0809232819263B00857A98 /* Login */,
+				FB0809252819265100857A98 /* Registration */,
 			);
 			path = Authentification;
 			sourceTree = "<group>";
