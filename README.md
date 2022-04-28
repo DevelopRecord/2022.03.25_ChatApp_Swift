@@ -12,7 +12,7 @@
 |:------:|:---:|:---:|
 |SnapKit|Auto Layout|5.0.0|
 |Kingfisher|URL 이미지 주소를 가진 이미지 불러오기|7.2.0|
-|Firebase|8.14.0|사용자, 메시지 정보 DB 저장|
+|Firebase|사용자, 메시지 정보 DB 저장|8.14.0|
 |SwiftyBeaver|디버깅|1.9.5|
 |JGProgressHUD|로딩 표시|2.2.0|
    
