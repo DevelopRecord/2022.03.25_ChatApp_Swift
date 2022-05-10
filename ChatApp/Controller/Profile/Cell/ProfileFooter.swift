@@ -22,9 +22,8 @@ class ProfileFooter: UIView {
     
     private lazy var logoutButton = UIButton(type: .system).then {
         $0.setTitle("로그아웃", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        $0.backgroundColor = .systemPink
+        $0.backgroundColor = .secondarySystemGroupedBackground
         $0.layer.cornerRadius = 5
         $0.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
     }

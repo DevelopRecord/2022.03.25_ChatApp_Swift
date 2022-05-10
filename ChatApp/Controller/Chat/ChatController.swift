@@ -69,7 +69,7 @@ class ChatController: UIViewController {
     // MARK: - Helpers
 
     func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .secondarySystemBackground
         setupLayout()
         configureNavigationBar(withTitle: user.nickname, prefersLargeTitle: false)
 
@@ -94,6 +94,7 @@ extension ChatController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MessageCell.identifier, for: indexPath) as! MessageCell
+        cell.backgroundColor = .secondarySystemBackground
         cell.message = messages[indexPath.row]
         cell.message?.user = user
         return cell

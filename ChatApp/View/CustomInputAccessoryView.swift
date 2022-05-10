@@ -21,23 +21,21 @@ class CustomInputAccessoryView: UIView {
 
     private lazy var messageInputTextView = UITextView().then {
         $0.font = UIFont.systemFont(ofSize: 16)
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.lightGray.cgColor
         $0.layer.cornerRadius = 15
+        $0.backgroundColor = .systemGray4
         $0.isScrollEnabled = false
     }
 
     private lazy var sendButton = UIButton(type: .system).then {
-        $0.setImage(UIImage(systemName: "arrow.up"), for: .normal)
-        $0.backgroundColor = .systemPurple.withAlphaComponent(0.67)
-        $0.tintColor = .white
+        $0.setImage(UIImage(systemName: "location.fill"), for: .normal)
+        $0.backgroundColor = .secondarySystemBackground.withAlphaComponent(0.67)
         $0.isEnabled = false
         $0.addTarget(self, action: #selector(handleSendMessage), for: .touchUpInside)
     }
 
     private let placeholderLabel = UILabel().then {
         $0.text = "메시지 입력"
-        $0.textColor = .lightGray
+        $0.textColor = .systemGray
         $0.font = UIFont.systemFont(ofSize: 16)
     }
 
@@ -45,10 +43,10 @@ class CustomInputAccessoryView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .secondarySystemBackground
         autoresizingMask = .flexibleHeight
 
-        layer.shadowOpacity = 0.27
+//        layer.shadowOpacity = 0.27
         layer.shadowRadius = 10
         layer.shadowOffset = .init(width: 0, height: -8)
         layer.shadowColor = UIColor.lightGray.cgColor
@@ -80,11 +78,11 @@ class CustomInputAccessoryView: UIView {
         if !messageInputTextView.text.isEmpty {
             placeholderLabel.isHidden = true
             sendButton.isEnabled = true
-            sendButton.backgroundColor = .systemPurple
+            sendButton.backgroundColor = .secondarySystemBackground
         } else {
             placeholderLabel.isHidden = false
             sendButton.isEnabled = false
-            sendButton.backgroundColor = .systemPurple.withAlphaComponent(0.67)
+            sendButton.backgroundColor = .secondarySystemBackground.withAlphaComponent(0.67)
         }
     }
 
@@ -109,8 +107,8 @@ extension CustomInputAccessoryView {
         addSubview(messageInputTextView)
         messageInputTextView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
-            make.leading.equalToSuperview().offset(4)
-            make.trailing.equalTo(sendButton.snp.leading).offset(-8)
+            make.leading.equalToSuperview().offset(8)
+            make.trailing.equalTo(sendButton.snp.leading)
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(8)
         }
 

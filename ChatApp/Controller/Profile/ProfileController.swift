@@ -28,7 +28,7 @@ class ProfileController: UIViewController {
     private let footerView = ProfileFooter()
 
     lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
-        $0.backgroundColor = .clear
+//        $0.backgroundColor = .systemGray5
         $0.isScrollEnabled = false
         $0.delegate = self
         $0.dataSource = self
@@ -46,7 +46,6 @@ class ProfileController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        navigationController?.navigationBar.barStyle = .black
     }
 
     // MARK: - API

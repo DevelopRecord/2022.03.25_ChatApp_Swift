@@ -71,7 +71,7 @@ class SettingCell: UITableViewCell {
 
 extension SettingCell {
     private func setupLayout() {
-        let stackView = UIStackView(arrangedSubviews: [iconView, titleLabel])
+        let stackView = UIStackView(arrangedSubviews: [iconImage, titleLabel])
         stackView.axis = .horizontal
         stackView.spacing = 8
 
@@ -81,15 +81,10 @@ extension SettingCell {
             make.leading.equalToSuperview().offset(12)
         }
         
-        iconView.addSubview(iconImage)
-        iconImage.snp.makeConstraints { make in
-            make.width.height.equalTo(28)
-            make.centerX.centerY.equalToSuperview()
-        }
-
-        iconView.snp.makeConstraints { make in
-            make.width.height.equalTo(40)
-        }
+//        iconImage.snp.makeConstraints { make in
+//            make.width.height.equalTo(28)
+//            make.centerX.centerY.equalToSuperview()
+//        }
 
         contentView.addSubview(switchToggle)
         switchToggle.snp.makeConstraints { make in

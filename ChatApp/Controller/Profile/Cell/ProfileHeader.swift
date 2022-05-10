@@ -25,7 +25,6 @@ class ProfileHeader: UIView {
 
     private let dismissButton = UIButton(type: .system).then {
         $0.setImage(UIImage(systemName: "xmark"), for: .normal)
-        $0.tintColor = .white
         $0.addTarget(self, action: #selector(handleDismissal), for: .touchUpInside)
     }
 
@@ -39,13 +38,11 @@ class ProfileHeader: UIView {
 
     private let fullnameLabel = UILabel().then {
         $0.font = UIFont.boldSystemFont(ofSize: 20)
-        $0.textColor = .white
         $0.textAlignment = .center
     }
 
     private let nicknameLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16)
-        $0.textColor = .white
         $0.textAlignment = .center
     }
 
@@ -63,16 +60,9 @@ class ProfileHeader: UIView {
     // MARK: - Helpers
 
     func configureUI() {
-        configureGradientLayer()
+//        configureGradientLayer()
+        backgroundColor = .secondarySystemBackground
         setupLayout()
-    }
-
-    func configureGradientLayer() {
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemPink.cgColor]
-        gradient.locations = [0, 1]
-        layer.addSublayer(gradient)
-        gradient.frame = bounds
     }
 
     func setData() {

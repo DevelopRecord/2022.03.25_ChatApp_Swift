@@ -12,11 +12,11 @@ struct MessageViewModel {
     private let message: Message
     
     var messageBackgroundColor: UIColor {
-        return message.isFromCurrentUser ? .systemPurple : .lightGray
+        return message.isFromCurrentUser ? .systemBlue : .systemGray4
     }
     
     var messageTextColor: UIColor {
-        return message.isFromCurrentUser ? .white : .black
+        return message.isFromCurrentUser ? .white : .white
     }
     
     var leftAnchorActive: Bool {

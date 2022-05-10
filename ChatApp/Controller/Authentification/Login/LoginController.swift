@@ -111,7 +111,6 @@ class LoginController: UIViewController {
     func configureUI() {
         configureGradientLayer()
         navigationController?.navigationBar.isHidden = true
-        navigationController?.navigationBar.barStyle = .black
 
         setupLayout()
     }

@@ -45,7 +45,7 @@ class NewMessageController: UIViewController {
     // MARK: - Helpers
 
     func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .secondarySystemBackground
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(handleDismissal))
         configureSearchController()
 
@@ -63,8 +63,7 @@ class NewMessageController: UIViewController {
         definesPresentationContext = false
 
         if let textField = searchController.searchBar.value(forKey: "searchField") as? UITextField {
-            textField.textColor = .systemPurple
-            textField.backgroundColor = .white
+            textField.backgroundColor = .secondarySystemBackground
         }
     }
 
@@ -103,6 +102,7 @@ extension NewMessageController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewMessageCell.identifier, for: indexPath) as! NewMessageCell
+        cell.backgroundColor = .secondarySystemBackground
         let users = inSearchMode ? filteredUsers[indexPath.row] : users[indexPath.row]
         cell.setData(profileImage: users.profileImageUrl, nickname: users.nickname, fullname: users.fullname)
         return cell

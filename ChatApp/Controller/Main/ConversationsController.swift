@@ -19,7 +19,7 @@ class ConversationsController: UIViewController {
     private var conversationsDictionary = [String: Conversation]()
 
     private lazy var tableView = UITableView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .clear
         $0.rowHeight = 80
         $0.delegate = self
         $0.dataSource = self
@@ -28,7 +28,7 @@ class ConversationsController: UIViewController {
 
     private let newMessageButton = UIButton(type: .system).then {
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
-        $0.backgroundColor = .systemPurple
+        $0.backgroundColor = .systemGray5
         $0.tintColor = .white
         $0.addTarget(self, action: #selector(showNewMessage), for: .touchUpInside)
     }
@@ -118,7 +118,7 @@ class ConversationsController: UIViewController {
     // MARK: - Helpers
 
     func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .secondarySystemBackground
         setupLayout()
         authenticateUser()
         fetchConversations()
@@ -157,6 +157,7 @@ extension ConversationsController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ConversationCell.identifier, for: indexPath) as! ConversationCell
+        cell.backgroundColor = .secondarySystemBackground
         cell.conversation = conversations[indexPath.row]
         return cell
     }

@@ -42,8 +42,8 @@ extension UIViewController {
     func configureNavigationBar(withTitle title: String, prefersLargeTitle: Bool) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.backgroundColor = .systemPurple
+//        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.backgroundColor = .secondarySystemBackground
 
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance // 스크롤 할 때 navigationBar의 사이즈가 컴팩트하게 합니다.
@@ -51,10 +51,10 @@ extension UIViewController {
 
         navigationController?.navigationBar.prefersLargeTitles = prefersLargeTitle // 타이틀 글자가 왼쪽에 크게 나오게 합니다.
         navigationItem.title = title
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.isTranslucent = true
+//        navigationController?.navigationBar.tintColor = .white
+//        navigationController?.navigationBar.isTranslucent = true
 
-        navigationController?.navigationBar.overrideUserInterfaceStyle = .dark // 상태표시줄의 색을 흰색으로 변경
+//        navigationController?.navigationBar.overrideUserInterfaceStyle = .dark // 상태표시줄의 색을 흰색으로 변경
     }
 
     /// 에러메시지 표시 함수

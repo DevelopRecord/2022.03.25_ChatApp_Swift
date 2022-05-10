@@ -40,7 +40,7 @@ class UserInfoController: UIViewController {
 
         if isNavBool {
             navigationController?.navigationBar.isHidden = false
-            navigationController?.navigationBar.barStyle = .default
+//            navigationController?.navigationBar.barStyle = .default
         }
     }
     

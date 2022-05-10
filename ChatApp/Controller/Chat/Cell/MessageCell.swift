@@ -35,19 +35,15 @@ class MessageCell: UICollectionViewCell {
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.isScrollEnabled = false
         $0.isEditable = false
-        $0.textColor = .white
-        $0.text = "메시지 텍스트 테스트"
     }
 
     private let nicknameLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14)
-        $0.textColor = .lightGray
-        $0.text = "바보"
     }
 
     private let bubbleContainer = UIView().then {
-        $0.backgroundColor = .systemPurple
-        $0.layer.cornerRadius = 12
+        $0.backgroundColor = .clear
+        $0.layer.cornerRadius = 20
     }
 
     // MARK: - Lifecycle
