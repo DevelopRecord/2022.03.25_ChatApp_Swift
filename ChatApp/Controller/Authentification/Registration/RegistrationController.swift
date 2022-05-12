@@ -21,14 +21,14 @@ class RegistrationController: UIViewController {
 
     private let plusPhotoButton = UIButton(type: .system).then {
         $0.setImage(UIImage(named: "plus_photo"), for: .normal)
-        $0.tintColor = .white
+        $0.tintColor = .systemBlue
         $0.clipsToBounds = true
         $0.imageView?.contentMode = .scaleAspectFill
         $0.addTarget(self, action: #selector(handlePlusPhoto), for: .touchUpInside)
     }
 
     private lazy var emailContainerView = InputContainerView(image: UIImage(systemName: "envelope"), textField: emailTextField)
-    private let emailTextField = CustomTextField(placeholder: "이메일")
+    private let emailTextField = CustomTextField(placeholder: "이메일", keyboard: .emailAddress)
 
     private lazy var fullnameContainerView = InputContainerView(image: UIImage(systemName: "person"), textField: fullnameTextField)
     private let fullnameTextField = CustomTextField(placeholder: "이름")
@@ -44,17 +44,17 @@ class RegistrationController: UIViewController {
     private let signUpButton = UIButton(type: .system).then {
         $0.setTitle("회원가입", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.layer.cornerRadius = 5
+        $0.layer.cornerRadius = 10
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = .systemBlue.withAlphaComponent(0.4)
         $0.isEnabled = false
-        $0.setHeight(height: 50)
+        $0.setHeight(height: 55)
         $0.addTarget(self, action: #selector(handleRegistration), for: .touchUpInside)
     }
 
     private let previousButton = UIButton(type: .system).then {
-        let attributedTitle = NSMutableAttributedString(string: "이미 아이디가 있나요?  ", attributes: [.font: UIFont.systemFont(ofSize: 16), .foregroundColor: UIColor.white])
-        attributedTitle.append(NSAttributedString(string: "로그인", attributes: [.font: UIFont.boldSystemFont(ofSize: 16), .foregroundColor: UIColor.white]))
+        let attributedTitle = NSMutableAttributedString(string: "이미 회원이세요?  ", attributes: [.font: UIFont.systemFont(ofSize: 16)])
+        attributedTitle.append(NSAttributedString(string: "로그인 하기", attributes: [.font: UIFont.boldSystemFont(ofSize: 16)]))
         $0.setAttributedTitle(attributedTitle, for: .normal)
         $0.addTarget(self, action: #selector(handlePrevious), for: .touchUpInside)
     }
@@ -131,14 +131,14 @@ class RegistrationController: UIViewController {
     // MARK: - Helpers
 
     func configureUI() {
-        configureGradientLayer()
-        setupLayout()
+        view.backgroundColor = .secondarySystemBackground
+        configureConstraints()
         configureNotificationObserver()
     }
 }
 
 private extension RegistrationController {
-    private func setupLayout() {
+    private func configureConstraints() {
         view.addSubview(plusPhotoButton)
         plusPhotoButton.snp.makeConstraints { make in
             make.width.height.equalTo(200)
@@ -147,13 +147,20 @@ private extension RegistrationController {
         }
 
         let stackView = UIStackView(arrangedSubviews:
-                [emailContainerView, passwordContainerView, fullnameContainerView, nickNameContainerView, signUpButton])
+                [emailContainerView, passwordContainerView, fullnameContainerView, nickNameContainerView])
         stackView.axis = .vertical
         stackView.spacing = 16
 
         view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.top.equalTo(plusPhotoButton.snp.bottom).offset(32)
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().inset(32)
+        }
+        
+        view.addSubview(signUpButton)
+        signUpButton.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(40)
             make.leading.equalToSuperview().offset(32)
             make.trailing.equalToSuperview().inset(32)
         }
@@ -193,10 +200,10 @@ extension RegistrationController: AuthentificationControllerProtocol {
     func checkFormStatus() {
         if registrationViewModel.formIsValid {
             signUpButton.isEnabled = true
-            signUpButton.backgroundColor = .lightGray
+            signUpButton.backgroundColor = .systemBlue
         } else {
             signUpButton.isEnabled = false
-            signUpButton.backgroundColor = .lightGray.withAlphaComponent(0.67)
+            signUpButton.backgroundColor = .systemBlue.withAlphaComponent(0.4)
         }
     }
 }

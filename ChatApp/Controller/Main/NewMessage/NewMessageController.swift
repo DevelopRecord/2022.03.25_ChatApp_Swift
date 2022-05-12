@@ -50,7 +50,7 @@ class NewMessageController: UIViewController {
         configureSearchController()
 
         configureNavigationBar(withTitle: "새로운 메시지", prefersLargeTitle: false)
-        setupLayout()
+        configureConstraints()
     }
 
     func configureSearchController() {
@@ -87,7 +87,7 @@ class NewMessageController: UIViewController {
 }
 
 extension NewMessageController {
-    private func setupLayout() {
+    private func configureConstraints() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()

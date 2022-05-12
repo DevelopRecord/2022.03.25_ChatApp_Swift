@@ -9,14 +9,13 @@ import UIKit
 
 class CustomTextField: UITextField {
     
-    init(placeholder: String) {
+    init(placeholder: String, keyboard: UIKeyboardType = .default) {
         super.init(frame: .zero)
         
         borderStyle = .none
-        font = UIFont.boldSystemFont(ofSize: 16)
-        textColor = .white
-        keyboardAppearance = .default
-        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.white])
+        font = UIFont.boldSystemFont(ofSize: 20)
+        keyboardType = keyboard
+        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.systemGray])
     }
     
     required init?(coder: NSCoder) {

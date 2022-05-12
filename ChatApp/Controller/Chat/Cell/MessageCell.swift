@@ -50,7 +50,7 @@ class MessageCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupLayout()
+        configureConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -79,7 +79,7 @@ class MessageCell: UICollectionViewCell {
 }
 
 extension MessageCell {
-    private func setupLayout() {
+    private func configureConstraints() {
         contentView.addSubview(profileImageView)
         profileImageView.snp.makeConstraints { make in
             make.width.height.equalTo(32)

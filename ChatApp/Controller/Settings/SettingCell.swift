@@ -42,7 +42,7 @@ class SettingCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupLayout()
+        configureConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -70,7 +70,7 @@ class SettingCell: UITableViewCell {
 }
 
 extension SettingCell {
-    private func setupLayout() {
+    private func configureConstraints() {
         let stackView = UIStackView(arrangedSubviews: [iconImage, titleLabel])
         stackView.axis = .horizontal
         stackView.spacing = 8
@@ -79,17 +79,6 @@ extension SettingCell {
         stackView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(12)
-        }
-        
-//        iconImage.snp.makeConstraints { make in
-//            make.width.height.equalTo(28)
-//            make.centerX.centerY.equalToSuperview()
-//        }
-
-        contentView.addSubview(switchToggle)
-        switchToggle.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(12)
         }
     }
 }

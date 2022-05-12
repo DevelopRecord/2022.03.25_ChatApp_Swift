@@ -70,7 +70,7 @@ class ChatController: UIViewController {
 
     func configureUI() {
         view.backgroundColor = .secondarySystemBackground
-        setupLayout()
+        configureConstraints()
         configureNavigationBar(withTitle: user.nickname, prefersLargeTitle: false)
 
         collectionView.alwaysBounceVertical = true
@@ -79,7 +79,7 @@ class ChatController: UIViewController {
 }
 
 extension ChatController {
-    private func setupLayout() {
+    private func configureConstraints() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()

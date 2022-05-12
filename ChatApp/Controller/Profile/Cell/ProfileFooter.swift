@@ -22,6 +22,7 @@ class ProfileFooter: UIView {
     
     private lazy var logoutButton = UIButton(type: .system).then {
         $0.setTitle("로그아웃", for: .normal)
+        $0.setTitleColor(.systemRed, for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         $0.backgroundColor = .secondarySystemGroupedBackground
         $0.layer.cornerRadius = 5
@@ -32,7 +33,7 @@ class ProfileFooter: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupLayout()
+        configureConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -49,7 +50,7 @@ class ProfileFooter: UIView {
 }
 
 extension ProfileFooter {
-    private func setupLayout() {
+    private func configureConstraints() {
         addSubview(logoutButton)
         logoutButton.snp.makeConstraints { make in
             make.height.equalTo(50)

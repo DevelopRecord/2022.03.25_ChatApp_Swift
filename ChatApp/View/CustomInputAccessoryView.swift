@@ -52,7 +52,7 @@ class CustomInputAccessoryView: UIView {
         layer.shadowColor = UIColor.lightGray.cgColor
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
 
-        setupLayout()
+        configureConstraints()
 
         NotificationCenter.default.addObserver(self, selector: #selector(handleTextInputChange), name: UITextView.textDidChangeNotification, object: nil)
     }
@@ -94,7 +94,7 @@ class CustomInputAccessoryView: UIView {
 }
 
 extension CustomInputAccessoryView {
-    private func setupLayout() {
+    private func configureConstraints() {
         addSubview(sendButton)
         sendButton.snp.makeConstraints { make in
             sendButton.layer.cornerRadius = 38 / 2

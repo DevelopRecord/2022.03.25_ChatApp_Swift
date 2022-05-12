@@ -11,13 +11,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         let nav = UINavigationController(rootViewController: ConversationsController())
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
+
+        let userDefaults = UserDefaults.standard
+
+        userDefaults.integer(forKey: "screenMode")
+        print("sceneDelegate: \(userDefaults.integer(forKey: "screenMode"))")
+
+        if userDefaults.integer(forKey: "screenMode") == 0 {
+            self.window?.overrideUserInterfaceStyle = .light
+        } else if userDefaults.integer(forKey: "screenMode") == 1 {
+            self.window?.overrideUserInterfaceStyle = .dark
+        } else {
+            self.window?.overrideUserInterfaceStyle = .unspecified
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

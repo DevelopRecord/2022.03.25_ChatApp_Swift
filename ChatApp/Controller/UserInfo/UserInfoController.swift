@@ -61,7 +61,7 @@ class UserInfoController: UIViewController {
         view.backgroundColor = .systemGroupedBackground
         configureNavigationBar(withTitle: "프로필 수정", prefersLargeTitle: true)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(handleDone))
-        setupLayout()
+        configureConstraints()
         tableView.rowHeight = 64
     }
 
@@ -74,7 +74,7 @@ class UserInfoController: UIViewController {
 }
 
 extension UserInfoController {
-    private func setupLayout() {
+    private func configureConstraints() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()

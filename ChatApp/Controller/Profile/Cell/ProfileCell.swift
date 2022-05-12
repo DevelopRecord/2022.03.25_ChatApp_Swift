@@ -38,7 +38,7 @@ class ProfileCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupLayout()
+        configureConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -56,7 +56,7 @@ class ProfileCell: UITableViewCell {
 }
 
 extension ProfileCell {
-    private func setupLayout() {
+    private func configureConstraints() {
         iconView.addSubview(iconImage)
         iconImage.snp.makeConstraints { make in
             make.width.height.equalTo(28)

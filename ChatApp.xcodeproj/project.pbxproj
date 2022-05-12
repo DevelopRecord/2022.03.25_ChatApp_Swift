@@ -10,6 +10,9 @@
 		FB08091C2817FEF400857A98 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FB08091B2817FEF400857A98 /* FirebaseAuth */; };
 		FB08091E2817FEF400857A98 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FB08091D2817FEF400857A98 /* FirebaseFirestore */; };
 		FB0809202817FEF400857A98 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FB08091F2817FEF400857A98 /* FirebaseStorage */; };
+		FB40A322282B8BC800DCD1F0 /* ScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A321282B8BC800DCD1F0 /* ScreenController.swift */; };
+		FB40A32A282B929800DCD1F0 /* ScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A329282B929800DCD1F0 /* ScreenViewModel.swift */; };
+		FB40A32D282B93D900DCD1F0 /* ScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A32C282B93D900DCD1F0 /* ScreenCell.swift */; };
 		FB792B0C282A5358004B748F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB792B0B282A5358004B748F /* GoogleService-Info.plist */; };
 		FB8B921927FEE354009ED9B2 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */; };
 		FB8B921E28001B44009ED9B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921D28001B44009ED9B2 /* Constants.swift */; };
@@ -60,6 +63,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB40A321282B8BC800DCD1F0 /* ScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenController.swift; sourceTree = "<group>"; };
+		FB40A329282B929800DCD1F0 /* ScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewModel.swift; sourceTree = "<group>"; };
+		FB40A32C282B93D900DCD1F0 /* ScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCell.swift; sourceTree = "<group>"; };
 		FB792B0B282A5358004B748F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		FB8B921D28001B44009ED9B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -176,9 +182,11 @@
 		FB0809292819279D00857A98 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				FB08092D2819283400857A98 /* ViewModel */,
-				FB080933281928A600857A98 /* Cell */,
+				FB8B930E280AC6AF009ED9B2 /* SettingCell.swift */,
+				FB8B930C280AC52A009ED9B2 /* SettingViewModel.swift */,
 				FB8B930A280AC466009ED9B2 /* SettingController.swift */,
+				FB40A324282B91EC00DCD1F0 /* Push */,
+				FB40A323282B91E900DCD1F0 /* Screen */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -211,14 +219,6 @@
 				FB8B922B28041A18009ED9B2 /* ProfileFooter.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		FB08092D2819283400857A98 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				FB8B930C280AC52A009ED9B2 /* SettingViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		FB08092E2819283D00857A98 /* ViewModel */ = {
@@ -261,14 +261,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		FB080933281928A600857A98 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				FB8B930E280AC6AF009ED9B2 /* SettingCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		FB0809342819290000857A98 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +291,63 @@
 				FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FB40A323282B91E900DCD1F0 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				FB40A326282B921000DCD1F0 /* ViewModel */,
+				FB40A32B282B93C800DCD1F0 /* Cell */,
+				FB40A327282B921500DCD1F0 /* Controller */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		FB40A324282B91EC00DCD1F0 /* Push */ = {
+			isa = PBXGroup;
+			children = (
+				FB40A325282B920800DCD1F0 /* ViewModel */,
+				FB40A328282B922400DCD1F0 /* Controller */,
+			);
+			path = Push;
+			sourceTree = "<group>";
+		};
+		FB40A325282B920800DCD1F0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FB40A326282B921000DCD1F0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FB40A329282B929800DCD1F0 /* ScreenViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FB40A327282B921500DCD1F0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FB40A321282B8BC800DCD1F0 /* ScreenController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FB40A328282B922400DCD1F0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FB40A32B282B93C800DCD1F0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FB40A32C282B93D900DCD1F0 /* ScreenCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		FB8B921C28001B36009ED9B2 /* Extension+ */ = {
@@ -509,10 +558,12 @@
 				FBF8C2E527EDCFFE0000F7F7 /* ViewController.swift in Sources */,
 				FB9DDF2127FECF4C0017DF57 /* MessageCell.swift in Sources */,
 				FBE141BC27F6F4CD00B461A0 /* RegistrationViewModel.swift in Sources */,
+				FB40A32A282B929800DCD1F0 /* ScreenViewModel.swift in Sources */,
 				FBE141D627FAFA3F00B461A0 /* NewMessageCell.swift in Sources */,
 				FB8B92242802D44F009ED9B2 /* ProfileController.swift in Sources */,
 				FB8B92282802E65F009ED9B2 /* ProfileViewModel.swift in Sources */,
 				FB8B92222802CF14009ED9B2 /* ConversationViewModel.swift in Sources */,
+				FB40A322282B8BC800DCD1F0 /* ScreenController.swift in Sources */,
 				FBF8C30C27F04A1F0000F7F7 /* InputContainerView.swift in Sources */,
 				FB8B921E28001B44009ED9B2 /* Constants.swift in Sources */,
 				FBE141D827FAFFD400B461A0 /* User.swift in Sources */,
@@ -543,6 +594,7 @@
 				FB8B92262802D61C009ED9B2 /* ProfileHeader.swift in Sources */,
 				FB8B922C28041A18009ED9B2 /* ProfileFooter.swift in Sources */,
 				FBA6B64E280ADC4100A32B6E /* UserInfoViewModel.swift in Sources */,
+				FB40A32D282B93D900DCD1F0 /* ScreenCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

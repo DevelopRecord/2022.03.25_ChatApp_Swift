@@ -28,7 +28,7 @@ class ConversationsController: UIViewController {
 
     private let newMessageButton = UIButton(type: .system).then {
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
-        $0.backgroundColor = .systemGray5
+        $0.backgroundColor = .systemGray
         $0.tintColor = .white
         $0.addTarget(self, action: #selector(showNewMessage), for: .touchUpInside)
     }
@@ -119,14 +119,13 @@ class ConversationsController: UIViewController {
 
     func configureUI() {
         view.backgroundColor = .secondarySystemBackground
-        setupLayout()
+        configureConstraints()
         authenticateUser()
         fetchConversations()
         fetchUser()
 
-        let image = UIImage(systemName: "person.circle.fill")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain,
-            target: self, action: #selector(showProfile))
+        let image = UIImage(systemName: "gearshape.fill")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(showProfile))
     }
 
     func showChatController(forUser user: User) {
@@ -136,7 +135,7 @@ class ConversationsController: UIViewController {
 }
 
 extension ConversationsController {
-    private func setupLayout() {
+    private func configureConstraints() {
         view.addSubview(tableView)
         tableView.frame = view.frame
 

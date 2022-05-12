@@ -45,7 +45,7 @@ class ConversationCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupLayout()
+        configureConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -66,7 +66,7 @@ class ConversationCell: UITableViewCell {
 }
 
 extension ConversationCell {
-    private func setupLayout() {
+    private func configureConstraints() {
         contentView.addSubview(profileImageView)
         profileImageView.snp.makeConstraints { make in
             make.width.height.equalTo(50)

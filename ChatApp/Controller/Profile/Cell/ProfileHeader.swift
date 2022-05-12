@@ -62,7 +62,7 @@ class ProfileHeader: UIView {
     func configureUI() {
 //        configureGradientLayer()
         backgroundColor = .secondarySystemBackground
-        setupLayout()
+        configureConstraints()
     }
 
     func setData() {
@@ -82,7 +82,7 @@ class ProfileHeader: UIView {
 }
 
 extension ProfileHeader {
-    private func setupLayout() {
+    private func configureConstraints() {
         addSubview(profileImageView)
         profileImageView.snp.makeConstraints { make in
             make.width.height.equalTo(200)

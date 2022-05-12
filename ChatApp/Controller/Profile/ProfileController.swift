@@ -28,7 +28,6 @@ class ProfileController: UIViewController {
     private let footerView = ProfileFooter()
 
     lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
-//        $0.backgroundColor = .systemGray5
         $0.isScrollEnabled = false
         $0.delegate = self
         $0.dataSource = self
@@ -65,7 +64,7 @@ class ProfileController: UIViewController {
 
     func configureUI() {
         view.backgroundColor = .systemGroupedBackground
-        setupLayout()
+        configureConstraints()
         tableView.tableHeaderView = headerView
         headerView.delegate = self
         tableView.contentInsetAdjustmentBehavior = .never
@@ -78,7 +77,7 @@ class ProfileController: UIViewController {
 }
 
 extension ProfileController {
-    private func setupLayout() {
+    private func configureConstraints() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()

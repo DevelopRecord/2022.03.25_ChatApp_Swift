@@ -27,12 +27,12 @@ class LoginController: UIViewController {
     private var loginViewModel = LoginViewModel()
 
     private let iconImage = UIImageView().then {
+        $0.tintColor = .systemBlue
         $0.image = UIImage(systemName: "bubble.right")
-        $0.tintColor = .white
     }
 
     private lazy var emailContainerView = InputContainerView(image: UIImage(systemName: "envelope"), textField: emailTextField)
-    private let emailTextField = CustomTextField(placeholder: "이메일").then {
+    private let emailTextField = CustomTextField(placeholder: "이메일", keyboard: .emailAddress).then {
         $0.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
 
@@ -45,19 +45,17 @@ class LoginController: UIViewController {
     private let loginButton = UIButton(type: .system).then {
         $0.setTitle("로그인", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.layer.cornerRadius = 5
+        $0.layer.cornerRadius = 10
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = .systemBlue.withAlphaComponent(0.4)
         $0.isEnabled = false
-        $0.setHeight(height: 50)
+        $0.setHeight(height: 55)
         $0.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
     }
 
     private let joinButton = UIButton(type: .system).then {
-        let attributedTitle = NSMutableAttributedString(string: "계정이 없나요?  ", attributes: [.font: UIFont.systemFont(ofSize: 16),
-                .foregroundColor: UIColor.white])
-        attributedTitle.append(NSAttributedString(string: "회원가입", attributes: [.font: UIFont.boldSystemFont(ofSize: 16),
-                .foregroundColor: UIColor.white]))
+        let attributedTitle = NSMutableAttributedString(string: "ChatApp이 처음이신가요?  ", attributes: [.font: UIFont.systemFont(ofSize: 16)])
+        attributedTitle.append(NSAttributedString(string: "회원 되기", attributes: [.font: UIFont.boldSystemFont(ofSize: 16)]))
 
         $0.setAttributedTitle(attributedTitle, for: .normal)
         $0.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
@@ -109,15 +107,14 @@ class LoginController: UIViewController {
     // MARK: - Helpers
 
     func configureUI() {
-        configureGradientLayer()
+        view.backgroundColor = .secondarySystemBackground
         navigationController?.navigationBar.isHidden = true
-
-        setupLayout()
+        configureConstraints()
     }
 }
 
 private extension LoginController {
-    private func setupLayout() {
+    private func configureConstraints() {
         view.addSubview(iconImage)
         iconImage.snp.makeConstraints { make in
             make.width.height.equalTo(120)
@@ -125,13 +122,20 @@ private extension LoginController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(32)
         }
 
-        let stackView = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, loginButton])
+        let stackView = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView])
         stackView.axis = .vertical
         stackView.spacing = 16
 
         view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.top.equalTo(iconImage.snp.bottom).offset(32)
+            make.leading.equalTo(view.snp.leading).offset(32)
+            make.trailing.equalTo(view.snp.trailing).inset(32)
+        }
+        
+        view.addSubview(loginButton)
+        loginButton.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(40)
             make.leading.equalTo(view.snp.leading).offset(32)
             make.trailing.equalTo(view.snp.trailing).inset(32)
         }
@@ -148,10 +152,10 @@ extension LoginController: AuthentificationControllerProtocol {
     func checkFormStatus() {
         if loginViewModel.formIsValid {
             loginButton.isEnabled = true
-            loginButton.backgroundColor = .lightGray
+            loginButton.backgroundColor = .systemBlue
         } else {
             loginButton.isEnabled = false
-            loginButton.backgroundColor = .lightGray.withAlphaComponent(0.67)
+            loginButton.backgroundColor = .systemBlue.withAlphaComponent(0.4)
         }
     }
 }

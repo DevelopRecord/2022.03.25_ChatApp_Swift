@@ -48,7 +48,7 @@ class UserInfoCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupLayout()
+        configureConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -72,7 +72,7 @@ class UserInfoCell: UITableViewCell {
 }
 
 extension UserInfoCell {
-    private func setupLayout() {
+    private func configureConstraints() {
         let stackView = UIStackView(arrangedSubviews: [iconView, titleLabel])
         stackView.axis = .horizontal
         stackView.spacing = 8
