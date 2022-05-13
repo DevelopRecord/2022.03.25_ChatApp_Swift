@@ -17,13 +17,9 @@ class InputContainerView: UIView {
         $0.alpha = 0.87
     }
 
-//    let dividerView = UIView().then {
-//        $0.backgroundColor = .white
-//    }
-
     // MARK: - Lifecycle
 
-    init(image: UIImage?, textField: UITextField) {
+    init(textField: UITextField) {
         super.init(frame: .zero)
         setHeight(height: 55)
         backgroundColor = .systemGray5
@@ -37,14 +33,6 @@ class InputContainerView: UIView {
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalTo(snp.trailing).offset(-20)
         }
-
-//        addSubview(dividerView)
-//        dividerView.snp.makeConstraints { make in
-//            make.height.equalTo(0.75)
-//            make.leading.equalToSuperview().offset(8)
-//            make.trailing.equalToSuperview()
-//            make.bottom.equalToSuperview()
-//        }
     }
 
     required init?(coder: NSCoder) {

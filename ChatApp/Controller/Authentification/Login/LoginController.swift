@@ -31,12 +31,12 @@ class LoginController: UIViewController {
         $0.image = UIImage(systemName: "bubble.right")
     }
 
-    private lazy var emailContainerView = InputContainerView(image: UIImage(systemName: "envelope"), textField: emailTextField)
+    private lazy var emailContainerView = InputContainerView(textField: emailTextField)
     private let emailTextField = CustomTextField(placeholder: "이메일", keyboard: .emailAddress).then {
         $0.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
 
-    private lazy var passwordContainerView = InputContainerView(image: UIImage(systemName: "lock"), textField: passwordTextField)
+    private lazy var passwordContainerView = InputContainerView(textField: passwordTextField)
     private let passwordTextField = CustomTextField(placeholder: "비밀번호").then {
         $0.isSecureTextEntry = true
         $0.addTarget(self, action: #selector(textDidChange), for: .editingChanged)

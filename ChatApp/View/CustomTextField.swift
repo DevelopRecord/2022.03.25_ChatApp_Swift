@@ -11,8 +11,9 @@ class CustomTextField: UITextField {
     
     init(placeholder: String, keyboard: UIKeyboardType = .default) {
         super.init(frame: .zero)
-        
-        borderStyle = .none
+        setHeight(height: 55)
+        backgroundColor = .systemGray5
+        layer.cornerRadius = 10
         font = UIFont.boldSystemFont(ofSize: 20)
         keyboardType = keyboard
         attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.systemGray])

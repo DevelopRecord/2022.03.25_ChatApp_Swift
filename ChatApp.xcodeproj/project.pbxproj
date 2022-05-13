@@ -14,6 +14,10 @@
 		FB40A32A282B929800DCD1F0 /* ScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A329282B929800DCD1F0 /* ScreenViewModel.swift */; };
 		FB40A32D282B93D900DCD1F0 /* ScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A32C282B93D900DCD1F0 /* ScreenCell.swift */; };
 		FB40A334282E58AC00DCD1F0 /* EditUserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A333282E58AC00DCD1F0 /* EditUserInfoController.swift */; };
+		FB40A33A282E676A00DCD1F0 /* EditUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A339282E676A00DCD1F0 /* EditUserInfoView.swift */; };
+		FB40A33C282E6AD400DCD1F0 /* EditInfoInputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A33B282E6AD400DCD1F0 /* EditInfoInputContainerView.swift */; };
+		FB40A33E282E6C0600DCD1F0 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A33D282E6C0600DCD1F0 /* CustomLabel.swift */; };
+		FB40A340282E723300DCD1F0 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A33F282E723300DCD1F0 /* UITextField+.swift */; };
 		FB792B0C282A5358004B748F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB792B0B282A5358004B748F /* GoogleService-Info.plist */; };
 		FB8B921927FEE354009ED9B2 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */; };
 		FB8B921E28001B44009ED9B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921D28001B44009ED9B2 /* Constants.swift */; };
@@ -68,6 +72,10 @@
 		FB40A329282B929800DCD1F0 /* ScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewModel.swift; sourceTree = "<group>"; };
 		FB40A32C282B93D900DCD1F0 /* ScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCell.swift; sourceTree = "<group>"; };
 		FB40A333282E58AC00DCD1F0 /* EditUserInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInfoController.swift; sourceTree = "<group>"; };
+		FB40A339282E676A00DCD1F0 /* EditUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInfoView.swift; sourceTree = "<group>"; };
+		FB40A33B282E6AD400DCD1F0 /* EditInfoInputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfoInputContainerView.swift; sourceTree = "<group>"; };
+		FB40A33D282E6C0600DCD1F0 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		FB40A33F282E723300DCD1F0 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		FB792B0B282A5358004B748F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		FB8B921D28001B44009ED9B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -200,6 +208,7 @@
 				FB0809322819289900857A98 /* Cell */,
 				FB8B9310280ADB49009ED9B2 /* UserInfoController.swift */,
 				FB40A333282E58AC00DCD1F0 /* EditUserInfoController.swift */,
+				FB40A339282E676A00DCD1F0 /* EditUserInfoView.swift */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -358,6 +367,7 @@
 			children = (
 				FBF8C30927EF21D90000F7F7 /* UIView+.swift */,
 				FBF8C30F27F05DF70000F7F7 /* UIViewController+.swift */,
+				FB40A33F282E723300DCD1F0 /* UITextField+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -445,6 +455,8 @@
 				FBF8C30B27F04A1F0000F7F7 /* InputContainerView.swift */,
 				FBF8C30D27F0537D0000F7F7 /* CustomTextField.swift */,
 				FBE141DD27FC85F000B461A0 /* CustomInputAccessoryView.swift */,
+				FB40A33B282E6AD400DCD1F0 /* EditInfoInputContainerView.swift */,
+				FB40A33D282E6C0600DCD1F0 /* CustomLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -558,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB8B921927FEE354009ED9B2 /* MessageViewModel.swift in Sources */,
+				FB40A33E282E6C0600DCD1F0 /* CustomLabel.swift in Sources */,
 				FBF8C2E527EDCFFE0000F7F7 /* ViewController.swift in Sources */,
 				FB9DDF2127FECF4C0017DF57 /* MessageCell.swift in Sources */,
 				FBE141BC27F6F4CD00B461A0 /* RegistrationViewModel.swift in Sources */,
@@ -570,6 +583,7 @@
 				FBF8C30C27F04A1F0000F7F7 /* InputContainerView.swift in Sources */,
 				FB8B921E28001B44009ED9B2 /* Constants.swift in Sources */,
 				FBE141D827FAFFD400B461A0 /* User.swift in Sources */,
+				FB40A33A282E676A00DCD1F0 /* EditUserInfoView.swift in Sources */,
 				FBE141B927F6DE5100B461A0 /* LoginViewModel.swift in Sources */,
 				FB9DDF2327FEDE7A0017DF57 /* Message.swift in Sources */,
 				FBE141D427FAECCA00B461A0 /* NewMessageController.swift in Sources */,
@@ -586,6 +600,7 @@
 				FB8B930D280AC52A009ED9B2 /* SettingViewModel.swift in Sources */,
 				FB8B92202802C9B2009ED9B2 /* ConversationCell.swift in Sources */,
 				FB8B9307280AC040009ED9B2 /* Coordinator.swift in Sources */,
+				FB40A33C282E6AD400DCD1F0 /* EditInfoInputContainerView.swift in Sources */,
 				FB8B9309280AC0FE009ED9B2 /* MainCoordinator.swift in Sources */,
 				FBF8C30A27EF21D90000F7F7 /* UIView+.swift in Sources */,
 				FBF8C30E27F0537D0000F7F7 /* CustomTextField.swift in Sources */,
@@ -597,6 +612,7 @@
 				FBA6B650280ADD9A00A32B6E /* UserInfoCell.swift in Sources */,
 				FB8B92262802D61C009ED9B2 /* ProfileHeader.swift in Sources */,
 				FB8B922C28041A18009ED9B2 /* ProfileFooter.swift in Sources */,
+				FB40A340282E723300DCD1F0 /* UITextField+.swift in Sources */,
 				FBA6B64E280ADC4100A32B6E /* UserInfoViewModel.swift in Sources */,
 				FB40A32D282B93D900DCD1F0 /* ScreenCell.swift in Sources */,
 			);

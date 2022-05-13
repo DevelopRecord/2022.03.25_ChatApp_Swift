@@ -22,7 +22,7 @@ class ProfileCell: UITableViewCell {
     private let iconImage = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
-        $0.tintColor = .white
+        $0.tintColor = UIColor(named: "nav_item_color")
     }
 
     private let titleLabel = UILabel().then {
@@ -33,7 +33,7 @@ class ProfileCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureConstraints()
+        configureUI()
     }
 
     required init?(coder: NSCoder) {
@@ -41,6 +41,11 @@ class ProfileCell: UITableViewCell {
     }
 
     // MARK: - Helpers
+    
+    func configureUI() {
+        selectionStyle = .none
+        configureConstraints()
+    }
 
     func setData() {
         guard let viewModel = viewModel else { return }

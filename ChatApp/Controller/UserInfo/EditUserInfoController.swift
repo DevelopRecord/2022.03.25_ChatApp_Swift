@@ -11,14 +11,16 @@ class EditUserInfoController: UIViewController {
     
     // MARK: - Properties
     
+    let selfView = EditUserInfoView()
+    
     private lazy var editCompleteButton = UIButton(type: .system).then {
         $0.setTitle("수정 완료", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         $0.backgroundColor = .systemBlue
-        $0.addTarget(self, action: #selector(handleEditComplete), for: .touchUpInside)
-        
         $0.layer.cornerRadius = 10
+        $0.addTarget(self, action: #selector(handleEditComplete), for: .touchUpInside)
+
         $0.layer.shadowRadius = 10
         $0.layer.shadowOffset = .init(width: 0, height: -8)
         $0.layer.shadowColor = UIColor.secondarySystemBackground.cgColor
@@ -37,11 +39,19 @@ class EditUserInfoController: UIViewController {
     func configureUI() {
         view.backgroundColor = .secondarySystemBackground
         configureNavigationBar(withTitle: "내 정보 수정", prefersLargeTitle: false)
+
         configureConstraints()
         
     }
     
     func configureConstraints() {
+        view.addSubview(selfView)
+        selfView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+        }
+        
         view.addSubview(editCompleteButton)
         editCompleteButton.snp.makeConstraints { make in
             make.height.equalTo(55)

@@ -27,16 +27,16 @@ class RegistrationController: UIViewController {
         $0.addTarget(self, action: #selector(handlePlusPhoto), for: .touchUpInside)
     }
 
-    private lazy var emailContainerView = InputContainerView(image: UIImage(systemName: "envelope"), textField: emailTextField)
+    private lazy var emailContainerView = InputContainerView(textField: emailTextField)
     private let emailTextField = CustomTextField(placeholder: "이메일", keyboard: .emailAddress)
 
-    private lazy var fullnameContainerView = InputContainerView(image: UIImage(systemName: "person"), textField: fullnameTextField)
+    private lazy var fullnameContainerView = InputContainerView(textField: fullnameTextField)
     private let fullnameTextField = CustomTextField(placeholder: "이름")
 
-    private lazy var nickNameContainerView = InputContainerView(image: UIImage(systemName: "person"), textField: nicknameTextField)
+    private lazy var nickNameContainerView = InputContainerView(textField: nicknameTextField)
     private let nicknameTextField = CustomTextField(placeholder: "닉네임")
 
-    private lazy var passwordContainerView = InputContainerView(image: UIImage(systemName: "lock"), textField: passwordTextField)
+    private lazy var passwordContainerView = InputContainerView(textField: passwordTextField)
     private let passwordTextField = CustomTextField(placeholder: "비밀번호").then {
         $0.isSecureTextEntry = true
     }

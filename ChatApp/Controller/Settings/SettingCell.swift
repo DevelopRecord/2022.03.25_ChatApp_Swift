@@ -27,7 +27,7 @@ class SettingCell: UITableViewCell {
     private let iconImage = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
-        $0.tintColor = .white
+        $0.tintColor = UIColor(named: "nav_item_color")
     }
 
     private let titleLabel = UILabel().then {

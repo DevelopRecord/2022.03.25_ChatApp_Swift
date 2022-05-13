@@ -25,6 +25,7 @@ class ProfileHeader: UIView {
 
     private let dismissButton = UIButton(type: .system).then {
         $0.setImage(UIImage(systemName: "xmark"), for: .normal)
+        $0.tintColor = UIColor(named: "nav_item_color")
         $0.addTarget(self, action: #selector(handleDismissal), for: .touchUpInside)
     }
 
