@@ -19,7 +19,10 @@ class ProfileController: UIViewController {
     weak var delegate: ProfileControllerDelegate?
 
     private var user: User? {
-        didSet { headerView.user = user }
+        didSet {
+            headerView.user = user
+            userData = user
+        }
     }
 
     // MARK: - Properties

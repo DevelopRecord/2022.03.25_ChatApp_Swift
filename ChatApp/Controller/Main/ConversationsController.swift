@@ -28,7 +28,7 @@ class ConversationsController: UIViewController {
 
     private let newMessageButton = UIButton(type: .system).then {
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
-        $0.backgroundColor = .systemGray
+        $0.backgroundColor = .systemGray4
         $0.tintColor = .white
         $0.addTarget(self, action: #selector(showNewMessage), for: .touchUpInside)
     }

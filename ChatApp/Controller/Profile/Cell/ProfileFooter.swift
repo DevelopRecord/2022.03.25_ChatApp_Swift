@@ -22,10 +22,10 @@ class ProfileFooter: UIView {
     
     private lazy var logoutButton = UIButton(type: .system).then {
         $0.setTitle("로그아웃", for: .normal)
-        $0.setTitleColor(.systemRed, for: .normal)
-        $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        $0.backgroundColor = .secondarySystemGroupedBackground
-        $0.layer.cornerRadius = 5
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        $0.backgroundColor = .systemBlue
+        $0.layer.cornerRadius = 10
         $0.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
     }
     
@@ -53,10 +53,10 @@ extension ProfileFooter {
     private func configureConstraints() {
         addSubview(logoutButton)
         logoutButton.snp.makeConstraints { make in
-            make.height.equalTo(50)
+            make.height.equalTo(55)
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(32)
-            make.trailing.equalToSuperview().inset(32)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().inset(20)
         }
     }
 }

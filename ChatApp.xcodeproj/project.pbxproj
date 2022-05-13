@@ -13,6 +13,7 @@
 		FB40A322282B8BC800DCD1F0 /* ScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A321282B8BC800DCD1F0 /* ScreenController.swift */; };
 		FB40A32A282B929800DCD1F0 /* ScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A329282B929800DCD1F0 /* ScreenViewModel.swift */; };
 		FB40A32D282B93D900DCD1F0 /* ScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A32C282B93D900DCD1F0 /* ScreenCell.swift */; };
+		FB40A334282E58AC00DCD1F0 /* EditUserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A333282E58AC00DCD1F0 /* EditUserInfoController.swift */; };
 		FB792B0C282A5358004B748F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB792B0B282A5358004B748F /* GoogleService-Info.plist */; };
 		FB8B921927FEE354009ED9B2 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */; };
 		FB8B921E28001B44009ED9B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921D28001B44009ED9B2 /* Constants.swift */; };
@@ -66,6 +67,7 @@
 		FB40A321282B8BC800DCD1F0 /* ScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenController.swift; sourceTree = "<group>"; };
 		FB40A329282B929800DCD1F0 /* ScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewModel.swift; sourceTree = "<group>"; };
 		FB40A32C282B93D900DCD1F0 /* ScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCell.swift; sourceTree = "<group>"; };
+		FB40A333282E58AC00DCD1F0 /* EditUserInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInfoController.swift; sourceTree = "<group>"; };
 		FB792B0B282A5358004B748F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		FB8B921D28001B44009ED9B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				FB08092E2819283D00857A98 /* ViewModel */,
 				FB0809322819289900857A98 /* Cell */,
 				FB8B9310280ADB49009ED9B2 /* UserInfoController.swift */,
+				FB40A333282E58AC00DCD1F0 /* EditUserInfoController.swift */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				FB8B9309280AC0FE009ED9B2 /* MainCoordinator.swift in Sources */,
 				FBF8C30A27EF21D90000F7F7 /* UIView+.swift in Sources */,
 				FBF8C30E27F0537D0000F7F7 /* CustomTextField.swift in Sources */,
+				FB40A334282E58AC00DCD1F0 /* EditUserInfoController.swift in Sources */,
 				FB8B9311280ADB4A009ED9B2 /* UserInfoController.swift in Sources */,
 				FBE141DC27FC513900B461A0 /* ChatController.swift in Sources */,
 				FB8B922A2802E7CC009ED9B2 /* ProfileCell.swift in Sources */,

@@ -24,13 +24,11 @@ class NewMessageCell: UITableViewCell {
 
     let nicknameLabel = UILabel().then {
         $0.font = UIFont.boldSystemFont(ofSize: 14)
-        $0.text = "바보"
     }
 
     let fullnameLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14)
         $0.textColor = .lightGray
-        $0.text = "멍청이"
     }
 
     // MARK: - Lifecycle

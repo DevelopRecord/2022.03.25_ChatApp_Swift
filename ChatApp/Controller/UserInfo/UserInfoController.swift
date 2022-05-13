@@ -14,9 +14,7 @@ class UserInfoController: UIViewController {
 
     var isNavBool: Bool = false
 
-    private var user: User? {
-        didSet { UserInfoCell().user = user }
-    }
+    private var user: User?
 
     // MARK: - Properties
 
@@ -32,7 +30,6 @@ class UserInfoController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        fetchUser()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -40,18 +37,6 @@ class UserInfoController: UIViewController {
 
         if isNavBool {
             navigationController?.navigationBar.isHidden = false
-//            navigationController?.navigationBar.barStyle = .default
-        }
-    }
-    
-    // MARK: - API
-    
-    func fetchUser() {
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        
-        Service.fetchConversationsOfUser(withUid: currentUid) { user in
-            self.user = user
-            log.debug("UserInfoController 유저네임 | \(user.fullname)")
         }
     }
 
@@ -59,17 +44,20 @@ class UserInfoController: UIViewController {
 
     func configureUI() {
         view.backgroundColor = .systemGroupedBackground
-        configureNavigationBar(withTitle: "프로필 수정", prefersLargeTitle: true)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(handleDone))
+        if let user = userData {
+            configureNavigationBar(withTitle: String(user.fullname + "님의 정보"), prefersLargeTitle: false)
+        }
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "수정", style: .done, target: self, action: #selector(handleEdit))
         configureConstraints()
         tableView.rowHeight = 64
     }
 
     // MARK: - Selectors
 
-    @objc func handleDone() {
-        log.debug("확인")
-        navigationController?.popViewController(animated: true)
+    @objc func handleEdit() {
+        let controller = EditUserInfoController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
@@ -89,14 +77,12 @@ extension UserInfoController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UserInfoCell.identifier, for: indexPath) as! UserInfoCell
-
         let viewModel = UserInfoViewModel(rawValue: indexPath.row)
         cell.viewModel = viewModel
-        cell.user = user
 
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }

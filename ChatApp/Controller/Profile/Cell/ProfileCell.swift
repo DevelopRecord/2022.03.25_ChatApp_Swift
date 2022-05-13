@@ -19,11 +19,6 @@ class ProfileCell: UITableViewCell {
 
     // MARK: - Properties
 
-    private let iconView = UIView().then {
-        $0.backgroundColor = .systemPurple
-        $0.layer.cornerRadius = 40 / 2
-    }
-
     private let iconImage = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
@@ -57,17 +52,7 @@ class ProfileCell: UITableViewCell {
 
 extension ProfileCell {
     private func configureConstraints() {
-        iconView.addSubview(iconImage)
-        iconImage.snp.makeConstraints { make in
-            make.width.height.equalTo(28)
-            make.centerX.centerY.equalToSuperview()
-        }
-
-        iconView.snp.makeConstraints { make in
-            make.width.height.equalTo(40)
-        }
-
-        let stackView = UIStackView(arrangedSubviews: [iconView, titleLabel])
+        let stackView = UIStackView(arrangedSubviews: [iconImage, titleLabel])
         stackView.axis = .horizontal
         stackView.spacing = 8
 

@@ -8,26 +8,17 @@
 import UIKit
 import Then
 import SnapKit
-
+import Firebase
 
 class UserInfoCell: UITableViewCell {
 
     public static let identifier = "UserInfoCell"
-    
+
     var viewModel: UserInfoViewModel? {
         didSet { setData() }
     }
-    
-    var user: User? {
-        didSet { setUserInfo() }
-    }
 
     // MARK: - Properties
-
-    private let iconView = UIView().then {
-        $0.backgroundColor = .systemPurple
-        $0.layer.cornerRadius = 40 / 2
-    }
 
     private let iconImage = UIImageView().then {
         $0.contentMode = .scaleAspectFill
@@ -38,10 +29,9 @@ class UserInfoCell: UITableViewCell {
     private let titleLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16)
     }
-    
+
     var userInfoLabel = UILabel().then {
         $0.font = UIFont.boldSystemFont(ofSize: 14)
-        $0.text = "이재혁"
     }
 
     // MARK: - Lifecycle
@@ -56,24 +46,22 @@ class UserInfoCell: UITableViewCell {
     }
 
     // MARK: - Helpers
-    
-    func setUserInfo() {
-        guard let user = user else { return }
-        
-        userInfoLabel.text = user.fullname
+
+    func setUserInfo(fullname: String?) {
+        userInfoLabel.text = fullname
     }
 
     func setData() {
         guard let viewModel = viewModel else { return }
-
         iconImage.image = UIImage(systemName: viewModel.iconName)
         titleLabel.text = viewModel.description
+        userInfoLabel.text = viewModel.userInfo
     }
 }
 
 extension UserInfoCell {
     private func configureConstraints() {
-        let stackView = UIStackView(arrangedSubviews: [iconView, titleLabel])
+        let stackView = UIStackView(arrangedSubviews: [iconImage, titleLabel])
         stackView.axis = .horizontal
         stackView.spacing = 8
 
@@ -82,21 +70,11 @@ extension UserInfoCell {
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(12)
         }
-        
-        iconView.addSubview(iconImage)
-        iconImage.snp.makeConstraints { make in
-            make.width.height.equalTo(28)
-            make.centerX.centerY.equalToSuperview()
-        }
 
-        iconView.snp.makeConstraints { make in
-            make.width.height.equalTo(40)
-        }
-        
         contentView.addSubview(userInfoLabel)
         userInfoLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(12)
+            make.trailing.equalToSuperview().offset(-12)
         }
     }
 }
