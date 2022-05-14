@@ -11,12 +11,6 @@ import SnapKit
 
 class InputContainerView: UIView {
 
-    // MARK: - Properties
-
-    let imageView = UIImageView().then {
-        $0.alpha = 0.87
-    }
-
     // MARK: - Lifecycle
 
     init(textField: UITextField) {

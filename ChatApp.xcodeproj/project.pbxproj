@@ -18,6 +18,7 @@
 		FB40A33C282E6AD400DCD1F0 /* EditInfoInputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A33B282E6AD400DCD1F0 /* EditInfoInputContainerView.swift */; };
 		FB40A33E282E6C0600DCD1F0 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A33D282E6C0600DCD1F0 /* CustomLabel.swift */; };
 		FB40A340282E723300DCD1F0 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A33F282E723300DCD1F0 /* UITextField+.swift */; };
+		FB40A345282F921300DCD1F0 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A344282F921300DCD1F0 /* Credentials.swift */; };
 		FB792B0C282A5358004B748F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB792B0B282A5358004B748F /* GoogleService-Info.plist */; };
 		FB8B921927FEE354009ED9B2 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */; };
 		FB8B921E28001B44009ED9B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921D28001B44009ED9B2 /* Constants.swift */; };
@@ -76,6 +77,7 @@
 		FB40A33B282E6AD400DCD1F0 /* EditInfoInputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfoInputContainerView.swift; sourceTree = "<group>"; };
 		FB40A33D282E6C0600DCD1F0 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		FB40A33F282E723300DCD1F0 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		FB40A344282F921300DCD1F0 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		FB792B0B282A5358004B748F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		FB8B921D28001B44009ED9B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 			children = (
 				FB8B921C28001B36009ED9B2 /* Extension+ */,
 				FB8B921D28001B44009ED9B2 /* Constants.swift */,
+				FB40A344282F921300DCD1F0 /* Credentials.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				FBE141DE27FC85F000B461A0 /* CustomInputAccessoryView.swift in Sources */,
 				FBE141DA27FB001B00B461A0 /* Service.swift in Sources */,
 				FBF8C2E327EDCFFE0000F7F7 /* SceneDelegate.swift in Sources */,
+				FB40A345282F921300DCD1F0 /* Credentials.swift in Sources */,
 				FBF8C30827EF18830000F7F7 /* RegistrationController.swift in Sources */,
 				FBF8C30627EF18290000F7F7 /* LoginController.swift in Sources */,
 				FB8B930D280AC52A009ED9B2 /* SettingViewModel.swift in Sources */,

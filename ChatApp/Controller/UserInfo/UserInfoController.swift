@@ -57,6 +57,7 @@ class UserInfoController: UIViewController {
 
     @objc func handleEdit() {
         let controller = EditUserInfoController()
+        controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)
     }
 }
@@ -89,5 +90,13 @@ extension UserInfoController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return UIView()
+    }
+}
+
+extension UserInfoController: EditUserInfoDelegate {
+    func editUserInfoComplete() {
+        self.navigationController?.popViewController(animated: true)
+        self.tableView.reloadData()
+        showToast(message: "유저 정보가 변경 되었습니다.")
     }
 }

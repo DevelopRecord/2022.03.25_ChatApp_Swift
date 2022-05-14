@@ -8,14 +8,6 @@
 import UIKit
 import Firebase
 
-struct RegistrationCredentials {
-    var email: String
-    var password: String
-    var fullname: String
-    var nickname: String
-    var profileImage: UIImage
-}
-
 class AuthService {
     public static let shared = AuthService()
 
@@ -61,5 +53,22 @@ class AuthService {
                 }
             }
         }
+    }
+    
+    func updateEmail(credentials: updateUserCredentials, completion: ((Error?) -> Void)?) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+
+        Auth.auth().currentUser?.updateEmail(to: credentials.email, completion: { error in
+            if let error = error {
+                log.debug("이메일 변경 중 오류 발생 | \(error.localizedDescription)")
+                return
+            }
+            
+            let data = ["email": credentials.email]
+            
+            Firestore.firestore().collection("users").document(uid).updateData(data, completion: completion)
+            
+            log.info("이메일 정보 변경 완료")
+        })
     }
 }

@@ -13,8 +13,8 @@ class ScreenController: UIViewController {
 
     static let shared = ScreenController()
     var isNavBool: Bool = false
-    var isSelectedCell: Bool = false
     let userDefaults = UserDefaults.standard
+    var selectedIndexPath: Int = 0
 
     lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
         $0.backgroundColor = .clear
@@ -37,7 +37,6 @@ class ScreenController: UIViewController {
         if isNavBool {
             configureNavigationBar(withTitle: "화면 설정", prefersLargeTitle: false)
         }
-        updateInterfaceStyle()
     }
 
     // MARK: - Helpers
@@ -45,10 +44,9 @@ class ScreenController: UIViewController {
     func configureUI() {
         view.backgroundColor = .systemGroupedBackground
         configureConstraints()
-        
-        print("선택된 indexPath.row: \(userDefaults.integer(forKey: "screenMode")), 선택여부: \(userDefaults.bool(forKey: "cellState"))")
+
+        print("선택된 indexPath.row: \(userDefaults.integer(forKey: "screenMode")), selectedIndexPath: \(selectedIndexPath)")
         updateInterfaceStyle()
-        
     }
 
     func configureConstraints() {
@@ -60,18 +58,27 @@ class ScreenController: UIViewController {
 
     func updateInterfaceStyle() {
         if let window = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            let windows = window.windows.first
-
-            if let cell = tableView.cellForRow(at: IndexPath(row: userDefaults.integer(forKey: "screenMode"), section: 0)) {
-                cell.isSelected = userDefaults.bool(forKey: "cellState")
-                
-                if userDefaults.integer(forKey: "screenMode") == 0 && userDefaults.bool(forKey: "cellState") {
+            if #available(iOS 15.0, *) {
+                let windows = window.windows.first
+                if userDefaults.integer(forKey: "screenMode") == 0 {
                     windows?.overrideUserInterfaceStyle = .light
-                } else if userDefaults.integer(forKey: "screenMode") == 1 && userDefaults.bool(forKey: "cellState") {
+                } else if userDefaults.integer(forKey: "screenMode") == 1 {
                     windows?.overrideUserInterfaceStyle = .dark
-                } else if userDefaults.integer(forKey: "screenMode") == 2 && userDefaults.bool(forKey: "cellState") {
+                } else if userDefaults.integer(forKey: "screenMode") == 2 {
                     windows?.overrideUserInterfaceStyle = .unspecified
                 }
+            }
+        } else if let window = UIApplication.shared.windows.first {
+            if #available(iOS 13.0, *) {
+                if userDefaults.integer(forKey: "screenMode") == 0 {
+                    window.overrideUserInterfaceStyle = .light
+                } else if userDefaults.integer(forKey: "screenMode") == 1 {
+                    window.overrideUserInterfaceStyle = .dark
+                } else if userDefaults.integer(forKey: "screenMode") == 2 {
+                    window.overrideUserInterfaceStyle = .unspecified
+                }
+            } else {
+                window.overrideUserInterfaceStyle = .light
             }
         }
     }
@@ -84,9 +91,9 @@ extension ScreenController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ScreenCell.identifier, for: indexPath) as? ScreenCell ?? ScreenCell()
-//        cell.isSelected = userDefaults.bool(forKey: "cellState")
+        cell.isSelected = indexPath.row == userDefaults.integer(forKey: "screenMode") ? true : false
         cell.accessoryType = cell.isSelected ? .checkmark : .none
-        
+
         let viewModel = ScreenViewModel(rawValue: indexPath.row)
         cell.viewModel = viewModel
 
@@ -97,8 +104,8 @@ extension ScreenController: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.accessoryType = .checkmark
             userDefaults.set(indexPath.row, forKey: "screenMode")
-            userDefaults.set(cell.isSelected, forKey: "cellState")
             self.updateInterfaceStyle()
+            self.tableView.reloadData()
         }
     }
 

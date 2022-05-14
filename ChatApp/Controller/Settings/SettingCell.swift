@@ -34,10 +34,6 @@ class SettingCell: UITableViewCell {
         $0.font = UIFont.systemFont(ofSize: 16)
     }
     
-    var switchToggle = UISwitch().then {
-        $0.addTarget(self, action: #selector(handleSwitchToggle), for: .touchUpInside)
-    }
-    
     // MARK: - Lifecycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -56,16 +52,6 @@ class SettingCell: UITableViewCell {
 
         iconImage.image = UIImage(systemName: viewModel.iconName)
         titleLabel.text = viewModel.description
-    }
-    
-    // MARK: - Selectors
-    
-    @objc func handleSwitchToggle() {
-        if switchToggle.isOn {
-            print("ON")
-        } else {
-            print("OFF")
-        }
     }
 }
 

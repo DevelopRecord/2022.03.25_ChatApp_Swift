@@ -11,12 +11,6 @@ import SnapKit
 
 class EditInfoInputContainerView: UIView {
 
-    // MARK: - Properties
-
-    let imageView = UIImageView().then {
-        $0.alpha = 0.87
-    }
-
     // MARK: - Lifecycle
 
     init(subtitle: UILabel ,textField: UITextField) {
