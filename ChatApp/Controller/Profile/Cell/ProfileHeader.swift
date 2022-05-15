@@ -6,22 +6,20 @@
 //
 
 import UIKit
-import Then
-import SnapKit
-import Kingfisher
 
 protocol ProfileHeaderDelegate: AnyObject {
     func dismissController()
 }
 
-class ProfileHeader: UIView {
+class ProfileHeader: BaseView {
+
+    // MARK: - Properties
+
+    weak var delegate: ProfileHeaderDelegate?
 
     var user: User? {
         didSet { setData() }
     }
-    weak var delegate: ProfileHeaderDelegate?
-
-    // MARK: - Properties
 
     private let dismissButton = UIButton(type: .system).then {
         $0.setImage(UIImage(systemName: "xmark"), for: .normal)
@@ -47,43 +45,14 @@ class ProfileHeader: UIView {
         $0.textAlignment = .center
     }
 
-    // MARK: - Lifecycle
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureUI()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     // MARK: - Helpers
 
-    func configureUI() {
-//        configureGradientLayer()
+    override func configureUI() {
         backgroundColor = .secondarySystemBackground
         configureConstraints()
     }
 
-    func setData() {
-        guard let user = user else { return }
-        guard let url = URL(string: user.profileImageUrl) else { return }
-        
-        profileImageView.kf.setImage(with: url)
-        fullnameLabel.text = user.fullname
-        nicknameLabel.text = "@" + user.nickname
-    }
-
-    // MARK: - Selectors
-
-    @objc func handleDismissal() {
-        delegate?.dismissController()
-    }
-}
-
-extension ProfileHeader {
-    private func configureConstraints() {
+    override func configureConstraints() {
         addSubview(profileImageView)
         profileImageView.snp.makeConstraints { make in
             make.width.height.equalTo(200)
@@ -107,5 +76,20 @@ extension ProfileHeader {
             make.top.equalTo(safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(safeAreaLayoutGuide.snp.leading)
         }
+    }
+
+    func setData() {
+        guard let user = user else { return }
+        guard let url = URL(string: user.profileImageUrl) else { return }
+
+        profileImageView.kf.setImage(with: url)
+        fullnameLabel.text = user.fullname
+        nicknameLabel.text = "@" + user.nickname
+    }
+
+    // MARK: - Selectors
+
+    @objc func handleDismissal() {
+        delegate?.dismissController()
     }
 }

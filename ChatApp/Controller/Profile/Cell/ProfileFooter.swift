@@ -6,20 +6,17 @@
 //
 
 import UIKit
-import Firebase
-import Then
-import SnapKit
 
 protocol ProfileFooterDelegate: AnyObject {
     func footerHandleLogout()
 }
 
-class ProfileFooter: UIView {
-    
-    weak var delegate: ProfileFooterDelegate?
-    
+class ProfileFooter: BaseView {
+
     // MARK: - Properties
-    
+
+    weak var delegate: ProfileFooterDelegate?
+
     private lazy var logoutButton = UIButton(type: .system).then {
         $0.setTitle("로그아웃", for: .normal)
         $0.setTitleColor(.white, for: .normal)
@@ -28,29 +25,14 @@ class ProfileFooter: UIView {
         $0.layer.cornerRadius = 10
         $0.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
     }
-    
-    // MARK: - Lifecycle
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Helpers
-    
-    // MARK: - Selectors
-    
-    @objc func handleLogout() {
-        delegate?.footerHandleLogout()
-    }
-}
 
-extension ProfileFooter {
-    private func configureConstraints() {
+    // MARK: - Helpers
+
+    override func configureUI() {
+        backgroundColor = .clear
+    }
+
+    override func configureConstraints() {
         addSubview(logoutButton)
         logoutButton.snp.makeConstraints { make in
             make.height.equalTo(55)
@@ -59,5 +41,10 @@ extension ProfileFooter {
             make.trailing.equalToSuperview().inset(20)
         }
     }
-}
 
+    // MARK: - Selectors
+
+    @objc func handleLogout() {
+        delegate?.footerHandleLogout()
+    }
+}
