@@ -30,7 +30,7 @@ class BaseView: UIView {
     // MARK: - Helpers
 
     func configureUI() {
-
+        backgroundColor = .secondarySystemBackground
     }
 
     func configureConstraints() {

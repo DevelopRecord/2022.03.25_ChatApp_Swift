@@ -10,13 +10,13 @@ import Then
 import SnapKit
 import Firebase
 
-class UserInfoController: UIViewController {
+class UserInfoController: BaseViewController {
+
+    // MARK: - Properties
 
     var isNavBool: Bool = false
 
     private var user: User?
-
-    // MARK: - Properties
 
     lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
         $0.backgroundColor = .clear
@@ -29,7 +29,6 @@ class UserInfoController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +41,7 @@ class UserInfoController: UIViewController {
 
     // MARK: - Helpers
 
-    func configureUI() {
+    override func configureUI() {
         view.backgroundColor = .systemGroupedBackground
         if let user = userData {
             configureNavigationBar(withTitle: String(user.fullname + "님의 정보"), prefersLargeTitle: false)
@@ -53,21 +52,19 @@ class UserInfoController: UIViewController {
         tableView.rowHeight = 64
     }
 
+    override func configureConstraints() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+
     // MARK: - Selectors
 
     @objc func handleEdit() {
         let controller = EditUserInfoController()
         controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)
-    }
-}
-
-extension UserInfoController {
-    private func configureConstraints() {
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
-        }
     }
 }
 

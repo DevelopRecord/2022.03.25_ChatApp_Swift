@@ -10,7 +10,7 @@ import Then
 import SnapKit
 import Firebase
 
-class RegistrationController: UIViewController {
+class RegistrationController: BaseViewController {
 
     // MARK: - Properties
 
@@ -63,7 +63,57 @@ class RegistrationController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+    }
+
+    // MARK: - Helpers
+
+    override func configureUI() {
+        view.backgroundColor = .secondarySystemBackground
+        configureNotificationObserver()
+    }
+
+    override func configureConstraints() {
+        view.addSubview(plusPhotoButton)
+        plusPhotoButton.snp.makeConstraints { make in
+            make.width.height.equalTo(200)
+            make.top.equalToSuperview().offset(32)
+            make.centerX.equalToSuperview()
+        }
+
+        let stackView = UIStackView(arrangedSubviews:
+                [emailContainerView, passwordContainerView, fullnameContainerView, nickNameContainerView])
+        stackView.axis = .vertical
+        stackView.spacing = 16
+
+        view.addSubview(stackView)
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(plusPhotoButton.snp.bottom).offset(32)
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().inset(32)
+        }
+
+        view.addSubview(signUpButton)
+        signUpButton.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(40)
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().inset(32)
+        }
+
+        view.addSubview(previousButton)
+        previousButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(32)
+        }
+    }
+
+    private func configureNotificationObserver() {
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        fullnameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        nicknameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     // MARK: - Selectors
@@ -126,60 +176,6 @@ class RegistrationController: UIViewController {
         if view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
-    }
-
-    // MARK: - Helpers
-
-    func configureUI() {
-        view.backgroundColor = .secondarySystemBackground
-        configureConstraints()
-        configureNotificationObserver()
-    }
-}
-
-private extension RegistrationController {
-    private func configureConstraints() {
-        view.addSubview(plusPhotoButton)
-        plusPhotoButton.snp.makeConstraints { make in
-            make.width.height.equalTo(200)
-            make.top.equalToSuperview().offset(32)
-            make.centerX.equalToSuperview()
-        }
-
-        let stackView = UIStackView(arrangedSubviews:
-                [emailContainerView, passwordContainerView, fullnameContainerView, nickNameContainerView])
-        stackView.axis = .vertical
-        stackView.spacing = 16
-
-        view.addSubview(stackView)
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(plusPhotoButton.snp.bottom).offset(32)
-            make.leading.equalToSuperview().offset(32)
-            make.trailing.equalToSuperview().inset(32)
-        }
-        
-        view.addSubview(signUpButton)
-        signUpButton.snp.makeConstraints { make in
-            make.top.equalTo(stackView.snp.bottom).offset(40)
-            make.leading.equalToSuperview().offset(32)
-            make.trailing.equalToSuperview().inset(32)
-        }
-
-        view.addSubview(previousButton)
-        previousButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(32)
-        }
-    }
-
-    private func configureNotificationObserver() {
-        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        fullnameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        nicknameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 

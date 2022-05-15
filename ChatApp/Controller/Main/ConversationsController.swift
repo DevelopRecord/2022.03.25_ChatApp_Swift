@@ -6,11 +6,10 @@
 //
 
 import UIKit
-import Then
-import SnapKit
+
 import Firebase
 
-class ConversationsController: UIViewController {
+class ConversationsController: BaseViewController {
 
     // MARK: - Properties
 
@@ -37,30 +36,11 @@ class ConversationsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigationBar(withTitle: "메시지", prefersLargeTitle: true)
-    }
-
-    // MARK: - Selectors
-
-    @objc func showProfile() {
-        let controller = ProfileController()
-        controller.delegate = self
-        let nav = UINavigationController(rootViewController: controller)
-        nav.modalPresentationStyle = .fullScreen
-        present(nav, animated: true, completion: nil)
-    }
-
-    @objc func showNewMessage() {
-        let controller = NewMessageController()
-        controller.delegate = self
-        let nav = UINavigationController(rootViewController: controller)
-        nav.modalPresentationStyle = .fullScreen
-        present(nav, animated: true, completion: nil)
     }
 
     // MARK: - API
@@ -81,7 +61,7 @@ class ConversationsController: UIViewController {
                 let message = conversations.message
                 self.conversationsDictionary[message.chatPartnerId] = conversations
             }
-            
+
             self.showLoader(false)
 
             self.conversations = Array(self.conversationsDictionary.values)
@@ -117,9 +97,8 @@ class ConversationsController: UIViewController {
 
     // MARK: - Helpers
 
-    func configureUI() {
+    override func configureUI() {
         view.backgroundColor = .secondarySystemBackground
-        configureConstraints()
         authenticateUser()
         fetchConversations()
         fetchUser()
@@ -128,14 +107,7 @@ class ConversationsController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(showProfile))
     }
 
-    func showChatController(forUser user: User) {
-        let controller = ChatController(user: user)
-        navigationController?.pushViewController(controller, animated: true)
-    }
-}
-
-extension ConversationsController {
-    private func configureConstraints() {
+    override func configureConstraints() {
         view.addSubview(tableView)
         tableView.frame = view.frame
 
@@ -146,6 +118,29 @@ extension ConversationsController {
             make.trailing.equalTo(view.snp.trailing).inset(22)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(16)
         }
+    }
+    
+    func showChatController(forUser user: User) {
+        let controller = ChatController(user: user)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+
+    // MARK: - Selectors
+
+    @objc func showProfile() {
+        let controller = ProfileController()
+        controller.delegate = self
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
+    }
+
+    @objc func showNewMessage() {
+        let controller = NewMessageController()
+        controller.delegate = self
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
     }
 }
 

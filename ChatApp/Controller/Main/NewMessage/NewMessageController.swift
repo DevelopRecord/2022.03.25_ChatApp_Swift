@@ -6,14 +6,14 @@
 //
 
 import UIKit
-import Then
-import SnapKit
 
 protocol NewMessageControllerDelegate: AnyObject {
     func controller(_ controller: NewMessageController, wantsToStartChatWith user: User)
 }
 
-class NewMessageController: UIViewController {
+class NewMessageController: BaseViewController {
+
+    // MARK: - Properties
 
     private var users = [User]()
     private var filteredUsers = [User]()
@@ -23,8 +23,6 @@ class NewMessageController: UIViewController {
     private var inSearchMode: Bool {
         return searchController.isActive && !searchController.searchBar.text!.isEmpty
     }
-
-    // MARK: - Properties
 
     lazy var tableView = UITableView().then {
         $0.backgroundColor = .clear
@@ -38,19 +36,40 @@ class NewMessageController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
         fetchUsers()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavigationBar(withTitle: "새로운 메시지", prefersLargeTitle: false)
+    }
+
+    // MARK: - API
+
+    func fetchUsers() {
+        showLoader(true)
+        Service.fetchUser { users in
+            self.showLoader(false)
+
+            self.users = users
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Helpers
 
-    func configureUI() {
+    override func configureUI() {
         view.backgroundColor = .secondarySystemBackground
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(handleDismissal))
         configureSearchController()
 
-        configureNavigationBar(withTitle: "새로운 메시지", prefersLargeTitle: false)
-        configureConstraints()
+    }
+
+    override func configureConstraints() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
     }
 
     func configureSearchController() {
@@ -71,27 +90,6 @@ class NewMessageController: UIViewController {
 
     @objc func handleDismissal() {
         dismiss(animated: true, completion: nil)
-    }
-
-    // MARK: - API
-
-    func fetchUsers() {
-        showLoader(true)
-        Service.fetchUser { users in
-            self.showLoader(false)
-            
-            self.users = users
-            self.tableView.reloadData()
-        }
-    }
-}
-
-extension NewMessageController {
-    private func configureConstraints() {
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
-        }
     }
 }
 

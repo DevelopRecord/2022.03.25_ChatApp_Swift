@@ -6,16 +6,14 @@
 //
 
 import UIKit
-import Then
-import SnapKit
 
-class ChatController: UIViewController {
+class ChatController: BaseViewController {
+
+    // MARK: - Properties
 
     private var user: User
     private var messages = [Message]()
     var fromCurrentUser = false
-
-    // MARK: - Properties
 
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.backgroundColor = .clear
@@ -27,6 +25,8 @@ class ChatController: UIViewController {
     private lazy var customInputView = CustomInputAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50)).then {
         $0.delegate = self
     }
+
+    // MARK: - Initializing
 
     init(user: User) {
         self.user = user
@@ -41,16 +41,7 @@ class ChatController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
         fetchMessages()
-    }
-
-    override var inputAccessoryView: UIView? {
-        get { return customInputView }
-    }
-
-    override var canBecomeFirstResponder: Bool {
-        return true
     }
 
     // MARK: - API
@@ -68,7 +59,7 @@ class ChatController: UIViewController {
 
     // MARK: - Helpers
 
-    func configureUI() {
+    override func configureUI() {
         view.backgroundColor = .secondarySystemBackground
         configureConstraints()
         configureNavigationBar(withTitle: user.nickname, prefersLargeTitle: false)
@@ -76,14 +67,20 @@ class ChatController: UIViewController {
         collectionView.alwaysBounceVertical = true
         collectionView.keyboardDismissMode = .interactive
     }
-}
 
-extension ChatController {
-    private func configureConstraints() {
+    override func configureConstraints() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
         }
+    }
+
+    override var inputAccessoryView: UIView? {
+        get { return customInputView }
+    }
+
+    override var canBecomeFirstResponder: Bool {
+        return true
     }
 }
 

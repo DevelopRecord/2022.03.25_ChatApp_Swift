@@ -6,8 +6,7 @@
 //
 
 import UIKit
-import Then
-import SnapKit
+
 import Firebase
 
 protocol AuthentificationControllerProtocol {
@@ -18,7 +17,7 @@ protocol AuthentificationDelegate: AnyObject {
     func authentificationComplete()
 }
 
-class LoginController: UIViewController {
+class LoginController: BaseViewController {
 
     // MARK: - Properties
 
@@ -65,7 +64,46 @@ class LoginController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+    }
+
+    // MARK: - Helpers
+
+    override func configureUI() {
+        view.backgroundColor = .secondarySystemBackground
+        navigationController?.navigationBar.isHidden = true
+    }
+
+    override func configureConstraints() {
+        view.addSubview(iconImage)
+        iconImage.snp.makeConstraints { make in
+            make.width.height.equalTo(120)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(32)
+        }
+
+        let stackView = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView])
+        stackView.axis = .vertical
+        stackView.spacing = 16
+
+        view.addSubview(stackView)
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(iconImage.snp.bottom).offset(32)
+            make.leading.equalTo(view.snp.leading).offset(32)
+            make.trailing.equalTo(view.snp.trailing).inset(32)
+        }
+
+        view.addSubview(loginButton)
+        loginButton.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(40)
+            make.leading.equalTo(view.snp.leading).offset(32)
+            make.trailing.equalTo(view.snp.trailing).inset(32)
+        }
+
+        view.addSubview(joinButton)
+        joinButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(32)
+        }
     }
 
     // MARK: - Selectors
@@ -102,49 +140,6 @@ class LoginController: UIViewController {
         let controller = RegistrationController()
         controller.delegate = delegate
         navigationController?.pushViewController(controller, animated: true)
-    }
-
-    // MARK: - Helpers
-
-    func configureUI() {
-        view.backgroundColor = .secondarySystemBackground
-        navigationController?.navigationBar.isHidden = true
-        configureConstraints()
-    }
-}
-
-private extension LoginController {
-    private func configureConstraints() {
-        view.addSubview(iconImage)
-        iconImage.snp.makeConstraints { make in
-            make.width.height.equalTo(120)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(32)
-        }
-
-        let stackView = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView])
-        stackView.axis = .vertical
-        stackView.spacing = 16
-
-        view.addSubview(stackView)
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(iconImage.snp.bottom).offset(32)
-            make.leading.equalTo(view.snp.leading).offset(32)
-            make.trailing.equalTo(view.snp.trailing).inset(32)
-        }
-        
-        view.addSubview(loginButton)
-        loginButton.snp.makeConstraints { make in
-            make.top.equalTo(stackView.snp.bottom).offset(40)
-            make.leading.equalTo(view.snp.leading).offset(32)
-            make.trailing.equalTo(view.snp.trailing).inset(32)
-        }
-
-        view.addSubview(joinButton)
-        joinButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(32)
-        }
     }
 }
 

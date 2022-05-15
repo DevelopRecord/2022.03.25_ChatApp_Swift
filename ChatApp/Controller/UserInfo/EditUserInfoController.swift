@@ -12,7 +12,7 @@ protocol EditUserInfoDelegate: AnyObject {
     func editUserInfoComplete()
 }
 
-class EditUserInfoController: UIViewController {
+class EditUserInfoController: BaseViewController {
 
     // MARK: - Properties
 
@@ -53,7 +53,6 @@ class EditUserInfoController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -63,14 +62,12 @@ class EditUserInfoController: UIViewController {
 
     // MARK: - Helpers
 
-    func configureUI() {
+    override func configureUI() {
         view.backgroundColor = .secondarySystemBackground
         configureNavigationBar(withTitle: "내 정보 수정", prefersLargeTitle: false)
-
-        configureConstraints()
     }
 
-    func configureConstraints() {
+    override func configureConstraints() {
         view.addSubview(selfView)
         selfView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)

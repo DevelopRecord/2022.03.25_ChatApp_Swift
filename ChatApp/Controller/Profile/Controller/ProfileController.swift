@@ -6,18 +6,21 @@
 //
 
 import UIKit
+
 import Firebase
-import Then
-import SnapKit
 
 protocol ProfileControllerDelegate: AnyObject {
     func handleLogout()
 }
 
-class ProfileController: UIViewController {
+class ProfileController: BaseViewController {
 
+    // MARK: - Properties
+    
     weak var delegate: ProfileControllerDelegate?
 
+    let selfView = ProfileView()
+    
     private var user: User? {
         didSet {
             headerView.user = user
@@ -25,23 +28,26 @@ class ProfileController: UIViewController {
         }
     }
 
-    // MARK: - Properties
-
     private lazy var headerView = ProfileHeader(frame: .init(x: 0, y: 0, width: view.frame.width, height: 380))
     private let footerView = ProfileFooter()
+    
+    // MARK: - API
 
-    lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
-        $0.isScrollEnabled = false
-        $0.delegate = self
-        $0.dataSource = self
-        $0.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.identifier)
+    func fetchUser() {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        showLoader(true)
+        Service.fetchConversationsOfUser(withUid: currentUid) { user in
+            self.showLoader(false)
+
+            self.user = user
+            log.debug("유저 이름: \(user.fullname)")
+        }
     }
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
         fetchUser()
     }
 
@@ -50,39 +56,25 @@ class ProfileController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
 
-    // MARK: - API
-
-    func fetchUser() {
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        showLoader(true)
-        Service.fetchConversationsOfUser(withUid: currentUid) { user in
-            self.showLoader(false)
-            
-            self.user = user
-            log.debug("유저 이름: \(user.fullname)")
-        }
-    }
-
     // MARK: - Helpers
 
-    func configureUI() {
-        view.backgroundColor = .systemGroupedBackground
-        configureConstraints()
-        tableView.tableHeaderView = headerView
+    override func configureUI() {
+        selfView.tableView.delegate = self
+        selfView.tableView.dataSource = self
+        selfView.tableView.tableHeaderView = headerView
+        selfView.tableView.contentInsetAdjustmentBehavior = .never
+        selfView.tableView.rowHeight = 64
+        
         headerView.delegate = self
-        tableView.contentInsetAdjustmentBehavior = .never
-        tableView.rowHeight = 64
-
-        footerView.frame = .init(x: 0, y: 0, width: view.frame.width, height: 100)
-        tableView.tableFooterView = footerView
         footerView.delegate = self
+        
+        footerView.frame = .init(x: 0, y: 0, width: view.frame.width, height: 100)
+        selfView.tableView.tableFooterView = footerView
     }
-}
 
-extension ProfileController {
-    private func configureConstraints() {
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
+    override func configureConstraints() {
+        view.addSubview(selfView)
+        selfView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
         }
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScreenController: UIViewController {
+class ScreenController: BaseViewController {
 
     // MARK: - Properties
 
@@ -27,8 +27,6 @@ class ScreenController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -40,15 +38,14 @@ class ScreenController: UIViewController {
 
     // MARK: - Helpers
 
-    func configureUI() {
+    override func configureUI() {
         view.backgroundColor = .systemGroupedBackground
-        configureConstraints()
 
         print("선택된 indexPath.row: \(userDefaults.integer(forKey: "screenMode"))")
         updateInterfaceStyle()
     }
 
-    func configureConstraints() {
+    override func configureConstraints() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()

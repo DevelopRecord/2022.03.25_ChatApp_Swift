@@ -6,14 +6,12 @@
 //
 
 import UIKit
-import Then
-import SnapKit
 
-class SettingController: UIViewController {
-
-    var isNavBool: Bool = false
+class SettingController: BaseViewController {
 
     // MARK: - Properties
+
+    var isNavBool: Bool = false
 
     lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
         $0.backgroundColor = .clear
@@ -27,7 +25,6 @@ class SettingController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,21 +38,17 @@ class SettingController: UIViewController {
 
     // MARK: - Helpers
 
-    func configureUI() {
+    override func configureUI() {
         view.backgroundColor = .systemGroupedBackground
-        configureConstraints()
     }
-}
 
-extension SettingController {
-    private func configureConstraints() {
+    override func configureConstraints() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
         }
     }
 }
-
 extension SettingController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return SettingViewModel.allCases.count

@@ -23,6 +23,7 @@
 		FB40A34A2830F32200DCD1F0 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A3492830F32200DCD1F0 /* BaseTableViewCell.swift */; };
 		FB40A34C2830F47000DCD1F0 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A34B2830F47000DCD1F0 /* BaseCollectionViewCell.swift */; };
 		FB40A34E2831093000DCD1F0 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A34D2831093000DCD1F0 /* BaseView.swift */; };
+		FB40A3502831224E00DCD1F0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB40A34F2831224E00DCD1F0 /* ProfileView.swift */; };
 		FB792B0C282A5358004B748F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB792B0B282A5358004B748F /* GoogleService-Info.plist */; };
 		FB8B921927FEE354009ED9B2 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */; };
 		FB8B921E28001B44009ED9B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B921D28001B44009ED9B2 /* Constants.swift */; };
@@ -85,6 +86,7 @@
 		FB40A3492830F32200DCD1F0 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		FB40A34B2830F47000DCD1F0 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB40A34D2831093000DCD1F0 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		FB40A34F2831224E00DCD1F0 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		FB792B0B282A5358004B748F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB8B921827FEE354009ED9B2 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		FB8B921D28001B44009ED9B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -226,7 +228,8 @@
 			children = (
 				FB08092F2819284800857A98 /* ViewModel */,
 				FB08092C2819281600857A98 /* Cell */,
-				FB8B92232802D44F009ED9B2 /* ProfileController.swift */,
+				FB40A352283124FB00DCD1F0 /* View */,
+				FB40A351283124FA00DCD1F0 /* Controller */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -379,6 +382,22 @@
 				FB40A34D2831093000DCD1F0 /* BaseView.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		FB40A351283124FA00DCD1F0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FB8B92232802D44F009ED9B2 /* ProfileController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FB40A352283124FB00DCD1F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FB40A34F2831224E00DCD1F0 /* ProfileView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		FB8B921C28001B36009ED9B2 /* Extension+ */ = {
@@ -632,6 +651,7 @@
 				FB8B9311280ADB4A009ED9B2 /* UserInfoController.swift in Sources */,
 				FBE141DC27FC513900B461A0 /* ChatController.swift in Sources */,
 				FB8B922A2802E7CC009ED9B2 /* ProfileCell.swift in Sources */,
+				FB40A3502831224E00DCD1F0 /* ProfileView.swift in Sources */,
 				FB8B930B280AC466009ED9B2 /* SettingController.swift in Sources */,
 				FBA6B650280ADD9A00A32B6E /* UserInfoCell.swift in Sources */,
 				FB8B92262802D61C009ED9B2 /* ProfileHeader.swift in Sources */,
