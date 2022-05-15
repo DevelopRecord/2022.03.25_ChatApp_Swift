@@ -9,15 +9,15 @@ import UIKit
 import Then
 import SnapKit
 
-class SettingCell: UITableViewCell {
+class SettingCell: BaseTableViewCell {
+
+    // MARK: - Properties
 
     public static let identifier = "SettingCell"
-    
+
     var viewModel: SettingViewModel? {
         didSet { setData() }
     }
-    
-    // MARK: - Properties
 
     private let iconView = UIView().then {
         $0.backgroundColor = .systemPurple
@@ -33,30 +33,10 @@ class SettingCell: UITableViewCell {
     private let titleLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16)
     }
-    
-    // MARK: - Lifecycle
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureConstraints()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     // MARK: - Helpers
-    
-    func setData() {
-        guard let viewModel = viewModel else { return }
 
-        iconImage.image = UIImage(systemName: viewModel.iconName)
-        titleLabel.text = viewModel.description
-    }
-}
-
-extension SettingCell {
-    private func configureConstraints() {
+    override func configureConstraints() {
         let stackView = UIStackView(arrangedSubviews: [iconImage, titleLabel])
         stackView.axis = .horizontal
         stackView.spacing = 8
@@ -66,5 +46,12 @@ extension SettingCell {
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(12)
         }
+    }
+
+    func setData() {
+        guard let viewModel = viewModel else { return }
+
+        iconImage.image = UIImage(systemName: viewModel.iconName)
+        titleLabel.text = viewModel.description
     }
 }

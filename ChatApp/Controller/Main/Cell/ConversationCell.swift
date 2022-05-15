@@ -6,19 +6,16 @@
 //
 
 import UIKit
-import Then
-import SnapKit
-import Kingfisher
 
-class ConversationCell: UITableViewCell {
+class ConversationCell: BaseTableViewCell {
+
+    // MARK: - Properties
 
     public static let identifier = "ConversationCell"
 
     var conversation: Conversation? {
         didSet { setData() }
     }
-
-    // MARK: - Properties
 
     let profileImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFill
@@ -38,35 +35,11 @@ class ConversationCell: UITableViewCell {
     let timestampLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 12)
         $0.textColor = .darkGray
-        $0.text = "2h"
-    }
-
-    // MARK: - Lifecycle
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureConstraints()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Helpers
 
-    func setData() {
-        guard let conversation = conversation else { return }
-        let viewModel = ConversationViewModel(conversation: conversation)
-
-        profileImageView.kf.setImage(with: viewModel.profileImageUrl)
-        fullnameLabel.text = conversation.user.fullname
-        messageTextLabel.text = conversation.message.text
-        timestampLabel.text = viewModel.timestamp
-    }
-}
-
-extension ConversationCell {
-    private func configureConstraints() {
+    override func configureConstraints() {
         contentView.addSubview(profileImageView)
         profileImageView.snp.makeConstraints { make in
             make.width.height.equalTo(50)
@@ -90,5 +63,16 @@ extension ConversationCell {
             make.top.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().inset(12)
         }
+
+    }
+
+    func setData() {
+        guard let conversation = conversation else { return }
+        let viewModel = ConversationViewModel(conversation: conversation)
+
+        profileImageView.kf.setImage(with: viewModel.profileImageUrl)
+        fullnameLabel.text = conversation.user.fullname
+        messageTextLabel.text = conversation.message.text
+        timestampLabel.text = viewModel.timestamp
     }
 }

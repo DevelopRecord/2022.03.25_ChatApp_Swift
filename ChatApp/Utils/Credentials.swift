@@ -15,7 +15,7 @@ struct RegistrationCredentials {
     var profileImage: UIImage
 }
 
-struct updateUserCredentials {
+struct UpdateUserCredentials {
     var email: String
     var password: String
     var fullname: String

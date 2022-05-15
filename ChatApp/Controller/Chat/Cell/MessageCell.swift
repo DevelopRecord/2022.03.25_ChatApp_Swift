@@ -10,18 +10,18 @@ import Then
 import SnapKit
 import Kingfisher
 
-class MessageCell: UICollectionViewCell {
+class MessageCell: BaseCollectionViewCell {
+
+    // MARK: - Properties
 
     public static let identifier = "MessageCell"
 
     var message: Message? {
-        didSet { configure() }
+        didSet { setData() }
     }
 
     var bubbleLeftAnchor: NSLayoutConstraint!
     var bubbleRightAnchor: NSLayoutConstraint!
-
-    // MARK: - Properties
 
     private let profileImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFill
@@ -37,7 +37,7 @@ class MessageCell: UICollectionViewCell {
         $0.isEditable = false
     }
 
-    private let nicknameLabel = UILabel().then {
+    private let fullnameLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14)
     }
 
@@ -46,20 +46,9 @@ class MessageCell: UICollectionViewCell {
         $0.layer.cornerRadius = 20
     }
 
-    // MARK: - Lifecycle
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureConstraints()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     // MARK: - Helpers
 
-    func configure() {
+    func setData() {
         guard let message = message else { return }
         let viewModel = MessageViewModel(message: message)
 
@@ -71,15 +60,13 @@ class MessageCell: UICollectionViewCell {
         bubbleRightAnchor.isActive = viewModel.rightAnchorActive
 
         profileImageView.isHidden = viewModel.shouldHideProfileImage
-        nicknameLabel.isHidden = viewModel.shouldHideNickname
+        fullnameLabel.isHidden = viewModel.shouldHideFullname
 
         profileImageView.kf.setImage(with: viewModel.profileImageUrl)
-        nicknameLabel.text = viewModel.nickname
+        fullnameLabel.text = viewModel.fullname
     }
-}
 
-extension MessageCell {
-    private func configureConstraints() {
+    override func configureConstraints() {
         contentView.addSubview(profileImageView)
         profileImageView.snp.makeConstraints { make in
             make.width.height.equalTo(32)
@@ -87,8 +74,8 @@ extension MessageCell {
             make.leading.equalToSuperview().offset(8)
         }
 
-        contentView.addSubview(nicknameLabel)
-        nicknameLabel.snp.makeConstraints { make in
+        contentView.addSubview(fullnameLabel)
+        fullnameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(4)
             make.leading.equalTo(profileImageView.snp.trailing).offset(12)
         }
@@ -96,7 +83,7 @@ extension MessageCell {
         contentView.addSubview(bubbleContainer)
         bubbleContainer.snp.makeConstraints { make in
             make.width.lessThanOrEqualTo(250)
-            make.top.equalTo(nicknameLabel.snp.bottom).offset(4)
+            make.top.equalTo(fullnameLabel.snp.bottom).offset(4)
             make.bottom.equalToSuperview()
         }
 

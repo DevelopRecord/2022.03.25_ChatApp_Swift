@@ -6,18 +6,15 @@
 //
 
 import UIKit
-import Then
-import SnapKit
-import Kingfisher
 
-class NewMessageCell: UITableViewCell {
-
-    public static let identifier = "NewMessageCell"
+class NewMessageCell: BaseTableViewCell {
 
     // MARK: - Properties
 
+    public static let identifier = "NewMessageCell"
+
     let profileImageView = UIImageView().then {
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = .systemGray5
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
@@ -31,30 +28,13 @@ class NewMessageCell: UITableViewCell {
         $0.textColor = .lightGray
     }
 
-    // MARK: - Lifecycle
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureConstraints()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     // MARK: - Helpers
 
-    func setData(profileImage: String, nickname: String, fullname: String) {
-        guard let profileImage = URL(string: profileImage) else { return }
+    override func configureUI() {
 
-        profileImageView.kf.setImage(with: profileImage)
-        nicknameLabel.text = nickname
-        fullnameLabel.text = fullname
     }
-}
 
-extension NewMessageCell {
-    private func configureConstraints() {
+    override func configureConstraints() {
         contentView.addSubview(profileImageView)
         profileImageView.snp.makeConstraints { make in
             make.width.height.equalTo(56)
@@ -72,5 +52,13 @@ extension NewMessageCell {
             make.centerY.equalToSuperview()
             make.leading.equalTo(profileImageView.snp.trailing).offset(12)
         }
+    }
+
+    func setData(profileImage: String, nickname: String, fullname: String) {
+        guard let profileImage = URL(string: profileImage) else { return }
+
+        profileImageView.kf.setImage(with: profileImage)
+        nicknameLabel.text = nickname
+        fullnameLabel.text = fullname
     }
 }

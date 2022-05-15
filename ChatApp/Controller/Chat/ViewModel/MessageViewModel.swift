@@ -31,7 +31,7 @@ struct MessageViewModel {
         return message.isFromCurrentUser
     }
     
-    var shouldHideNickname: Bool {
+    var shouldHideFullname: Bool {
         return message.isFromCurrentUser
     }
     
@@ -43,6 +43,11 @@ struct MessageViewModel {
     var nickname: String {
         guard let user = message.user else { return "(알수없음)" }
         return user.nickname
+    }
+    
+    var fullname: String {
+        guard let user = message.user else { return "(알수없음)" }
+        return user.fullname
     }
     
     init(message: Message) {

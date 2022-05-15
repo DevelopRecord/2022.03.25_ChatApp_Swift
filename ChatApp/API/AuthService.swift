@@ -55,7 +55,7 @@ class AuthService {
         }
     }
     
-    func updateEmail(credentials: updateUserCredentials, completion: ((Error?) -> Void)?) {
+    func updateUserInfo(credentials: UpdateUserCredentials, completion: ((Error?) -> Void)?) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
 
         Auth.auth().currentUser?.updateEmail(to: credentials.email, completion: { error in
@@ -70,5 +70,7 @@ class AuthService {
             
             log.info("이메일 정보 변경 완료")
         })
+        
+        
     }
 }

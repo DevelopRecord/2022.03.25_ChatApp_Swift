@@ -81,7 +81,7 @@ extension SettingController: UITableViewDelegate, UITableViewDataSource {
 
         switch viewModel {
         case .pushNotification:
-            print("push noti")
+            self.showToast(message: "준비중인 기능이에요.")
         case .screenSettings:
             let controller = ScreenController()
             controller.isNavBool = true

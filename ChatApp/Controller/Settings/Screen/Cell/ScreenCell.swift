@@ -7,46 +7,34 @@
 
 import UIKit
 
-class ScreenCell: UITableViewCell {
-    
+class ScreenCell: BaseTableViewCell {
+
     // MARK: - Properties
-    
+
     static let identifier = "ScreenCell"
-    
+
     var viewModel: ScreenViewModel? {
         didSet { setData() }
     }
-    
+
     private let titleLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16)
     }
-    
-    // MARK: - Lifecycle
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     // MARK: - Helpers
-    
-    func configureUI() {
-        configureConstraints()
+
+    override func configureUI() {
         selectionStyle = .none
     }
-    
-    func configureConstraints() {
+
+    override func configureConstraints() {
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(20)
         }
     }
-    
+
     func setData() {
         guard let viewModel = viewModel else { return }
 

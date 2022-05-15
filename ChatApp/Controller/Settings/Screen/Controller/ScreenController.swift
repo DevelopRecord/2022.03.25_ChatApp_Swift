@@ -14,7 +14,6 @@ class ScreenController: UIViewController {
     static let shared = ScreenController()
     var isNavBool: Bool = false
     let userDefaults = UserDefaults.standard
-    var selectedIndexPath: Int = 0
 
     lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
         $0.backgroundColor = .clear
@@ -45,7 +44,7 @@ class ScreenController: UIViewController {
         view.backgroundColor = .systemGroupedBackground
         configureConstraints()
 
-        print("선택된 indexPath.row: \(userDefaults.integer(forKey: "screenMode")), selectedIndexPath: \(selectedIndexPath)")
+        print("선택된 indexPath.row: \(userDefaults.integer(forKey: "screenMode"))")
         updateInterfaceStyle()
     }
 
@@ -64,7 +63,7 @@ class ScreenController: UIViewController {
                     windows?.overrideUserInterfaceStyle = .light
                 } else if userDefaults.integer(forKey: "screenMode") == 1 {
                     windows?.overrideUserInterfaceStyle = .dark
-                } else if userDefaults.integer(forKey: "screenMode") == 2 {
+                } else {
                     windows?.overrideUserInterfaceStyle = .unspecified
                 }
             }
@@ -74,7 +73,7 @@ class ScreenController: UIViewController {
                     window.overrideUserInterfaceStyle = .light
                 } else if userDefaults.integer(forKey: "screenMode") == 1 {
                     window.overrideUserInterfaceStyle = .dark
-                } else if userDefaults.integer(forKey: "screenMode") == 2 {
+                } else {
                     window.overrideUserInterfaceStyle = .unspecified
                 }
             } else {

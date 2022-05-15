@@ -108,17 +108,15 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
 
         switch viewModel {
         case .accountInfo:
-            log.debug("프로필 수정")
             let controller = UserInfoController()
             controller.isNavBool = true
             navigationController?.pushViewController(controller, animated: true)
         case .settings:
-            log.debug("설정")
             let controller = SettingController()
             controller.isNavBool = true
             navigationController?.pushViewController(controller, animated: true)
         case .saveMessages:
-            log.debug("메시지 백업")
+            self.showToast(message: "준비중인 기능이에요.")
         }
     }
 

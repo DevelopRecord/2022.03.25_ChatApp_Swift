@@ -95,11 +95,11 @@ class EditUserInfoController: UIViewController {
         guard let email = selfView.emailTextField.text else { return }
         guard let password = selfView.emailTextField.text else { return }
 
-        let credentials = updateUserCredentials.init(email: email, password: password, fullname: fullname, nickname: nickname)
+        let credentials = UpdateUserCredentials.init(email: email, password: password, fullname: fullname, nickname: nickname)
 
         showLoader(true)
-        AuthService.shared.updateEmail(credentials: credentials) { error in
-            if let error = error {
+        AuthService.shared.updateUserInfo(credentials: credentials) { error in
+            if let _ = error {
                 self.showLoader(false)
                 return
             }
