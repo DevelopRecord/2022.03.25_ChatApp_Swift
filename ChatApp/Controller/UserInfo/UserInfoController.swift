@@ -69,20 +69,42 @@ class UserInfoController: BaseViewController {
 }
 
 extension UserInfoController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserInfoViewModel.allCases.count
+        if section == 0 {
+            return UserInfoViewModel.allCases.count
+        } else if section == 1 {
+            return UserDeleteViewModel.allCases.count
+        } else {
+            return 0
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UserInfoCell.identifier, for: indexPath) as! UserInfoCell
         let viewModel = UserInfoViewModel(rawValue: indexPath.row)
-        cell.viewModel = viewModel
+        let deleteViewModel = UserDeleteViewModel(rawValue: indexPath.row)
+        if indexPath.section == 0 {
+            cell.viewModel = viewModel
+        } else if indexPath.section == 1 {
+            cell.deleteViewModel = deleteViewModel
+            cell.accessoryType = .disclosureIndicator
+        }
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 0 {
+            print("section 0")
+        } else if indexPath.section == 1 {
+            let controller = WithdrawalController()
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

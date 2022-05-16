@@ -16,6 +16,10 @@ class UserInfoCell: BaseTableViewCell {
     var viewModel: UserInfoViewModel? {
         didSet { setData() }
     }
+    
+    var deleteViewModel: UserDeleteViewModel? {
+        didSet { setDeleteData() }
+    }
 
     private let iconImage = UIImageView().then {
         $0.contentMode = .scaleAspectFill
@@ -53,8 +57,15 @@ class UserInfoCell: BaseTableViewCell {
 
     func setData() {
         guard let viewModel = viewModel else { return }
+
         iconImage.image = UIImage(systemName: viewModel.iconName)
         titleLabel.text = viewModel.description
         userInfoLabel.text = viewModel.userInfo
+    }
+    
+    func setDeleteData() {
+        guard let deleteViewModel = deleteViewModel else { return }
+        
+        titleLabel.text = deleteViewModel.description
     }
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>warning1</key>
+	<string>그 동안 대화했던 모든 대화내용이 사라져요.</string>
+	<key>warning2</key>
+	<string>회원정보가 모두 삭제돼요.</string>
+	<key>warning3</key>
+	<string>더 이상 ChatApp을 이용할 수 없어요.</string>
+	<key>warning4</key>
+	<string>그러면 어떡하죠?</string>
+	<key>warning5</key>
+	<string>이제는 우리가 헤어져야 할 시간, 다음에 또 만나요.</string>
+</dict>
+</plist>

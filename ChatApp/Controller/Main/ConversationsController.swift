@@ -119,7 +119,7 @@ class ConversationsController: BaseViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(16)
         }
     }
-    
+
     func showChatController(forUser user: User) {
         let controller = ChatController(user: user)
         navigationController?.pushViewController(controller, animated: true)

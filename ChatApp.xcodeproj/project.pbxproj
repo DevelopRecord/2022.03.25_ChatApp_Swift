@@ -56,6 +56,12 @@
 		FBE141DA27FB001B00B461A0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141D927FB001B00B461A0 /* Service.swift */; };
 		FBE141DC27FC513900B461A0 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141DB27FC513900B461A0 /* ChatController.swift */; };
 		FBE141DE27FC85F000B461A0 /* CustomInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141DD27FC85F000B461A0 /* CustomInputAccessoryView.swift */; };
+		FBF7B046283234E50002B6AE /* UserInfoFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7B045283234E50002B6AE /* UserInfoFooter.swift */; };
+		FBF7B048283236B90002B6AE /* UserDeleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7B047283236B90002B6AE /* UserDeleteViewModel.swift */; };
+		FBF7B04C28323DD70002B6AE /* WithdrawalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7B04B28323DD70002B6AE /* WithdrawalController.swift */; };
+		FBF7B04E28323E820002B6AE /* WithdrawalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7B04D28323E820002B6AE /* WithdrawalView.swift */; };
+		FBF7B052283246CB0002B6AE /* WithdrawalWarning.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBF7B051283246CB0002B6AE /* WithdrawalWarning.plist */; };
+		FBF7B0542832569B0002B6AE /* CustomModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7B0532832569B0002B6AE /* CustomModalView.swift */; };
 		FBF8C2E127EDCFFE0000F7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E027EDCFFE0000F7F7 /* AppDelegate.swift */; };
 		FBF8C2E327EDCFFE0000F7F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E227EDCFFE0000F7F7 /* SceneDelegate.swift */; };
 		FBF8C2E827EDCFFE0000F7F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF8C2E627EDCFFE0000F7F7 /* Main.storyboard */; };
@@ -116,6 +122,12 @@
 		FBE141D927FB001B00B461A0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		FBE141DB27FC513900B461A0 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 		FBE141DD27FC85F000B461A0 /* CustomInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputAccessoryView.swift; sourceTree = "<group>"; };
+		FBF7B045283234E50002B6AE /* UserInfoFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoFooter.swift; sourceTree = "<group>"; };
+		FBF7B047283236B90002B6AE /* UserDeleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteViewModel.swift; sourceTree = "<group>"; };
+		FBF7B04B28323DD70002B6AE /* WithdrawalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalController.swift; sourceTree = "<group>"; };
+		FBF7B04D28323E820002B6AE /* WithdrawalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalView.swift; sourceTree = "<group>"; };
+		FBF7B051283246CB0002B6AE /* WithdrawalWarning.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WithdrawalWarning.plist; sourceTree = "<group>"; };
+		FBF7B0532832569B0002B6AE /* CustomModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalView.swift; sourceTree = "<group>"; };
 		FBF8C2DD27EDCFFE0000F7F7 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF8C2E027EDCFFE0000F7F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF8C2E227EDCFFE0000F7F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,11 +226,12 @@
 		FB08092A281927A400857A98 /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
+				FBF7B04A28323DC00002B6AE /* Withdrawal */,
+				FBF7B04928323DAB0002B6AE /* Edit */,
+				FBF7B044283234DA0002B6AE /* View */,
 				FB08092E2819283D00857A98 /* ViewModel */,
 				FB0809322819289900857A98 /* Cell */,
 				FB8B9310280ADB49009ED9B2 /* UserInfoController.swift */,
-				FB40A333282E58AC00DCD1F0 /* EditUserInfoController.swift */,
-				FB40A339282E676A00DCD1F0 /* EditUserInfoView.swift */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -248,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				FBA6B64D280ADC4100A32B6E /* UserInfoViewModel.swift */,
+				FBF7B047283236B90002B6AE /* UserDeleteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -417,6 +431,34 @@
 				FB8B9308280AC0FE009ED9B2 /* MainCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		FBF7B044283234DA0002B6AE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FBF7B045283234E50002B6AE /* UserInfoFooter.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FBF7B04928323DAB0002B6AE /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				FB40A339282E676A00DCD1F0 /* EditUserInfoView.swift */,
+				FB40A333282E58AC00DCD1F0 /* EditUserInfoController.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		FBF7B04A28323DC00002B6AE /* Withdrawal */ = {
+			isa = PBXGroup;
+			children = (
+				FBF7B051283246CB0002B6AE /* WithdrawalWarning.plist */,
+				FBF7B04B28323DD70002B6AE /* WithdrawalController.swift */,
+				FBF7B04D28323E820002B6AE /* WithdrawalView.swift */,
+				FBF7B0532832569B0002B6AE /* CustomModalView.swift */,
+			);
+			path = Withdrawal;
 			sourceTree = "<group>";
 		};
 		FBF8C2D427EDCFFE0000F7F7 = {
@@ -598,6 +640,7 @@
 				FB792B0C282A5358004B748F /* GoogleService-Info.plist in Resources */,
 				FBF8C2EA27EDCFFF0000F7F7 /* Assets.xcassets in Resources */,
 				FBF8C2E827EDCFFE0000F7F7 /* Main.storyboard in Resources */,
+				FBF7B052283246CB0002B6AE /* WithdrawalWarning.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +660,9 @@
 				FBE141D627FAFA3F00B461A0 /* NewMessageCell.swift in Sources */,
 				FB8B92242802D44F009ED9B2 /* ProfileController.swift in Sources */,
 				FB8B92282802E65F009ED9B2 /* ProfileViewModel.swift in Sources */,
+				FBF7B046283234E50002B6AE /* UserInfoFooter.swift in Sources */,
+				FBF7B04C28323DD70002B6AE /* WithdrawalController.swift in Sources */,
+				FBF7B0542832569B0002B6AE /* CustomModalView.swift in Sources */,
 				FB8B92222802CF14009ED9B2 /* ConversationViewModel.swift in Sources */,
 				FB40A322282B8BC800DCD1F0 /* ScreenController.swift in Sources */,
 				FB40A34A2830F32200DCD1F0 /* BaseTableViewCell.swift in Sources */,
@@ -634,12 +680,14 @@
 				FBF8C2FB27EDD0730000F7F7 /* ConversationsController.swift in Sources */,
 				FB8B930F280AC6AF009ED9B2 /* SettingCell.swift in Sources */,
 				FBE141DE27FC85F000B461A0 /* CustomInputAccessoryView.swift in Sources */,
+				FBF7B048283236B90002B6AE /* UserDeleteViewModel.swift in Sources */,
 				FBE141DA27FB001B00B461A0 /* Service.swift in Sources */,
 				FBF8C2E327EDCFFE0000F7F7 /* SceneDelegate.swift in Sources */,
 				FB40A345282F921300DCD1F0 /* Credentials.swift in Sources */,
 				FBF8C30827EF18830000F7F7 /* RegistrationController.swift in Sources */,
 				FBF8C30627EF18290000F7F7 /* LoginController.swift in Sources */,
 				FB40A3482830EE2500DCD1F0 /* BaseViewController.swift in Sources */,
+				FBF7B04E28323E820002B6AE /* WithdrawalView.swift in Sources */,
 				FB8B930D280AC52A009ED9B2 /* SettingViewModel.swift in Sources */,
 				FB8B92202802C9B2009ED9B2 /* ConversationCell.swift in Sources */,
 				FB8B9307280AC040009ED9B2 /* Coordinator.swift in Sources */,

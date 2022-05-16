@@ -10,8 +10,6 @@ import UIKit
 class ProfileView: BaseView {
     
     // MARK: - Properties
-    
-    
 
     lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
         $0.isScrollEnabled = false
