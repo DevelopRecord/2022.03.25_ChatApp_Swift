@@ -11,7 +11,7 @@
 6. [Search](#Search)  
 7. [Chat](#Chat)  
 8. [Profile](#Profile)  
-9. [UserInfo](#UserInfo)  
+9. [User info](#User-Info)  
 10. [Settings](#Settings)  
 11. [Test Account](#Test-Account)   
 
@@ -39,9 +39,7 @@ Firestore에 유저 정보(프로필 사진, 아이디, 풀네임, 닉네임, ui
 
 <table>
   <tr>
-     <td><img src="https://user-images.githubusercontent.com/76255765/168780363-a58352e9-00e1-42cf-91b4-f63eab121e95.png" width="200" height="400"></td>
      <td><img src="https://user-images.githubusercontent.com/76255765/168779608-02e820ae-07de-483e-b08b-1e194eef6bff.png" width="200" height="400"></td>
-     <td><img src="https://user-images.githubusercontent.com/76255765/168779111-629fc84d-43e0-4bb0-85f7-753d5e90f39e.png" width="200" height="400"></td>
      <td><img src="https://user-images.githubusercontent.com/76255765/168780376-7e268df0-6584-4c23-931f-4bbcf3c9e86f.png" width="200" height="400"></td>
   <tr>
 </table>
@@ -69,14 +67,27 @@ Firestore의 messages컬렉션에서 uid별로 대화내역을 나누고, 대화
 
 <code>Header</code>에는 프로필 사진, 닉네임을 표시하고 <code>Cell</code>에는 유저 정보(수정 및 회원탈퇴), 앱 설정을 구현하였으며, <code>Footer</code>에는 로그아웃 버튼을 구현하였습니다.
 
-회원탈퇴 주의사항 내용처럼 긴 텍스트를 plist의 dictionary에 담아 가져와서 불필요한 코드를 줄임
+<img src="https://user-images.githubusercontent.com/76255765/168804731-170f9d44-6fb6-44e7-bc55-d94e0b7009fb.png" width="200" height="400"/>
+
+## User info
+유저의 정보 수정과 회원탈퇴 항목이 있습니다. 유저의 이메일 정보를 변경할 수 있고, 변경 완료 시 Toast메시지로 사용자에게 완료되었다는 메시지를 보여줍니다.
+  
+또한 회원탈퇴 cell을 클릭하여 회원탈퇴를 진행할 수 있으며 탈퇴 시 주의사항과 관련된 정보들을 <code>Property list</code>의 <code>Dictionary</code>를 사용하여 <code>Key</code>를 이용해 <code>Value</code>를 가져와서 불필요한 코드를 줄였습니다.
+
+<table>
+  <tr>
+     <td><img src="https://user-images.githubusercontent.com/76255765/168805444-96fc82de-b5ce-4d5f-885f-23e8737528f3.png" width="200" height="400"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/168805456-629f8cf1-8b6f-4fd7-9a74-0b67d9fb226d.png" width="200" height="400"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/168805818-0042d1bc-b727-4dac-b1c7-7c3bdeb86be3.png" width="200" height="400"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/168805834-c2034905-807e-4c07-9033-1a2d449a2d31.png" width="200" height="400"></td>
+  <tr>
+</table>
 
 * 앱 설정
   * UserDefaults
   * 화면 테마(밝은 모드, 어두운 모드, 시스템 설정과 같이) 구현
   * 화면 테마 모드 정보를 UserDefaults에 저장하여 앱을 재실행해도 상태 저장
   * 선택한 화면 테마 모드를 사용자에게 보여줄 수 있게 TableView의 isSelected 상태의 cell을 Checkbox로 보여줌
-
 
    
 #### 테스트계정
