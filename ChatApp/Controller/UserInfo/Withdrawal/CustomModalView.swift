@@ -7,18 +7,24 @@
 
 import UIKit
 
+protocol CustomModalViewDelegate: AnyObject {
+    func handleLogout()
+}
+
 class CustomModalView: BaseView {
     
     // MARK: - Properties
     
-    private let titleLabel = UILabel().then {
-        $0.text = "안녕히 가세요"
-        $0.font = UIFont.boldSystemFont(ofSize: 20)
+    weak var delegate: CustomModalViewDelegate?
+    
+    private let modalView = UIView().then {
+        $0.layer.cornerRadius = 20
+        $0.backgroundColor = .systemGray5
     }
     
-    private let descriptionLabel = UILabel().then {
-        $0.text = "진짜 탈퇴할거에요?\n한번 더 생각해 보세요."
-        $0.numberOfLines = 2
+    private let titleLabel = UILabel().then {
+        $0.text = "안녕히 가세요 👀"
+        $0.font = UIFont.boldSystemFont(ofSize: 20)
     }
     
     let cancelButton = UIButton(type: .system).then {
@@ -42,19 +48,25 @@ class CustomModalView: BaseView {
     // MARK: - Helpers
     
     override func configureUI() {
-        backgroundColor = .systemGray5
-        layer.cornerRadius = 20
+        backgroundColor = .clear
     }
     
     override func configureConstraints() {
-        addSubview(titleLabel)
+        addSubview(modalView)
+        modalView.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalTo(150)
+            make.center.equalToSuperview()
+        }
+        
+        modalView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-10)
         }
         
-        addSubview(cancelButton)
+        modalView.addSubview(cancelButton)
         cancelButton.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.4)
             make.height.equalTo(50)
@@ -62,7 +74,7 @@ class CustomModalView: BaseView {
             make.bottom.equalToSuperview().offset(-20)
         }
         
-        addSubview(withdrawalButton)
+        modalView.addSubview(withdrawalButton)
         withdrawalButton.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.4)
             make.height.equalTo(50)
@@ -78,6 +90,16 @@ class CustomModalView: BaseView {
     }
     
     @objc func handleWithdrawal() {
+        print("xxx")
         
+        
+        AuthService.shared.deleteUser { error in
+            if let error = error {
+                log.error("탈퇴 중 오류 발생 | \(error.localizedDescription)")
+                return
+            }
+            
+            self.delegate?.handleLogout()
+        }
     }
 }

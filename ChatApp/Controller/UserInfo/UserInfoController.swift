@@ -10,9 +10,15 @@ import Then
 import SnapKit
 import Firebase
 
+protocol UserInfoControllerDelegate: AnyObject {
+    func handleLogout()
+}
+
 class UserInfoController: BaseViewController {
 
     // MARK: - Properties
+    
+    weak var delegate: UserInfoControllerDelegate?
 
     var isNavBool: Bool = false
 
@@ -103,6 +109,7 @@ extension UserInfoController: UITableViewDelegate, UITableViewDataSource {
             print("section 0")
         } else if indexPath.section == 1 {
             let controller = WithdrawalController()
+            controller.delegate = self
             navigationController?.pushViewController(controller, animated: true)
         }
     }
@@ -117,5 +124,12 @@ extension UserInfoController: EditUserInfoDelegate {
         self.navigationController?.popViewController(animated: true)
         self.tableView.reloadData()
         showToast(message: "유저 정보가 변경 되었습니다.")
+    }
+}
+
+extension UserInfoController: WithdrawalControllerDelegate {
+    func handleLogout() {
+        navigationController?.popViewController(animated: true)
+        delegate?.handleLogout()
     }
 }

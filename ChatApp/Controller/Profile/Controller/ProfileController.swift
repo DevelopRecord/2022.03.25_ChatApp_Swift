@@ -101,6 +101,7 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
         switch viewModel {
         case .accountInfo:
             let controller = UserInfoController()
+            controller.delegate = self
             controller.isNavBool = true
             navigationController?.pushViewController(controller, animated: true)
         case .settings:
@@ -134,5 +135,13 @@ extension ProfileController: ProfileFooterDelegate {
 
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+}
+
+extension ProfileController: UserInfoControllerDelegate {
+    func handleLogout() {
+        self.dismiss(animated: true) {
+            self.delegate?.handleLogout()
+        }
     }
 }

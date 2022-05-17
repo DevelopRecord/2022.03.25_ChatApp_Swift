@@ -7,13 +7,21 @@
 
 import UIKit
 
+protocol WithdrawalControllerDelegate: AnyObject {
+    func handleLogout()
+}
+
 class WithdrawalController: BaseViewController {
-    
+
     // MARK: - Properties
     
+    weak var delegate: WithdrawalControllerDelegate?
+
     let selfView = WithdrawalView()
     let modalView = CustomModalView()
     
+    var modalBool: Bool = false
+
     private let withdrawalButton = UIButton(type: .system).then {
         $0.setTitle("탈퇴하기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
@@ -22,24 +30,26 @@ class WithdrawalController: BaseViewController {
         $0.backgroundColor = .systemBlue.withAlphaComponent(0.4)
         $0.addTarget(self, action: #selector(handleWithdrawal), for: .touchUpInside)
     }
-    
+
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigationBar(withTitle: "", prefersLargeTitle: false)
     }
-    
+
     // MARK: - Helpers
-    
+
     override func configureUI() {
         view.backgroundColor = .secondarySystemBackground
+        
+        modalView.delegate = self
     }
-    
+
     override func configureConstraints() {
         view.addSubview(selfView)
         selfView.snp.makeConstraints { make in
@@ -47,7 +57,7 @@ class WithdrawalController: BaseViewController {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        
+
         view.addSubview(withdrawalButton)
         withdrawalButton.snp.makeConstraints { make in
             make.height.equalTo(55)
@@ -56,20 +66,20 @@ class WithdrawalController: BaseViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
-    
+
     // MARK: - Selectors
-    
+
     @objc func handleWithdrawal() {
-        print("탈퇴하기")
-        selfView.backgroundColor = .systemGray5.withAlphaComponent(0.01)
-        UIView.animate(withDuration: 1.5) {
-            self.view.addSubview(self.modalView)
-            self.modalView.snp.makeConstraints { make in
-                make.width.equalToSuperview().multipliedBy(0.8)
-                make.height.equalTo(150)
-                make.center.equalToSuperview()
-            }
+        self.view.addSubview(self.modalView)
+        self.modalView.snp.makeConstraints { make in
+            make.width.height.equalToSuperview()
         }
-        
+    }
+}
+
+extension WithdrawalController: CustomModalViewDelegate {
+    func handleLogout() {
+        navigationController?.popViewController(animated: true)
+        delegate?.handleLogout()
     }
 }

@@ -6,8 +6,7 @@
 //
 
 import UIKit
-import Then
-import SnapKit
+
 import Firebase
 
 class RegistrationController: BaseViewController {

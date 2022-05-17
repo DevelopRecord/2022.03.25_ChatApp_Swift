@@ -60,7 +60,7 @@ class AuthService {
 
         Auth.auth().currentUser?.updateEmail(to: credentials.email, completion: { error in
             if let error = error {
-                log.debug("이메일 변경 중 오류 발생 | \(error.localizedDescription)")
+                log.error("이메일 변경 중 오류 발생 | \(error.localizedDescription)")
                 return
             }
             
@@ -70,7 +70,17 @@ class AuthService {
             
             log.info("이메일 정보 변경 완료")
         })
-        
-        
+    }
+    
+    func deleteUser(completion: ((Error?) -> Void)?) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Auth.auth().currentUser?.delete(completion: { error in
+            if let error = error {
+                log.error("회원탈퇴 중 에러 발생 | \(error.localizedDescription)")
+            }
+            
+            Firestore.firestore().collection("users").document(uid).delete(completion: completion)
+            Firestore.firestore().collection("messages").document(uid).delete(completion: completion)
+        })
     }
 }
