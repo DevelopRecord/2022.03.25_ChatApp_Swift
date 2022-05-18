@@ -20,6 +20,8 @@ class SettingController: BaseViewController {
         $0.dataSource = self
         $0.register(SettingCell.self, forCellReuseIdentifier: SettingCell.identifier)
     }
+    
+    let footerView = SettingFooter()
 
     // MARK: - Lifecycle
 
@@ -40,6 +42,8 @@ class SettingController: BaseViewController {
 
     override func configureUI() {
         view.backgroundColor = .systemGroupedBackground
+
+        tableView.tableFooterView = footerView
     }
 
     override func configureConstraints() {

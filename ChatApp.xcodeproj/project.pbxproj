@@ -44,6 +44,7 @@
 		FB9DDF2327FEDE7A0017DF57 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9DDF2227FEDE7A0017DF57 /* Message.swift */; };
 		FBA6B64E280ADC4100A32B6E /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA6B64D280ADC4100A32B6E /* UserInfoViewModel.swift */; };
 		FBA6B650280ADD9A00A32B6E /* UserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA6B64F280ADD9A00A32B6E /* UserInfoCell.swift */; };
+		FBCF5C012834DD19002BD1E6 /* SettingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCF5C002834DD19002BD1E6 /* SettingFooter.swift */; };
 		FBE141B927F6DE5100B461A0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141B827F6DE5100B461A0 /* LoginViewModel.swift */; };
 		FBE141BC27F6F4CD00B461A0 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE141BB27F6F4CD00B461A0 /* RegistrationViewModel.swift */; };
 		FBE141C827F8367F00B461A0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FBE141C727F8367F00B461A0 /* Kingfisher */; };
@@ -61,7 +62,7 @@
 		FBF7B04C28323DD70002B6AE /* WithdrawalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7B04B28323DD70002B6AE /* WithdrawalController.swift */; };
 		FBF7B04E28323E820002B6AE /* WithdrawalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7B04D28323E820002B6AE /* WithdrawalView.swift */; };
 		FBF7B052283246CB0002B6AE /* WithdrawalWarning.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBF7B051283246CB0002B6AE /* WithdrawalWarning.plist */; };
-		FBF7B0542832569B0002B6AE /* CustomModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7B0532832569B0002B6AE /* CustomModalView.swift */; };
+		FBF7B0542832569B0002B6AE /* WithdrawalModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7B0532832569B0002B6AE /* WithdrawalModalView.swift */; };
 		FBF8C2E127EDCFFE0000F7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E027EDCFFE0000F7F7 /* AppDelegate.swift */; };
 		FBF8C2E327EDCFFE0000F7F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8C2E227EDCFFE0000F7F7 /* SceneDelegate.swift */; };
 		FBF8C2E827EDCFFE0000F7F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF8C2E627EDCFFE0000F7F7 /* Main.storyboard */; };
@@ -113,6 +114,7 @@
 		FB9DDF2227FEDE7A0017DF57 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		FBA6B64D280ADC4100A32B6E /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		FBA6B64F280ADD9A00A32B6E /* UserInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCell.swift; sourceTree = "<group>"; };
+		FBCF5C002834DD19002BD1E6 /* SettingFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFooter.swift; sourceTree = "<group>"; };
 		FBE141B827F6DE5100B461A0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FBE141BB27F6F4CD00B461A0 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		FBE141D127F9865400B461A0 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -127,7 +129,7 @@
 		FBF7B04B28323DD70002B6AE /* WithdrawalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalController.swift; sourceTree = "<group>"; };
 		FBF7B04D28323E820002B6AE /* WithdrawalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalView.swift; sourceTree = "<group>"; };
 		FBF7B051283246CB0002B6AE /* WithdrawalWarning.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WithdrawalWarning.plist; sourceTree = "<group>"; };
-		FBF7B0532832569B0002B6AE /* CustomModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalView.swift; sourceTree = "<group>"; };
+		FBF7B0532832569B0002B6AE /* WithdrawalModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalModalView.swift; sourceTree = "<group>"; };
 		FBF8C2DD27EDCFFE0000F7F7 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF8C2E027EDCFFE0000F7F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF8C2E227EDCFFE0000F7F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 			children = (
 				FB40A326282B921000DCD1F0 /* ViewModel */,
 				FB40A32B282B93C800DCD1F0 /* Cell */,
+				FBCF5BFF2834DCF9002BD1E6 /* View */,
 				FB40A327282B921500DCD1F0 /* Controller */,
 			);
 			path = Screen;
@@ -433,6 +436,14 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		FBCF5BFF2834DCF9002BD1E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FBCF5C002834DD19002BD1E6 /* SettingFooter.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FBF7B044283234DA0002B6AE /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,7 +467,7 @@
 				FBF7B051283246CB0002B6AE /* WithdrawalWarning.plist */,
 				FBF7B04B28323DD70002B6AE /* WithdrawalController.swift */,
 				FBF7B04D28323E820002B6AE /* WithdrawalView.swift */,
-				FBF7B0532832569B0002B6AE /* CustomModalView.swift */,
+				FBF7B0532832569B0002B6AE /* WithdrawalModalView.swift */,
 			);
 			path = Withdrawal;
 			sourceTree = "<group>";
@@ -662,7 +673,8 @@
 				FB8B92282802E65F009ED9B2 /* ProfileViewModel.swift in Sources */,
 				FBF7B046283234E50002B6AE /* UserInfoFooter.swift in Sources */,
 				FBF7B04C28323DD70002B6AE /* WithdrawalController.swift in Sources */,
-				FBF7B0542832569B0002B6AE /* CustomModalView.swift in Sources */,
+				FBF7B0542832569B0002B6AE /* WithdrawalModalView.swift in Sources */,
+				FBCF5C012834DD19002BD1E6 /* SettingFooter.swift in Sources */,
 				FB8B92222802CF14009ED9B2 /* ConversationViewModel.swift in Sources */,
 				FB40A322282B8BC800DCD1F0 /* ScreenController.swift in Sources */,
 				FB40A34A2830F32200DCD1F0 /* BaseTableViewCell.swift in Sources */,

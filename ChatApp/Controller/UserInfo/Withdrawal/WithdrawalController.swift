@@ -18,7 +18,7 @@ class WithdrawalController: BaseViewController {
     weak var delegate: WithdrawalControllerDelegate?
 
     let selfView = WithdrawalView()
-    let modalView = CustomModalView()
+    let modalView = WithdrawalModalView()
     
     var modalBool: Bool = false
 
@@ -27,7 +27,7 @@ class WithdrawalController: BaseViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         $0.layer.cornerRadius = 10
-        $0.backgroundColor = .systemBlue.withAlphaComponent(0.4)
+        $0.backgroundColor = .systemBlue.withAlphaComponent(0.6)
         $0.addTarget(self, action: #selector(handleWithdrawal), for: .touchUpInside)
     }
 
@@ -77,7 +77,7 @@ class WithdrawalController: BaseViewController {
     }
 }
 
-extension WithdrawalController: CustomModalViewDelegate {
+extension WithdrawalController: WithdrawalModalViewDelegate {
     func handleLogout() {
         navigationController?.popViewController(animated: true)
         delegate?.handleLogout()

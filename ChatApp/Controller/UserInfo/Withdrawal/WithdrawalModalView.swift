@@ -1,5 +1,5 @@
 //
-//  CustomModalView.swift
+//  WithdrawalModalView.swift
 //  ChatApp
 //
 //  Created by LeeJaeHyeok on 2022/05/16.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol CustomModalViewDelegate: AnyObject {
+protocol WithdrawalModalViewDelegate: AnyObject {
     func handleLogout()
 }
 
-class CustomModalView: BaseView {
+class WithdrawalModalView: BaseView {
     
     // MARK: - Properties
     
-    weak var delegate: CustomModalViewDelegate?
+    weak var delegate: WithdrawalModalViewDelegate?
     
     private let modalView = UIView().then {
         $0.layer.cornerRadius = 20
