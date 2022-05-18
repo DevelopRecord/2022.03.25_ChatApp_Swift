@@ -1,8 +1,7 @@
-# ChatApp
-실시간 채팅 기능이 가능한 ChatApp으로 다양한 사람들과 채팅하고, 친해져 보세요.
+#### <div align="center">실시간 채팅 기능이 가능한 ChatApp으로 다양한 사람들과 채팅하고, 친해져 보세요.</div><br/>
+기술스택 
 
 ## Chapter
-
 1. [Library](#Library)   
 2. [Framework](#Framework)   
 3. [Preview](#Preview)   
