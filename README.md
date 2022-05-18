@@ -110,7 +110,7 @@ Firestore의 messages컬렉션에서 uid별로 대화내역을 나누고, 대화
 ### Main color
 ChatApp의 메인 컬러는 시스템 내장 컬러인 <code>.systemBlue</code>를 사용하였습니다.
 
-<img border: 3px solid gold; width="612" src="https://user-images.githubusercontent.com/76255765/168977925-01a730c6-847a-4e23-83d9-df2292dd2ef1.png">
+<img src="https://user-images.githubusercontent.com/76255765/168977925-01a730c6-847a-4e23-83d9-df2292dd2ef1.png" width="612" style="border-radius:50%" />
 
 ### App icon
 
