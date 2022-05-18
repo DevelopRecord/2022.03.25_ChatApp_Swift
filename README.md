@@ -6,7 +6,7 @@
 1. [Library](#Library)   
 2. [Framework](#Framework)   
 3. [Preview](#Preview)   
-4. [Login / Registration](#Login-&-Registration)  
+4. [Login & Registration](#Login&Registration)  
 5. [Main](#Main)  
 6. [Search](#Search)  
 7. [Chat](#Chat)  
@@ -33,7 +33,7 @@
 <img src="https://user-images.githubusercontent.com/76255765/165462756-794724e8-9b49-42ba-9acd-a2d2d13b69f1.gif" width="400" height="510"/>
 (미리보기 gif 공간)  
 
-## Login & Registration
+## Login&Registration
 앱 실행 시 가장 먼저 보이는 화면입니다. MainController에서 로그인 유무를 판별하고 로그인이 되어 있지 않으면 여기로 이동합니다.  
 Firestore에 유저 정보(프로필 사진, 아이디, 풀네임, 닉네임, uid) 저장합니다. 회원가입 정보 부정확(이메일 방식, 비밀번호 오타 등) 시 사용자에게 에러 메시지를 보여줍니다.  
 기본적으로 <code>FirebaseAuth</code>를 사용하여 구현하였습니다.
