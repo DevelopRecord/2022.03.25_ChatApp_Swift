@@ -6,7 +6,7 @@
 1. [Library](#Library)   
 2. [Framework](#Framework)   
 3. [Preview](#Preview)   
-4. [Login & Registration](#Login&Registration)  
+4. [Login & Registration](#login&registration)  
 5. [Main](#Main)  
 6. [Search](#Search)  
 7. [Chat](#Chat)  
