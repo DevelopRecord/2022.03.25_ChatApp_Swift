@@ -13,7 +13,8 @@
 8. [Profile](#Profile)  
 9. [User info](#User-Info)  
 10. [Settings](#Settings)  
-11. [Test Account](#Test-Account)   
+11. [Design](#Design)  
+12. [Test account](#Test-account)   
 
 ## Library   
 |이름|목적|버전|
@@ -51,7 +52,8 @@ Firestore에 유저 정보(프로필 사진, 아이디, 풀네임, 닉네임, ui
 <img src="https://user-images.githubusercontent.com/76255765/168793611-4a8046eb-a13a-43b1-9531-1cc46b89f487.png" width="200" height="400"/>
 
 ## Search
-메인화면 오른쪽 하단 추가 버튼을 통해 현재 회원가입을 완료한 모든 유저를 표시합니다. 원하는 유저를 탭하면 채팅이 시작됩니다.
+메인화면 오른쪽 하단 추가 버튼을 통해 현재 회원가입을 완료한 모든 유저를 표시합니다. 원하는 유저를 탭하면 채팅이 시작됩니다.  
+또한 <code>UISearchResultsUpdating</code>을 사용하여 유저의 이름을 필터링해서 특정 유저를 검색하여 채팅을 시작할 수도 있습니다.
 
 <img src="https://user-images.githubusercontent.com/76255765/168798383-2e9f61bc-1d10-4b27-8b2c-99a6fa20eb4f.png" width="200" height="400"/>
 
@@ -61,6 +63,13 @@ Firestore의 messages컬렉션에서 uid별로 대화내역을 나누고, 대화
   
 메시지 전송 시 TextView의 텍스트 값은 nil 처리하여 텍스트필드를 비우고 스크롤을 가장 아래로 이동하여 UI 편의성을 확대하였습니다.
 최초에 채팅방에 들어간 후 메시지를 불러올 때 로딩 인디케이터를 표시합니다. 또한 텍스트 입력하지 않았을 때 전송 버튼 unable 처리하여 메시지 전송을 할 수 없게 처리하였습니다.
+
+<table>
+  <tr>
+     <td><img src="https://user-images.githubusercontent.com/76255765/168972593-f0939b96-9b65-4708-ab6f-7d1fb43bb123.png" width="200" height="400"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/168972602-956c4827-c8a3-4263-856f-3be8c1365441.png" width="200" height="400"></td>
+  <tr>
+</table>
 
 ## Profile
 현재 로그인된 유저의 uid값을 이용하여 프로필 사진, 이름, 이메일 등을 표시합니다. UIView인 HeaderView, FooterView를 생성하여 테이블 뷰의 각각 Header, Footer 영역 그리고 가운데는 TableViewCell을 이용하여 UI를 구현하였습니다.
@@ -83,14 +92,52 @@ Firestore의 messages컬렉션에서 uid별로 대화내역을 나누고, 대화
   <tr>
 </table>
 
-* 앱 설정
-  * UserDefaults
-  * 화면 테마(밝은 모드, 어두운 모드, 시스템 설정과 같이) 구현
-  * 화면 테마 모드 정보를 UserDefaults에 저장하여 앱을 재실행해도 상태 저장
-  * 선택한 화면 테마 모드를 사용자에게 보여줄 수 있게 TableView의 isSelected 상태의 cell을 Checkbox로 보여줌
+## Settings
+푸시알림과 화면테마가 존재하며 현재 푸시알림은 개발중에 있습니다. 화면테마에는 밝은 모드, 어두운 모드, 시스템 설정과 같이 이렇게 세 개의 항목이 있으며, <code>UserDefaults</code>를 이용해 <code>indexPath.row</code>값을 저장하여 화면 설정의 상태를 저장합니다.  
 
-   
-#### 테스트계정
+또한 화면 설정 뷰가 나타나거나 앱을 종료 후 재실행해도 상태를 저장하여야 하기 때문에 <code>Lifecycle</code>와 <code>SceneDelegate</code>에 UserDefaults에 저장된 값을 불러오고 UI를 업데이트하는 함수를 호출합니다.  
+마지막으로 선택한 화면 테마 모드를 사용자에게 보여줄 수 있게 <code>TableView</code>의 <code>isSelected</code>의 상태가 **true**인 cell <code>checkmark</code>로, **false**는 <code>.none</code>로 나타냅니다.
+
+<table>
+  <tr>
+     <td><img src="https://user-images.githubusercontent.com/76255765/168975175-f83f0368-6991-4a59-b144-25acc933966d.png" width="200" height="400"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/168975179-473b9b97-318f-4a24-a8c7-c2df5179708a.png" width="200" height="400"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/168975181-b8e3fd88-51b4-4229-877a-bac7c017b311.png" width="200" height="400"></td>
+  </tr>
+</table>
+
+## Design
+### Main color
+ChatApp의 메인 컬러는 시스템 내장 컬러인 <code>.systemBlue</code>를 사용하였습니다.
+
+<img border: 3px solid gold; width="612" src="https://user-images.githubusercontent.com/76255765/168977925-01a730c6-847a-4e23-83d9-df2292dd2ef1.png">
+
+### App icon
+
+<img src="https://user-images.githubusercontent.com/76255765/169003442-528e1348-8b05-4b5b-9baf-7c2883ffec27.png" height="100" width="100" style="border-radius:50%" />
+
+### UI / UX
+
+<table>
+  <tr>
+     <td><img src="https://user-images.githubusercontent.com/76255765/169008098-1ca59c3f-968b-4696-9dea-c4299dd4f145.png" width="140" height="320"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/169008108-3810a1e1-6af4-492c-933e-5d3a2303780b.png" width="140" height="320"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/169008202-5dbe0997-df32-4289-b207-6cb9020972ff.png" width="140" height="320"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/169008369-cb244d96-a886-4651-8e2d-53f0479ad06d.png" width="140" height="320"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/169008286-3993349f-4e4d-4308-a4b4-5351f84c9bbc.png" width="140" height="320"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/169008823-e410c484-e909-4ec4-8d77-d9eb3690a1ba.png" width="140" height="320"></td>
+  </tr>
+  <tr>
+     <td><img src="https://user-images.githubusercontent.com/76255765/169008967-05d3f582-8576-4133-8446-4930420ae944.png" width="140" height="320"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/169009044-2d5345c5-391f-4075-b9fa-d0b879237ccf.png" width="140" height="320"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/169009150-0ecb473a-7035-47d9-9600-bcac5138f8ff.png" width="140" height="320"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/169009163-8d876ebf-e0b7-401f-b070-f144e92d8e54.png" width="140" height="320"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/169009212-1507c4fa-b73d-4f5d-84b8-83795478fdfe.png" width="140" height="320"></td>
+     <td><img src="https://user-images.githubusercontent.com/76255765/169009685-9e2f57e3-0ecb-4e99-a8fd-07e73b6d5c4c.png" width="140" height="320"></td>
+  </tr>
+</table>
+
+## Test account
 
 ID: test@naver.com   
 PW: qqqqqq
