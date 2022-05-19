@@ -1,5 +1,9 @@
+<div align="center"><img 
+src="https://capsule-render.vercel.app/api?type=waving&color=0a84ff&reversal=true&height=300&section=header&text=JHChatApp&desc=실시간%20채팅%20앱&textBg=false&fontSize=90&fontColor=ffffff&animation=fadeIn&fontAlignY=40"/></div>
+
 ### <div align="center">Real time ChatApp<br/></div>
 #### <div align="center">실시간 채팅 기능이 가능한 ChatApp으로 다양한 사람들과 채팅하고, 친해져 보세요.</div><br/>
+
 <div align="center">
    <img src="https://img.shields.io/badge/Xcode-147EFB?style=flat-square&logo=xcode&logoColor=white"/>
    <img src="https://img.shields.io/badge/iOS-000000?style=flat-square&logo=iOS&logoColor=white"/>
