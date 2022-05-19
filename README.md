@@ -78,7 +78,7 @@ Firestore의 messages컬렉션에서 uid별로 대화내역을 나누고, 대화
 </table>
 
 ## Profile
-현재 로그인된 유저의 uid값을 이용하여 프로필 사진, 이름, 이메일 등을 표시합니다. UIView인 HeaderView, FooterView를 생성하여 테이블 뷰의 각각 Header, Footer 영역 그리고 가운데는 TableViewCell을 이용하여 UI를 구현하였습니다.
+현재 로그인된 유저의 uid값을 이용하여 프로필 사진, 이름, 이메일 등을 표시합니다. UIView인 HeaderView, FooterView를 생성하여 테이블 뷰의 각각 Header, Footer 영역 그리고 가운데는 <code>TableViewCell</code>을 이용하여 UI를 구현하였습니다.
 
 <code>Header</code>에는 프로필 사진, 닉네임을 표시하고 <code>Cell</code>에는 유저 정보(수정 및 회원탈퇴), 앱 설정을 구현하였으며, <code>Footer</code>에는 로그아웃 버튼을 구현하였습니다.
 
@@ -123,6 +123,10 @@ ChatApp의 메인 컬러는 시스템 내장 컬러인 <code>.systemBlue</code>�
 <img src="https://user-images.githubusercontent.com/76255765/169003442-528e1348-8b05-4b5b-9baf-7c2883ffec27.png" height="100" width="100" style="border-radius:50%" />
 
 ### UI / UX
+UI & UX는 애플의 Human Interace Guidelines를 준수하여 제작하였습니다.  
+
+[Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/)  
+[UI 디자인 기본 원칙](https://developer.apple.com/kr/design/tips/)  
 
 <table>
   <tr>
