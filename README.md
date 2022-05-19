@@ -1,4 +1,4 @@
-#### <div align="center">Real time ChatApp<br/></div>
+### <div align="center">Real time ChatApp<br/></div>
 #### <div align="center">실시간 채팅 기능이 가능한 ChatApp으로 다양한 사람들과 채팅하고, 친해져 보세요.</div><br/>
 <div align="center">
    <img src="https://img.shields.io/badge/Xcode-147EFB?style=flat-square&logo=xcode&logoColor=white"/>
@@ -36,9 +36,8 @@
 - UIKit
    
 ## Preview
-<img src="https://user-images.githubusercontent.com/76255765/165462756-794724e8-9b49-42ba-9acd-a2d2d13b69f1.gif" width="400" height="510"/>
-(미리보기 gif 공간)  
-
+<img src="https://user-images.githubusercontent.com/76255765/169230554-83ab46c2-161d-4dcd-a144-5402f04c861e.gif" width="440" height="510"/>
+  
 ## Login & Registration
 앱 실행 시 가장 먼저 보이는 화면입니다. MainController에서 로그인 유무를 판별하고 로그인이 되어 있지 않으면 여기로 이동합니다.  
 Firestore에 유저 정보(프로필 사진, 아이디, 풀네임, 닉네임, uid) 저장합니다. 회원가입 정보 부정확(이메일 방식, 비밀번호 오타 등) 시 사용자에게 에러 메시지를 보여줍니다.  
