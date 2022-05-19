@@ -1,5 +1,12 @@
+#### <div align="center">Real time ChatApp<br/></div>
 #### <div align="center">실시간 채팅 기능이 가능한 ChatApp으로 다양한 사람들과 채팅하고, 친해져 보세요.</div><br/>
-기술스택 
+<div align="center">
+   <img src="https://img.shields.io/badge/Xcode-147EFB?style=flat-square&logo=xcode&logoColor=white"/>
+   <img src="https://img.shields.io/badge/iOS-000000?style=flat-square&logo=iOS&logoColor=white"/>
+   <img src="https://img.shields.io/badge/Swift-E34F26?style=flat-square&logo=swift&logoColor=white"/>
+   <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black"/>
+   <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/>
+</div>
 
 ## Chapter
 1. [Library](#Library)   
