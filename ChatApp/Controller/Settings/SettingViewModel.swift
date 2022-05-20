@@ -13,7 +13,7 @@ enum SettingViewModel: Int, CaseIterable {
 
     var description: String {
         switch self {
-        case .pushNotification: return "푸쉬 알림"
+        case .pushNotification: return "알림"
         case .screenSettings: return "화면 테마"
         }
     }
