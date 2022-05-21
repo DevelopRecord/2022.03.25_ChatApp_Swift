@@ -52,9 +52,14 @@ class ChatController: BaseViewController {
             self.showLoader(false)
 
             self.messages = messages
-            print("메시지 정보: \(messages)")
+            
             self.collectionView.reloadData()
             self.collectionView.scrollToItem(at: [0, self.messages.count - 1], at: .bottom, animated: true)
+        }
+
+        if messages.isEmpty {
+            print("메시지 정보 없음")
+            self.showLoader(false)
         }
     }
 
