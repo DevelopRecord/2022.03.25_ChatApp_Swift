@@ -8,6 +8,8 @@
 import UIKit
 
 import Firebase
+import RxCocoa
+import RxSwift
 
 protocol AuthentificationControllerProtocol {
     func checkFormStatus()
@@ -25,20 +27,24 @@ class LoginController: BaseViewController {
 
     private var loginViewModel = LoginViewModel()
 
+    private var disposeBag = DisposeBag()
+
+    let emailInputText: BehaviorSubject<String> = BehaviorSubject(value: "")
+    let emailValid: BehaviorSubject<Bool> = BehaviorSubject(value: false)
+    let passwordInputText: BehaviorSubject<String> = BehaviorSubject(value: "")
+    let passwordValid: BehaviorSubject<Bool> = BehaviorSubject(value: false)
+
     private let iconImage = UIImageView().then {
         $0.tintColor = .systemBlue
         $0.image = UIImage(systemName: "bubble.right")
     }
 
     private lazy var emailContainerView = InputContainerView(textField: emailTextField)
-    private let emailTextField = CustomTextField(placeholder: "이메일", keyboard: .emailAddress).then {
-        $0.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-    }
+    private let emailTextField = CustomTextField(placeholder: "이메일", keyboard: .emailAddress)
 
     private lazy var passwordContainerView = InputContainerView(textField: passwordTextField)
     private let passwordTextField = CustomTextField(placeholder: "비밀번호").then {
         $0.isSecureTextEntry = true
-        $0.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
 
     private let loginButton = UIButton(type: .system).then {
@@ -64,6 +70,43 @@ class LoginController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindInput()
+        bindOutput()
+    }
+
+    // MARK: - Bind
+
+    private func bindInput() {
+        emailTextField.rx.text.orEmpty
+            .bind(to: emailInputText)
+            .disposed(by: disposeBag)
+
+        emailInputText
+            .map(checkEmailValid(_:))
+            .bind(to: emailValid)
+            .disposed(by: disposeBag)
+
+        passwordTextField.rx.text.orEmpty
+            .bind(to: passwordInputText)
+            .disposed(by: disposeBag)
+
+        passwordInputText
+            .map(checkPasswordValid(_:))
+            .bind(to: passwordValid)
+            .disposed(by: disposeBag)
+    }
+
+    private func bindOutput() {
+        Observable.combineLatest(emailValid, passwordValid) { email, password in email && password }
+            .subscribe(onNext: { [weak self] bool in
+            self?.loginButton.isEnabled = bool
+
+            if bool {
+                self?.loginButton.backgroundColor = .systemBlue
+            } else {
+                self?.loginButton.backgroundColor = .systemBlue.withAlphaComponent(0.4)
+            }
+        }).disposed(by: disposeBag)
     }
 
     // MARK: - Helpers
@@ -106,6 +149,14 @@ class LoginController: BaseViewController {
         }
     }
 
+    private func checkEmailValid(_ email: String) -> Bool {
+        return email.contains("@") && email.contains(".")
+    }
+
+    private func checkPasswordValid(_ password: String) -> Bool {
+        return password.count > 5
+    }
+
     // MARK: - Selectors
 
     @objc func handleLogin() {
@@ -126,31 +177,9 @@ class LoginController: BaseViewController {
         }
     }
 
-    @objc func textDidChange(sender: UITextField) {
-        if sender == emailTextField {
-            loginViewModel.email = sender.text
-        } else {
-            loginViewModel.password = sender.text
-        }
-
-        checkFormStatus()
-    }
-
     @objc func handleShowSignUp() {
         let controller = RegistrationController()
         controller.delegate = delegate
         navigationController?.pushViewController(controller, animated: true)
-    }
-}
-
-extension LoginController: AuthentificationControllerProtocol {
-    func checkFormStatus() {
-        if loginViewModel.formIsValid {
-            loginButton.isEnabled = true
-            loginButton.backgroundColor = .systemBlue
-        } else {
-            loginButton.isEnabled = false
-            loginButton.backgroundColor = .systemBlue.withAlphaComponent(0.4)
-        }
     }
 }
