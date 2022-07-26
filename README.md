@@ -32,6 +32,7 @@ src="https://capsule-render.vercel.app/api?type=waving&color=0a84ff&reversal=tru
 |Firebase|사용자, 메시지 정보 DB 저장|8.14.0|
 |JGProgressHUD|로딩 표시|2.2.0|
 |Kingfisher|URL 이미지 주소를 가진 이미지 불러오기|7.2.0|
+|RxSwift|비동기|6.0.0|
 |SnapKit|Auto Layout|5.0.0|
 |SwiftyBeaver|디버깅|1.9.5|
 |Then|클로저를 통한 인스턴스 생성 시 깔끔한 코드 작성|2.7.0|
