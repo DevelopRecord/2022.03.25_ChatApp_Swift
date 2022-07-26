@@ -126,7 +126,7 @@ ChatApp의 메인 컬러는 시스템 내장 컬러인 <code>.systemBlue</code>�
 <img src="https://user-images.githubusercontent.com/76255765/169003442-528e1348-8b05-4b5b-9baf-7c2883ffec27.png" height="100" width="100" style="border-radius:50%" />
 
 ### UI / UX
-UI & UX는 애플의 Human Interace Guidelines를 준수하여 제작하였습니다.  
+UI & UX는 애플의 Human Interface Guidelines를 준수하여 제작하였습니다.  
 
 [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/)  
 [UI 디자인 기본 원칙](https://developer.apple.com/kr/design/tips/)  
